@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-
 public class HomeActivity extends AppCompatActivity implements Observer {
 
     private Region region = new Region();
