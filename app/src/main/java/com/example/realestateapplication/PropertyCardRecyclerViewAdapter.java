@@ -1,14 +1,13 @@
 package com.example.realestateapplication;
 
 import android.content.Context;
-import android.media.Image;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -55,8 +54,9 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
                 properties.get(position).getPropertySquareFoot() + " " + holder.itemView.getContext().getString(R.string.sqft));
 
         holder.exploreRecentPropertyBtn.setOnClickListener(e -> {
-        // go to the detail page of the property clicked.
-            Toast.makeText(context, properties.get(position).getPropertyAddress(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, PropertyDetailActivity.class);
+            intent.putExtra("property", properties.get(position));
+            context.startActivity(intent);
         });
     }
 
