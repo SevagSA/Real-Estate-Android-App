@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">RealEstateApplication</string>
+    <string name="app_name">Real Estate Application</string>
+    <string name="searchBarPlaceholder">Search…</string>
+    <string name="regionsTitleHomeActivity">Regions</string>
+    <string name="regionsDescHomeActivity">Search high quality listings in your favorite region</string>
+    <string name="explore">Explore</string>
+    <string name="recentProperties">Recent Properties</string>
+    <string name="recentPropertiesDescHomeActivity">Take a look out our most recent listings</string>
+    <string name="view_listing">View listing</string>
+    <string name="verticalLayout">Vertical layout</string>
+    <string name="horizontalLayout">Horizontal layout</string>
+    <string name="bed">Bed</string>
+    <string name="bath">Bath</string>
+    <string name="sqft">sqft</string> <!--    pi² -->
 </resources>

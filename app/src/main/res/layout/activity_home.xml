@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".HomeActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/globalMargin"
+        >
+
+        <fragment
+            android:id="@+id/fragment"
+            android:name="com.example.realestateapplication.SearchBarFragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/changeLayoutOrientationBtn"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:padding="0dp"
+            android:text="@string/verticalLayout"
+            android:textAllCaps="false"
+            android:textSize="@dimen/btn"
+            app:backgroundTint="@color/btnColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment" />
+
+        <LinearLayout
+            android:id="@+id/regionsLinearLayout"
+            android:layout_width="0dp"
+            android:layout_height="260dp"
+            android:background="#FFFFFF"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/changeLayoutOrientationBtn">
+
+            <TextView
+                android:id="@+id/regionsTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/regionsTitleHomeActivity"
+                android:textColor="@color/h1TitleBlack"
+                android:textSize="@dimen/h1Title" />
+
+            <TextView
+                android:id="@+id/regionsDescTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/regionsDescHomeActivity" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/regionsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/recentPropertiesLinearLayout"
+            android:layout_width="0dp"
+            android:layout_height="360dp"
+            android:layout_marginTop="16dp"
+            android:background="#FFFFFF"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/regionsLinearLayout">
+
+            <TextView
+                android:id="@+id/recentPropertiesTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/recentProperties"
+                android:textColor="@color/h1TitleBlack"
+                android:textSize="@dimen/h1Title" />
+
+            <TextView
+                android:id="@+id/recentPropertiesDescTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recentPropertiesDescHomeActivity" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recentPropertiesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
