@@ -7,22 +7,29 @@ import android.os.Bundle;
 import android.widget.Button;
 
 // each activity is a controller for the respective model(s) and view(s);
-
-// instantiate the "language select" view from here, since it will be the first view that the
-// user will see
 public class MainActivity extends AppCompatActivity{
 
-    Button goToHomePageBtn;
+    Button frenchLanguageBtn;
+    Button englishLanguageBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_language__select);
 
-        goToHomePageBtn = findViewById(R.id.goToHomePageBtn);
-        goToHomePageBtn.setOnClickListener(e -> {
-            Intent myIntent = new Intent(this, HomeActivity.class);
-            startActivity(myIntent);
+        frenchLanguageBtn = findViewById(R.id.frenchLanguageBtn);
+        frenchLanguageBtn.setOnClickListener(e -> {
+//            TODO: 1. translate the app to english.
+//            TODO: 2. save their translated language
+//            TODO: 3. don't ask them again once they choose a language
+//            TODO: 4. if they have already chosen a language, when the open the app, use that language
+//            TODO: 5. there should be an option to change back the used language
+            startActivity(new Intent(this, HomeActivity.class));
+        });
+
+        englishLanguageBtn = findViewById(R.id.englishLanguageBtn);
+        englishLanguageBtn.setOnClickListener(e -> {
+            startActivity(new Intent(this, HomeActivity.class));
         });
     }
 }
