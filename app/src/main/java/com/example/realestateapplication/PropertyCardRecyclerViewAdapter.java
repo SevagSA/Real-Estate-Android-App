@@ -2,6 +2,7 @@ package com.example.realestateapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 
 public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<PropertyCardRecyclerViewAdapter.ViewHolder> {
 
-    private ArrayList<Property> properties = new ArrayList<>();
+    private ArrayList<Property> properties;
     private final Context context;
 
     public PropertyCardRecyclerViewAdapter(ArrayList<Property> properties, Context context) {
@@ -39,22 +40,19 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         // this is were all of the views will be attached to the View
         Glide.with(context)
                 .asBitmap()
-                .load(properties.get(position).getPropertyImgURL())
+                .load(properties.get(position).getPropertyMainImgURL())
                 .into(holder.recentPropertyImg);
         String propertyType = properties.get(position).getPropertyType();
         holder.recentPropertyTypeTextView.setText(propertyType);
-        String priceSymbol = propertyType.equalsIgnoreCase("Apartment") ? "$ / Month" : "$";
-        holder.recentPropertyPrice.setText(properties.get(position).getPropertyPrice() + priceSymbol);
+        holder.recentPropertyPrice.setText(properties.get(position).getPropertyPrice());
         holder.recentPropertyAddress.setText(properties.get(position).getPropertyAddress());
-        holder.recentPropertyNumOfBed.setText(
-                properties.get(position).getPropertyNumOfBed() + " " + holder.itemView.getContext().getString(R.string.bed));
-        holder.recentPropertyNumOfBath.setText(
-                properties.get(position).getPropertyNumOfBath() + " " + holder.itemView.getContext().getString(R.string.bath));
-        holder.recentPropertySquareFoot.setText(
-                properties.get(position).getPropertySquareFoot() + " " + holder.itemView.getContext().getString(R.string.sqft));
+        holder.recentPropertyNumOfBed.setText(properties.get(position).getPropertyNumOfBed());
+        holder.recentPropertyNumOfBath.setText(properties.get(position).getPropertyNumOfBath());
+        holder.recentPropertySquareFoot.setText(properties.get(position).getPropertySquareFoot());
 
         holder.exploreRecentPropertyBtn.setOnClickListener(e -> {
             Intent intent = new Intent(context, PropertyDetailActivity.class);
+            Log.d("In the on click", properties.get(position).toString());
             intent.putExtra("property", properties.get(position));
             context.startActivity(intent);
         });

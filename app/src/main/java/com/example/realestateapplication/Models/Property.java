@@ -1,15 +1,29 @@
 package com.example.realestateapplication.Models;
 
 
+import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
+
+import com.example.realestateapplication.R;
 
 import java.util.ArrayList;
 import java.util.Observable;
 
 public class Property extends Observable implements Parcelable {
 
-    private String propertyImgURL;
+    private Context context;
+    private String propertyMainImgURL;
+    private String propertySecondImgURL;
+    private String propertyThirdImgURL;
+    private String propertyFourthImgURL;
+    private String propertyFifthImgURL;
+//    TODO: Create this class when you work on the Agent page
+//     The agents will be pre filled and users can't add agents
+//     so have the profile picture of the agent as a drawable
+//     (take screenshots of the imgs so all have the same dimens)
+//    private Agent agent
     private String propertyType;
     private double propertyPrice;
     private String propertyAddress;
@@ -17,10 +31,18 @@ public class Property extends Observable implements Parcelable {
     private int propertyNumOfBath;
     private int propertySquareFoot;
 
-    public Property() { }
+    public Property(Context context) { this.context = context; }
 
-    public Property(String propertyImgURL, String propertyType, double propertyPrice, String propertyAddress, int propertyNumOfBed, int propertyNumOfBath, int propertySquareFoot) {
-        this.propertyImgURL = propertyImgURL;
+    public Property(Context context, String propertyMainImgURL, String propertySecondImgURL,
+                    String propertyThirdImgURL, String propertyFourthImgURL, String propertyFifthImgURL,
+                    String propertyType, double propertyPrice, String propertyAddress, int propertyNumOfBed,
+                    int propertyNumOfBath, int propertySquareFoot) {
+        this.context = context;
+        this.propertyMainImgURL = propertyMainImgURL;
+        this.propertySecondImgURL = propertySecondImgURL;
+        this.propertyThirdImgURL = propertyThirdImgURL;
+        this.propertyFourthImgURL = propertyFourthImgURL;
+        this.propertyFifthImgURL = propertyFifthImgURL;
         this.propertyType = propertyType;
         this.propertyPrice = propertyPrice;
         this.propertyAddress = propertyAddress;
@@ -34,11 +56,16 @@ public class Property extends Observable implements Parcelable {
      * @return An ArrayList<Property> of the 5 most recent properties.
      */
     public ArrayList<Property> getAllProperties() {
-        // TODO: this will be later queries from the DB, not hardcoded.
+        // TODO: this will be later queried from the DB, not hardcoded.
 
         ArrayList<Property> properties = new ArrayList<>();
         properties.add(new Property(
-            "https://image.cnbcfm.com/api/v1/image/104548349-Large_house_suburb.jpg?v=1532563813&w=1600&h=900",
+            context,
+            "https://m.foolcdn.com/media/millionacres/original_images/colonial_house.jpg",
+            "https://m.foolcdn.com/media/millionacres/original_images/colonial_house.jpg",
+            "https://m.foolcdn.com/media/millionacres/original_images/colonial_house.jpg",
+            "https://m.foolcdn.com/media/millionacres/original_images/colonial_house.jpg",
+            "https://m.foolcdn.com/media/millionacres/original_images/colonial_house.jpg",
             "House",
             567_000,
             "7365, McDonald's Street, P0V K9G",
@@ -48,6 +75,11 @@ public class Property extends Observable implements Parcelable {
         ));
 
         properties.add(new Property(
+            context,
+            "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+            "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+            "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+            "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
             "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
             "Apartment",
             1_300,
@@ -59,6 +91,11 @@ public class Property extends Observable implements Parcelable {
         ));
 
         properties.add(new Property(
+            context,
+            "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+            "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+            "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+            "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
             "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
             "Apartment",
             1_550,
@@ -72,13 +109,50 @@ public class Property extends Observable implements Parcelable {
         return properties;
     }
 
-
-    public String getPropertyImgURL() {
-        return propertyImgURL;
+    /**
+     * Get all of the images related to this property in a String[].
+     * @return A String[] containing the URLs of all of the images of this property.
+     */
+    public String[] getGalleryImagesURLs() {
+        Log.d("getGalleryImagesURLs", getPropertyMainImgURL() + " | " +  getPropertySecondImgURL() + " | " +
+                getPropertyThirdImgURL() + " | " +  getPropertyFourthImgURL() + " | " +  getPropertyFifthImgURL());
+        return new String[] {getPropertyMainImgURL(), getPropertySecondImgURL(),
+                getPropertyThirdImgURL(), getPropertyFourthImgURL(), getPropertyFifthImgURL()};
     }
 
-    public void setPropertyImgURL(String propertyImgURL) {
-        this.propertyImgURL = propertyImgURL;
+
+    @Override
+    public String toString() {
+        return "Property{" +
+                "context=" + context +
+                ", propertyMainImgURL='" + propertyMainImgURL + '\'' +
+                ", propertySecondImgURL='" + propertySecondImgURL + '\'' +
+                ", propertyThirdImgURL='" + propertyThirdImgURL + '\'' +
+                ", propertyFourthImgURL='" + propertyFourthImgURL + '\'' +
+                ", propertyFifthImgURL='" + propertyFifthImgURL + '\'' +
+                ", propertyType='" + propertyType + '\'' +
+                ", propertyPrice=" + propertyPrice +
+                ", propertyAddress='" + propertyAddress + '\'' +
+                ", propertyNumOfBed=" + propertyNumOfBed +
+                ", propertyNumOfBath=" + propertyNumOfBath +
+                ", propertySquareFoot=" + propertySquareFoot +
+                '}';
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
+    public String getPropertyMainImgURL() {
+        return propertyMainImgURL;
+    }
+
+    public void setPropertyMainImgURL(String propertyMainImgURL) {
+        this.propertyMainImgURL = propertyMainImgURL;
     }
 
     public String getPropertyType() {
@@ -89,8 +163,9 @@ public class Property extends Observable implements Parcelable {
         this.propertyType = propertyType;
     }
 
-    public double getPropertyPrice() {
-        return propertyPrice;
+    public String getPropertyPrice() {
+        String dollarSymbol = propertyType.equalsIgnoreCase("Apartment") ? "$ / Month" : "$";
+        return propertyPrice + dollarSymbol;
     }
 
     public void setPropertyPrice(double propertyPrice) {
@@ -105,28 +180,60 @@ public class Property extends Observable implements Parcelable {
         this.propertyAddress = propertyAddress;
     }
 
-    public int getPropertyNumOfBed() {
-        return propertyNumOfBed;
+    public String getPropertyNumOfBed() {
+        return propertyNumOfBed + " " + context.getResources().getString(R.string.bed);
     }
 
     public void setPropertyNumOfBed(int propertyNumOfBed) {
         this.propertyNumOfBed = propertyNumOfBed;
     }
 
-    public int getPropertyNumOfBath() {
-        return propertyNumOfBath;
+    public String getPropertyNumOfBath() {
+        return propertyNumOfBath + " " + context.getResources().getString(R.string.bath);
     }
 
     public void setPropertyNumOfBath(int propertyNumOfBath) {
         this.propertyNumOfBath = propertyNumOfBath;
     }
 
-    public int getPropertySquareFoot() {
-        return propertySquareFoot;
+    public String getPropertySquareFoot() {
+        return propertySquareFoot + " " + context.getResources().getString(R.string.sqft);
     }
 
     public void setPropertySquareFoot(int propertySquareFoot) {
         this.propertySquareFoot = propertySquareFoot;
+    }
+
+    public String getPropertySecondImgURL() {
+        return propertySecondImgURL;
+    }
+
+    public void setPropertySecondImgURL(String propertySecondImgURL) {
+        this.propertySecondImgURL = propertySecondImgURL;
+    }
+
+    public String getPropertyThirdImgURL() {
+        return propertyThirdImgURL;
+    }
+
+    public void setPropertyThirdImgURL(String propertyThirdImgURL) {
+        this.propertyThirdImgURL = propertyThirdImgURL;
+    }
+
+    public String getPropertyFourthImgURL() {
+        return propertyFourthImgURL;
+    }
+
+    public void setPropertyFourthImgURL(String propertyFourthImgURL) {
+        this.propertyFourthImgURL = propertyFourthImgURL;
+    }
+
+    public String getPropertyFifthImgURL() {
+        return propertyFifthImgURL;
+    }
+
+    public void setPropertyFifthImgURL(String propertyFifthImgURL) {
+        this.propertyFifthImgURL = propertyFifthImgURL;
     }
 
     @Override
@@ -136,7 +243,11 @@ public class Property extends Observable implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(propertyImgURL);
+        parcel.writeString(propertyMainImgURL);
+        parcel.writeString(propertySecondImgURL);
+        parcel.writeString(propertyThirdImgURL);
+        parcel.writeString(propertyFourthImgURL);
+        parcel.writeString(propertyFifthImgURL);
         parcel.writeString(propertyType);
         parcel.writeDouble(propertyPrice);
         parcel.writeString(propertyAddress);
@@ -158,7 +269,11 @@ public class Property extends Observable implements Parcelable {
 
     /** reads back fields IN THE ORDER they were written */
     private Property(Parcel pc) {
-        propertyImgURL = pc.readString();
+        propertyMainImgURL = pc.readString();
+        propertySecondImgURL = pc.readString();
+        propertyThirdImgURL = pc.readString();
+        propertyFourthImgURL = pc.readString();
+        propertyFifthImgURL = pc.readString();
         propertyType = pc.readString();
         propertyPrice = pc.readDouble();
         propertyAddress = pc.readString();

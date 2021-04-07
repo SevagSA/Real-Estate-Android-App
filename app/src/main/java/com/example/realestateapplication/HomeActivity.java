@@ -17,7 +17,7 @@ import java.util.Observer;
 public class HomeActivity extends AppCompatActivity implements Observer {
 
     private Region region = new Region();
-    private Property property = new Property();
+    private final Property property = new Property(this);
 
     Button changeLayoutOrientationBtn;
 
