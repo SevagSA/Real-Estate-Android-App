@@ -1,9 +1,13 @@
 package com.example.realestateapplication.Models;
 
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class Property extends Observable {
+public class Property extends Observable implements Parcelable {
 
     private String propertyImgURL;
     private String propertyType;
@@ -124,4 +128,43 @@ public class Property extends Observable {
     public void setPropertySquareFoot(int propertySquareFoot) {
         this.propertySquareFoot = propertySquareFoot;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(propertyImgURL);
+        parcel.writeString(propertyType);
+        parcel.writeDouble(propertyPrice);
+        parcel.writeString(propertyAddress);
+        parcel.writeInt(propertyNumOfBed);
+        parcel.writeInt(propertyNumOfBath);
+        parcel.writeInt(propertySquareFoot);
+    }
+
+    public static final Parcelable.Creator<Property> CREATOR
+            = new Parcelable.Creator<Property>() {
+        public Property createFromParcel(Parcel in) {
+            return new Property(in);
+        }
+
+        public Property[] newArray(int size) {
+            return new Property[size];
+        }
+    };
+
+    /** reads back fields IN THE ORDER they were written */
+    private Property(Parcel pc) {
+        propertyImgURL = pc.readString();
+        propertyType = pc.readString();
+        propertyPrice = pc.readDouble();
+        propertyAddress = pc.readString();
+        propertyNumOfBed = pc.readInt();
+        propertyNumOfBath = pc.readInt();
+        propertySquareFoot = pc.readInt();
+    }
+
 }
