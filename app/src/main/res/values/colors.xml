@@ -11,6 +11,7 @@
     <color name="h1TitleBlack">#383838</color>
     <color name="h3TitleWhite">#FFFFFF</color>
     <color name="btnColor">#FFE68C3C</color>
+    <color name="lighterBtnColor">#FFE68C3C</color>
 
     <color name="propertyTypeTxt">#eb9e5b</color>
     <color name="homeCardInfoBg">#f5f5f5</color>
