@@ -61,7 +61,6 @@ public class HomeActivity extends AppCompatActivity implements Observer {
         LinearLayoutManager propertyLayoutManager = new LinearLayoutManager(
                 this, layoutOrientation, false
         );
-
         RecyclerView propertyRecyclerView = findViewById(R.id.recentPropertiesRecyclerView);
         propertyRecyclerView.setLayoutManager(propertyLayoutManager);
         PropertyCardRecyclerViewAdapter propertyAdapter =

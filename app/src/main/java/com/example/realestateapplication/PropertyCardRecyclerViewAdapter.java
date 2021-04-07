@@ -52,7 +52,6 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
 
         holder.exploreRecentPropertyBtn.setOnClickListener(e -> {
             Intent intent = new Intent(context, PropertyDetailActivity.class);
-            Log.d("In the on click", properties.get(position).toString());
             intent.putExtra("property", properties.get(position));
             context.startActivity(intent);
         });

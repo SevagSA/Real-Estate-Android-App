@@ -1,10 +1,10 @@
 package com.example.realestateapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,14 +14,12 @@ import com.example.realestateapplication.Models.Property;
 public class PropertyDetailActivity extends AppCompatActivity {
 
     Property property;
-    GridView propertyGalleryGridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_detail);
         property = getIntent().getParcelableExtra("property");
-        Log.d("In the detail activity", property.toString());
         property.setContext(this);
 
         Glide.with(getApplicationContext())
@@ -29,7 +27,7 @@ public class PropertyDetailActivity extends AppCompatActivity {
                 .load(property.getPropertyMainImgURL())
                 .into((ImageView)findViewById(R.id.propertyMainImageView));
 
-        // TODO
+        // TODO: After creating the Agent Model
         //  findViewById(R.id.propertyAgentImageView);
         //  findViewById(R.id.propertyAgentNameText);
         ((TextView)findViewById(R.id.propertyAddressText)).setText(property.getPropertyAddress());
@@ -39,10 +37,26 @@ public class PropertyDetailActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.propertySQFTText)).setText(property.getPropertySquareFoot());
         findViewById(R.id.propertyAgentContactBtn);
 
-        propertyGalleryGridView = (GridView)findViewById(R.id.propertyGalleryGridView);
-        propertyGalleryGridView.setAdapter(new PropertyGalleryAdapter(this, property.getGalleryImagesURLs()));
+        populateRecyclerViewListings();
+    }
+
+    private void populateRecyclerViewListings() {
+        LinearLayoutManager propertyGalleryManager = new LinearLayoutManager(
+                this, LinearLayoutManager.VERTICAL, false
+        );
+
+        RecyclerView propertyGalleryRecyclerView = findViewById(R.id.propertyGalleryRecyclerView);
+
+        propertyGalleryRecyclerView.setLayoutManager(propertyGalleryManager);
+
+        PropertyGalleryRecyclerViewAdapter propertyGalleryAdapter =
+                new PropertyGalleryRecyclerViewAdapter(
+                        this, property.getGalleryImagesURLs());
+
+        propertyGalleryRecyclerView.setAdapter(propertyGalleryAdapter);
     }
 }
+
 
 //    ImageView propertyMainImageView;
 //    ImageView propertyAgentImageView;

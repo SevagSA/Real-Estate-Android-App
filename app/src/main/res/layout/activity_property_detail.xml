@@ -117,14 +117,12 @@
                 android:textColor="@color/complementaryBlue" />
         </LinearLayout>
 
-        <GridView
-            android:id="@+id/propertyGalleryGridView"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/propertyGalleryRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:numColumns="2"
             android:layout_marginTop="10dp"
-            android:horizontalSpacing="10dp"
-            android:verticalSpacing="10dp"/>
+            android:orientation="vertical" />
 
 
     </LinearLayout>
