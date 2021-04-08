@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RealEstateApplication">
+        <activity android:name=".LoginPage"></activity>
         <activity android:name=".Controllers.ListPropertyActivity"></activity>
         <activity android:name=".Controllers.HomeActivity" />
         <activity android:name=".Controllers.LanguageSelectActivity" />
