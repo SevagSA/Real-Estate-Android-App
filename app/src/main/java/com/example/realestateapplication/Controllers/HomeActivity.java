@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -38,12 +39,13 @@ public class HomeActivity extends AppCompatActivity implements Observer {
 
         changeLayoutOrientationBtn = findViewById(R.id.changeLayoutOrientationBtn);
         changeLayoutOrientationBtn.setOnClickListener(e ->  handleChangeLayoutBtnClick());
+
+        findViewById(R.id.goToListPropertyPageBtn).setOnClickListener(e -> handleGoToListPropertyPageBtnClick());
     }
 
 
     @Override
-    public void update(Observable o, Object arg) {
-    }
+    public void update(Observable o, Object arg) {}
 
     /**
      * Render the Regions and Recent Listings in their respective RecyclerView.
@@ -85,4 +87,12 @@ public class HomeActivity extends AppCompatActivity implements Observer {
             changeLayoutOrientationBtn.setText(R.string.verticalLayout);
         }
     }
+
+    /**
+     * Go to the ListPropertyActivity
+     */
+    private void handleGoToListPropertyPageBtnClick() {
+        startActivity(new Intent(this, ListPropertyActivity.class));
+    }
+
 }

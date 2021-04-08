@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DFDFDF"
+    android:padding="20dp"
+    tools:context=".Fragments.ContactPropertyAgentFragment">
+
+    <TextView
+        android:id="@+id/listPropertyForSaleBtnH1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="List property for sale"
+        android:textColor="@color/h1TitleBlack"
+        android:textSize="@dimen/h1Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/listPropertyAddress"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Address (DO WITH ADDRESS API)"
+        android:inputType="textPostalAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listPropertyForSaleBtnH1" />
+
+
+    <LinearLayout
+        android:id="@+id/listPropertyPriceSpinnerLL"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listPropertyAddress">
+
+        <Spinner
+            android:id="@+id/listPropertySelectAgent"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.90"
+            android:ems="10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listPropertyAddress" />
+
+
+        <Spinner
+            android:id="@+id/listPropertySelectPropertyType"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.90"
+            android:ems="10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listPropertySelectAgent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/listPropertyPriceSQFTLL"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listPropertyPriceSpinnerLL">
+
+        <EditText
+            android:id="@+id/listPropertyPrice"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.90"
+            android:ems="10"
+            android:hint="@string/askingPrice"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/listPropertySQFT"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight=".90"
+            android:ems="10"
+            android:hint="@string/squareFeet"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/listPropertyBedBathLL"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listPropertyPriceSQFTLL">
+
+        <EditText
+            android:id="@+id/listPropertyBed"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.90"
+            android:ems="10"
+            android:hint="@string/numOfBed"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/listPropertyBath"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight=".90"
+            android:ems="10"
+            android:hint="@string/numOfBath"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/listPropertyImg1LL"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listPropertyBedBathLL">
+
+        <EditText
+            android:id="@+id/listPropertyImg1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.90"
+            android:ems="10"
+            android:hint="@string/_1stImage"
+            android:inputType="textWebEmailAddress" />
+
+        <EditText
+            android:id="@+id/listPropertyImg2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight=".90"
+            android:ems="10"
+            android:hint="@string/_2ndImage"
+            android:inputType="textWebEmailAddress" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/listPropertyImg2LL"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listPropertyImg1LL">
+
+        <EditText
+            android:id="@+id/listPropertyImg3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.90"
+            android:ems="10"
+            android:hint="@string/_3rdImage"
+            android:inputType="textWebEmailAddress" />
+
+        <EditText
+            android:id="@+id/listPropertyImg4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight=".90"
+            android:ems="10"
+            android:hint="@string/_4thImage"
+            android:inputType="textWebEmailAddress" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/listPropertyImg3LL"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listPropertyImg2LL">
+
+        <EditText
+            android:id="@+id/listPropertyImg5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.90"
+            android:ems="10"
+            android:hint="@string/_5thImage"
+            android:inputType="textWebEmailAddress" />
+
+        <EditText
+            android:id="@+id/listPropertyImg6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight=".90"
+            android:ems="10"
+            android:hint="@string/_6thImage"
+            android:inputType="textWebEmailAddress" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/listPropertyForSaleBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/list_property_for_sale"
+        android:textAllCaps="false"
+        app:backgroundTint="@color/btnColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listPropertyImg3LL" />
+</androidx.constraintlayout.widget.ConstraintLayout>

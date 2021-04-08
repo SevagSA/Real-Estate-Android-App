@@ -16,5 +16,17 @@
     <string name="submitEmail">Send email</string>
     <string name="message">Message</string>
     <string name="emailSubject">Email Subject</string>
-    <string name="contact_agent">Contact Agent</string> <!--    pi² -->
+    <string name="contact_agent">Contact Agent</string>
+    <string name="askingPrice">Asking Price</string>
+    <string name="squareFeet">Square Feet</string>
+    <string name="numOfBed">Num of Bed</string>
+    <string name="numOfBath">Num of bath</string>
+    <string name="_5thImage">5th image</string>
+    <string name="_6thImage">6th image</string>
+    <string name="_4thImage">4th image</string>
+    <string name="_3rdImage">3rd image</string>
+    <string name="_1stImage">1st image</string>
+    <string name="_2ndImage">2nd image</string>
+    <string name="sellProperty">Sell property</string>
+    <string name="list_property_for_sale">List property for sale</string> <!--    pi² -->
 </resources>
