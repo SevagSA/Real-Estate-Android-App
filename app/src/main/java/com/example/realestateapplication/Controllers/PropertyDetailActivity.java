@@ -1,19 +1,18 @@
-package com.example.realestateapplication;
+package com.example.realestateapplication.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.realestateapplication.Adapters.PropertyGalleryRecyclerViewAdapter;
+import com.example.realestateapplication.Fragments.ContactPropertyAgentFragment;
 import com.example.realestateapplication.Models.Property;
+import com.example.realestateapplication.R;
 
 public class PropertyDetailActivity extends AppCompatActivity {
 

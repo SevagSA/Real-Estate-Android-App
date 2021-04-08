@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="#DFDFDF"
     android:padding="20dp"
-    tools:context=".ContactPropertyAgentFragment">
+    tools:context=".Fragments.ContactPropertyAgentFragment">
 
     <TextView
         android:id="@+id/contactAgentFormH1"

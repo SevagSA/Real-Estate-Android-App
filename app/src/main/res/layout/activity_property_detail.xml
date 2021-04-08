@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context=".PropertyDetailActivity">
+    tools:context=".Controllers.PropertyDetailActivity">
 
     <ImageView
         android:id="@+id/propertyMainImageView"

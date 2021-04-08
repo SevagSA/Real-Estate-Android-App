@@ -1,4 +1,4 @@
-package com.example.realestateapplication;
+package com.example.realestateapplication.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-// each activity is a controller for the respective model(s) and view(s);
+import com.example.realestateapplication.Controllers.HomeActivity;
+import com.example.realestateapplication.R;
+
+// each activity is a controller for their respective model(s) and view(s);
 public class MainActivity extends AppCompatActivity{
 
     Button frenchLanguageBtn;
