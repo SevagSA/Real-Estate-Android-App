@@ -1,4 +1,4 @@
-package com.example.realestateapplication;
+package com.example.realestateapplication.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,7 +9,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.realestateapplication.Adapters.PropertyGalleryRecyclerViewAdapter;
+import com.example.realestateapplication.Fragments.ContactPropertyAgentFragment;
 import com.example.realestateapplication.Models.Property;
+import com.example.realestateapplication.R;
 
 public class PropertyDetailActivity extends AppCompatActivity {
 
@@ -35,9 +38,15 @@ public class PropertyDetailActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.propertyNumOfBathText)).setText(property.getPropertyNumOfBath());
         ((TextView)findViewById(R.id.propertyNumOfBedText)).setText(property.getPropertyNumOfBed());
         ((TextView)findViewById(R.id.propertySQFTText)).setText(property.getPropertySquareFoot());
-        findViewById(R.id.propertyAgentContactBtn);
 
         populateRecyclerViewListings();
+
+        (findViewById(R.id.propertyAgentContactBtn)).setOnClickListener(e -> {
+
+            // TODO: you can pass the agent in the constructor and use it in the form (for the title maybe)
+            ContactPropertyAgentFragment dialogFragment = new ContactPropertyAgentFragment();
+            dialogFragment.show(getSupportFragmentManager(), "ContactPropertyAgentFragment");
+        });
     }
 
     private void populateRecyclerViewListings() {

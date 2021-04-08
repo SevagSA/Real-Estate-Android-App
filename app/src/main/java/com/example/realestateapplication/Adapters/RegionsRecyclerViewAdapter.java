@@ -1,4 +1,4 @@
-package com.example.realestateapplication;
+package com.example.realestateapplication.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.realestateapplication.Models.Region;
+import com.example.realestateapplication.R;
 
 import java.util.ArrayList;
 

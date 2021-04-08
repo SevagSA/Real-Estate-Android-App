@@ -11,5 +11,10 @@
     <string name="horizontalLayout">Horizontal layout</string>
     <string name="bed">Bed</string>
     <string name="bath">Bath</string>
-    <string name="sqft">sqft</string> <!--    pi² -->
+    <string name="sqft">sqft</string>
+
+    <string name="submitEmail">Send email</string>
+    <string name="message">Message</string>
+    <string name="emailSubject">Email Subject</string>
+    <string name="contact_agent">Contact Agent</string> <!--    pi² -->
 </resources>

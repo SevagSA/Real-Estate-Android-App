@@ -1,4 +1,4 @@
-package com.example.realestateapplication;
+package com.example.realestateapplication.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,8 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
+import com.example.realestateapplication.Adapters.RegionsRecyclerViewAdapter;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
+import com.example.realestateapplication.R;
 
 import java.util.ArrayList;
 import java.util.Observable;
