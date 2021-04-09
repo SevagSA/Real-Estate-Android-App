@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AgentPage">
+
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/dtvancouver"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-31dp" />
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="136dp"
+        android:layout_height="153dp"
+        app:srcCompat="@drawable/agent_profile_img"
+        tools:layout_editor_absoluteX="137dp"
+        tools:layout_editor_absoluteY="190dp" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="17dp" />
+
+    <TextView
+        android:id="@+id/agentName"
+        android:layout_width="257dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:text="Firstname Lastname"
+        android:textSize="23dp"
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="412dp" />
+
+    <TextView
+        android:id="@+id/agentCompany"
+        android:layout_width="150dp"
+        android:layout_height="24dp"
+        android:gravity="center"
+        android:text="Company XYZ"
+        android:textSize="13dp"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="442dp" />
+
+    <TextView
+        android:id="@+id/agentEmail"
+        android:layout_width="150dp"
+        android:layout_height="24dp"
+        android:gravity="center"
+        android:text="test123@email.com"
+        android:textSize="13dp"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="466dp" />
+
+    <TextView
+        android:id="@+id/agentPhone"
+        android:layout_width="150dp"
+        android:layout_height="24dp"
+        android:gravity="center"
+        android:text="514)123-4567"
+        android:textSize="13dp"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="490dp" />
+
+    <TextView
+        android:id="@+id/soldNumber"
+        android:layout_width="103dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:text="Sold number:"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="514dp" />
+
+    <TextView
+        android:id="@+id/soldCounter"
+        android:layout_width="103dp"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:text="number"
+        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteY="514dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
