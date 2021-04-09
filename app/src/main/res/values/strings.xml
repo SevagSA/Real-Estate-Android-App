@@ -28,5 +28,7 @@
     <string name="_1stImage">1st image</string>
     <string name="_2ndImage">2nd image</string>
     <string name="sellProperty">Sell property</string>
-    <string name="list_property_for_sale">List property for sale</string> <!--    pi² -->
+    <string name="list_property_for_sale">List property for sale</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string> <!--    pi² -->
 </resources>
