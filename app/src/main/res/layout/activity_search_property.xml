@@ -9,18 +9,15 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.SearchBarFragment">
 
-
-    <Button
-        android:id="@+id/searchInputBarSearchView"
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchInputBarSearchView"
+        android:hint="@string/enter_address"
+        android:padding="16dp"
         android:drawablePadding="16dp"
-        android:text="@string/search_a_property_by_address"
-        android:textAllCaps="false"
-        android:textSize="@dimen/btn"
-        app:backgroundTint="@color/btnColor"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment"
         android:drawableLeft="@drawable/location_icon"
+        android:layout_gravity="center_horizontal"
+        android:background="@android:drawable/editbox_background"
         />
 </LinearLayout>

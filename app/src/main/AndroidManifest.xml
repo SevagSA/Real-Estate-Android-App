@@ -11,13 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RealEstateApplication">
-        <activity android:name=".AgentPage"></activity>
-        <activity android:name=".LoginPage" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
+
+        <activity android:name=".Controllers.SearchPropertyActivity" />
+        <activity android:name=".Controllers.AgentActivity" />
+        <activity android:name=".Controllers.LoginActivity" />
         <activity android:name=".Controllers.ListPropertyActivity" />
         <activity android:name=".Controllers.HomeActivity" />
         <activity android:name=".Controllers.LanguageSelectActivity" />
         <activity android:name=".Controllers.PropertyDetailActivity" />
         <activity android:name=".Controllers.MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

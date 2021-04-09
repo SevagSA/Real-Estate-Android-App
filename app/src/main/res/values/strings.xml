@@ -30,5 +30,7 @@
     <string name="sellProperty">Sell property</string>
     <string name="list_property_for_sale">List property for sale</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string> <!--    pi² -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_address">Enter address</string>
+    <string name="search_a_property_by_address">Search a property by address</string> <!--    pi² -->
 </resources>

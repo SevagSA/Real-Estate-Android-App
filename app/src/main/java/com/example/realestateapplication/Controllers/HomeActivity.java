@@ -1,20 +1,39 @@
 package com.example.realestateapplication.Controllers;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Adapters.RegionsRecyclerViewAdapter;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
 import com.example.realestateapplication.R;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.RectangularBounds;
+import com.google.android.libraries.places.api.model.TypeFilter;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -24,6 +43,7 @@ public class HomeActivity extends AppCompatActivity implements Observer {
     private final Property property = new Property(this);
 
     Button changeLayoutOrientationBtn;
+    EditText searchBar;
 
 
     @Override
@@ -42,7 +62,6 @@ public class HomeActivity extends AppCompatActivity implements Observer {
 
         findViewById(R.id.goToListPropertyPageBtn).setOnClickListener(e -> handleGoToListPropertyPageBtnClick());
     }
-
 
     @Override
     public void update(Observable o, Object arg) {}
@@ -94,5 +113,33 @@ public class HomeActivity extends AppCompatActivity implements Observer {
     private void handleGoToListPropertyPageBtnClick() {
         startActivity(new Intent(this, ListPropertyActivity.class));
     }
-
 }
+
+//Places.initialize(getApplicationContext(), "AIzaSyD3hdT4eY5_Dh2mCrGGV1Rkd_PM4AhcBJM");
+//        PlacesClient placesClient = Places.createClient(getApplicationContext());
+//
+//        Log.d("here", findViewById(R.id.searchInputBarSearchView) + "");
+//
+//        AutocompleteSupportFragment autocompleteSupportFragment = (AutocompleteSupportFragment)
+//        getSupportFragmentManager().findFragmentById(R.id.searchInputBarSearchView);
+//
+//        autocompleteSupportFragment.setTypeFilter(TypeFilter.CITIES);
+//        autocompleteSupportFragment.setLocationBias(RectangularBounds.newInstance(
+//        new LatLng(48.435135, -125.615663),
+//        new LatLng(69.292697, -68.509274)));
+//        autocompleteSupportFragment.setCountries("CA");
+//        autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS));
+//
+//        autocompleteSupportFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+//@Override
+//public void onPlaceSelected(@NonNull Place place) {
+//        Log.i("onPlaceSelected",
+//        place.getName() + ", "
+//        + place.getAddress() + ", id: " + place.getId());
+//        }
+//
+//@Override
+//public void onError(@NonNull Status status) {
+//        Log.d("onError", "An error occurred: " + status);
+//        }
+//        });

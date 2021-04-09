@@ -1,10 +1,12 @@
-package com.example.realestateapplication;
+package com.example.realestateapplication.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class LoginPage extends AppCompatActivity {
+import com.example.realestateapplication.R;
+
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
