@@ -2,6 +2,7 @@ package com.example.realestateapplication.Controllers;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,12 +20,18 @@ import java.util.List;
 
 public class SearchPropertyActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
+
     EditText searchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_property);
+
+        toolbar = findViewById(R.id.appToolbar);
+
+        setSupportActionBar(toolbar);
 
         searchBar = findViewById(R.id.searchInputBarSearchView);
         searchBar.setFocusable(false);

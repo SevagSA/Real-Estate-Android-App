@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,6 +40,7 @@ import java.util.Observer;
 
 public class HomeActivity extends AppCompatActivity implements Observer {
 
+    private Toolbar toolbar;
     private Region region = new Region();
     private final Property property = new Property(this);
 
@@ -50,6 +52,10 @@ public class HomeActivity extends AppCompatActivity implements Observer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        //toolbar
+        toolbar = findViewById(R.id.appToolbar);
+
+        setSupportActionBar(toolbar);
 
         // creating a relationship between the observable Model and the observer Activity
         region = new Region();

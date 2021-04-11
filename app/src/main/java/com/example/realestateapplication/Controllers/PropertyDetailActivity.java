@@ -3,6 +3,7 @@ package com.example.realestateapplication.Controllers;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -16,12 +17,17 @@ import com.example.realestateapplication.R;
 
 public class PropertyDetailActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
+
     Property property;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_detail);
+        toolbar = findViewById(R.id.appToolbar);
+
+        setSupportActionBar(toolbar);
         property = getIntent().getParcelableExtra("property");
         property.setContext(this);
 

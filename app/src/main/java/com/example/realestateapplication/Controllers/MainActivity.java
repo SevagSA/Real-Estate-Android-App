@@ -1,6 +1,7 @@
 package com.example.realestateapplication.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -19,6 +20,8 @@ import java.util.Objects;
 // each activity is a controller for their respective model(s) and view(s);
 public class MainActivity extends AppCompatActivity{
 
+    private Toolbar toolbar;
+
     Button frenchLanguageBtn;
     Button englishLanguageBtn;
 
@@ -26,6 +29,9 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language__select);
+        toolbar = findViewById(R.id.appToolbar);
+
+        setSupportActionBar(toolbar);
 
         frenchLanguageBtn = findViewById(R.id.frenchLanguageBtn);
         frenchLanguageBtn.setOnClickListener(e -> {

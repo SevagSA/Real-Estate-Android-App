@@ -2,6 +2,7 @@ package com.example.realestateapplication;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import androidx.appcompat.widget.Toolbar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +14,9 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.realestateapplication.Controllers.HomeActivity;
 
-public class RegistrationDialog extends AppCompatDialogFragment {
+public class RegistrationDialog_Obsolete extends AppCompatDialogFragment {
+
+    private Toolbar toolbar;
     private EditText regUsername;
     private EditText regPassword;
 

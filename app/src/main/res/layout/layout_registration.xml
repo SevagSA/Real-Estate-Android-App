@@ -18,3 +18,5 @@
         android:layout_below="@id/reg_username" />
 
 </RelativeLayout>
+
+<!-- This is obsolete xml-->

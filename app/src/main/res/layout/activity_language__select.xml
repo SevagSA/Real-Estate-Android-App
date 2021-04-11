@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Controllers.LanguageSelectActivity">
 
-    <include
-        layout="@layout/activity_action_bar" />
 
     <TextView
         android:id="@+id/greeting"

@@ -51,13 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/passwordAgain"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:text="Register" />
 
-    <Button
-        android:id="@+id/cancel_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/passwordAgain"
-        android:layout_toRightOf="@id/register_Button"
-        android:text="Cancel" />
 </RelativeLayout>
