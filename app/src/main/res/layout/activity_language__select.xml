@@ -7,8 +7,7 @@
     tools:context=".Controllers.LanguageSelectActivity">
 
     <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar" />
+        layout="@layout/activity_action_bar" />
 
     <TextView
         android:id="@+id/greeting"
