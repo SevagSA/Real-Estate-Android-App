@@ -34,12 +34,12 @@ public class MainActivity extends AppCompatActivity{
 //            TODO: 3. don't ask them again once they choose a language
 //            TODO: 4. if they have already chosen a language, when the open the app, use that language
 //            TODO: 5. there should be an option to change back the used language
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, LoginActivity.class));
         });
 
         englishLanguageBtn = findViewById(R.id.englishLanguageBtn);
         englishLanguageBtn.setOnClickListener(e -> {
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, LoginActivity.class));
         });
         createNotificationChannel();
     }
