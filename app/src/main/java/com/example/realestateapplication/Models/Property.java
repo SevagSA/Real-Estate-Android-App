@@ -4,7 +4,6 @@ package com.example.realestateapplication.Models;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import com.example.realestateapplication.R;
 
@@ -24,7 +23,7 @@ public class Property extends Observable implements Parcelable {
 //     The agents will be pre filled and users can't add agents
 //     so have the profile picture of the agent as a drawable
 //     (take screenshots of the imgs so all have the same dimens)
-//    private Agent agent
+    private Agent agent;
     private String propertyType;
     private double propertyPrice;
     private String propertyAddress;
@@ -37,7 +36,7 @@ public class Property extends Observable implements Parcelable {
     public Property(Context context, String propertyMainImgURL, String propertySecondImgURL,
                     String propertyThirdImgURL, String propertyFourthImgURL, String propertyFifthImgURL,
                     String propertySixthImgURL, String propertyType, double propertyPrice, String propertyAddress,
-                    int propertyNumOfBed, int propertyNumOfBath, int propertySquareFoot) {
+                    int propertyNumOfBed, int propertyNumOfBath, int propertySquareFoot, Agent agent) {
         this.context = context;
         this.propertyMainImgURL = propertyMainImgURL;
         this.propertySecondImgURL = propertySecondImgURL;
@@ -51,6 +50,7 @@ public class Property extends Observable implements Parcelable {
         this.propertyNumOfBed = propertyNumOfBed;
         this.propertyNumOfBath = propertyNumOfBath;
         this.propertySquareFoot = propertySquareFoot;
+        this.agent = agent;
     }
 
     /**
@@ -74,7 +74,13 @@ public class Property extends Observable implements Parcelable {
             "7365, McDonald's Street, P0V K9G",
             2,
             3,
-            2500
+            2500,
+                new Agent(
+                        "Raphael Jones",
+                        "High Rise Estates",
+                        R.drawable.raphael_jones,
+                        78,
+                        "Toronto, On, and Montreal, Qc")
         ));
 
         properties.add(new Property(
@@ -90,7 +96,13 @@ public class Property extends Observable implements Parcelable {
             "3646, 42nd Road, V0R H95",
             2,
             1,
-            1100
+            1100,
+                new Agent(
+                        "Alex Mason",
+                        "Alberta Property Agents",
+                        R.drawable.alex_mason,
+                        78,
+                        "Calgary, Ab")
 
         ));
 
@@ -107,7 +119,13 @@ public class Property extends Observable implements Parcelable {
             "288, Rue de la Vallée",
             3,
             3,
-            1300
+            1300,
+                new Agent(
+                        "Olivia James",
+                        "Redwood Realty Group",
+                        R.drawable.olivia_james,
+                        78,
+                        "Vancouver, Bc")
         ));
         setChanged();
         notifyObservers();
@@ -135,7 +153,13 @@ public class Property extends Observable implements Parcelable {
                 "7365, McDonald's Street, P0V K9G",
                 2,
                 3,
-                2500
+                2500,
+                new Agent(
+                        "Raphael Jones",
+                        "High Rise Estates",
+                        R.drawable.raphael_jones,
+                        78,
+                        "Toronto, On, and Montreal, Qc")
         ));
 
         properties.add(new Property(
@@ -151,7 +175,13 @@ public class Property extends Observable implements Parcelable {
                 "3646, 42nd Road, V0R H95",
                 2,
                 1,
-                1100
+                1100,
+                new Agent(
+                        "Alex Mason",
+                        "Alberta Property Agents",
+                        R.drawable.alex_mason,
+                        78,
+                        "Calgary, Ab")
 
         ));
 
@@ -168,7 +198,13 @@ public class Property extends Observable implements Parcelable {
                 "288, Rue de la Vallée",
                 3,
                 3,
-                1300
+                1300,
+                new Agent(
+                        "Olivia James",
+                        "Redwood Realty Group",
+                        R.drawable.olivia_james,
+                        78,
+                        "Vancouver, Bc")
         ));
         setChanged();
         notifyObservers();
@@ -185,7 +221,6 @@ public class Property extends Observable implements Parcelable {
                 getPropertySixthImgURL()};
     }
 
-
     @Override
     public String toString() {
         return "Property{" +
@@ -195,6 +230,8 @@ public class Property extends Observable implements Parcelable {
                 ", propertyThirdImgURL='" + propertyThirdImgURL + '\'' +
                 ", propertyFourthImgURL='" + propertyFourthImgURL + '\'' +
                 ", propertyFifthImgURL='" + propertyFifthImgURL + '\'' +
+                ", propertySixthImgURL='" + propertySixthImgURL + '\'' +
+                ", agent=" + agent +
                 ", propertyType='" + propertyType + '\'' +
                 ", propertyPrice=" + propertyPrice +
                 ", propertyAddress='" + propertyAddress + '\'' +
@@ -309,6 +346,14 @@ public class Property extends Observable implements Parcelable {
         this.propertySixthImgURL = propertySixthImgURL;
     }
 
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -328,6 +373,7 @@ public class Property extends Observable implements Parcelable {
         parcel.writeInt(propertyNumOfBed);
         parcel.writeInt(propertyNumOfBath);
         parcel.writeInt(propertySquareFoot);
+        parcel.writeValue(agent);
     }
 
     public static final Parcelable.Creator<Property> CREATOR
@@ -355,6 +401,6 @@ public class Property extends Observable implements Parcelable {
         propertyNumOfBed = pc.readInt();
         propertyNumOfBath = pc.readInt();
         propertySquareFoot = pc.readInt();
+        agent = (Agent) pc.readValue(Agent.class.getClassLoader());
     }
-
 }

@@ -52,8 +52,9 @@
                     android:id="@+id/propertyAgentImageView"
                     android:layout_width="63dp"
                     android:layout_height="60dp"
+                    android:scaleType="fitXY"
                     android:layout_marginRight="14dp"
-                    android:background="@drawable/agent_profile_img" />
+                    android:background="@drawable/raphael_jones" />
 
                 <TextView
                     android:id="@+id/propertyAgentNameText"

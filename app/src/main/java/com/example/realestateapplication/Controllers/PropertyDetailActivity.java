@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -68,8 +69,9 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
                 .into((ImageView)findViewById(R.id.propertyMainImageView));
 
         // TODO: After creating the Agent Model
-        //  findViewById(R.id.propertyAgentImageView);
-        //  findViewById(R.id.propertyAgentNameText);
+        Log.d("AGENT IS HERE: ", property.toString());
+        ((ImageView)findViewById(R.id.propertyAgentImageView)).setImageResource(property.getAgent().getProfileImgId());
+        ((TextView)findViewById(R.id.propertyAgentNameText)).setText(property.getAgent().getFullName());
         ((TextView)findViewById(R.id.propertyAddressText)).setText(property.getPropertyAddress());
         ((TextView)findViewById(R.id.propertyPriceText)).setText(property.getPropertyPrice());
         ((TextView)findViewById(R.id.propertyNumOfBathText)).setText(property.getPropertyNumOfBath());
