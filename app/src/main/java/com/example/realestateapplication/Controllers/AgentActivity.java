@@ -9,17 +9,20 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
 
 public class AgentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
+    private Agent agent;
 
 
     @Override
@@ -42,10 +45,14 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        ((TextView)findViewById(R.id.agentNameText)).setText("TestName");
-        ((TextView)findViewById(R.id.agentEmalText)).setText("TestEmail");
-        ((TextView)findViewById(R.id.agentPhoneText)).setText("TestPhone");
-        ((TextView)findViewById(R.id.agentSalesText)).setText("TestSales");
+        agent = getIntent().getParcelableExtra("agent");
+
+        Log.d("AGENT ACTIVITY", agent.toString());
+
+        ((TextView)findViewById(R.id.agentNameText)).setText(agent.getFullName());
+        ((TextView)findViewById(R.id.agentEmalText)).setText(agent.getEmail());
+        ((TextView)findViewById(R.id.agentPhoneText)).setText(agent.getPhoneNumber());
+        ((TextView)findViewById(R.id.agentSalesText)).setText(Integer.toString(agent.getNumOfSoldListings()));
     }
 
     @Override

@@ -80,7 +80,9 @@ public class Property extends Observable implements Parcelable {
                         "High Rise Estates",
                         R.drawable.raphael_jones,
                         78,
-                        "Toronto, On, and Montreal, Qc")
+                        "Toronto, On, and Montreal, Qc",
+                        "raphael.jones@agent.com",
+                        "(435) 547-868")
         ));
 
         properties.add(new Property(
@@ -102,7 +104,9 @@ public class Property extends Observable implements Parcelable {
                         "Alberta Property Agents",
                         R.drawable.alex_mason,
                         78,
-                        "Calgary, Ab")
+                        "Calgary, Ab",
+                        "alex.mason@agent.com",
+                        "(356) 346-8288")
 
         ));
 
@@ -125,7 +129,9 @@ public class Property extends Observable implements Parcelable {
                         "Redwood Realty Group",
                         R.drawable.olivia_james,
                         78,
-                        "Vancouver, Bc")
+                        "Vancouver, Bc",
+                        "olivia.james@agent.com",
+                        "(948) 368-8276")
         ));
         setChanged();
         notifyObservers();
@@ -159,7 +165,9 @@ public class Property extends Observable implements Parcelable {
                         "High Rise Estates",
                         R.drawable.raphael_jones,
                         78,
-                        "Toronto, On, and Montreal, Qc")
+                        "Toronto, On, and Montreal, Qc",
+                        "raphael.jones@agent.com",
+                        "(435) 547-868")
         ));
 
         properties.add(new Property(
@@ -181,7 +189,9 @@ public class Property extends Observable implements Parcelable {
                         "Alberta Property Agents",
                         R.drawable.alex_mason,
                         78,
-                        "Calgary, Ab")
+                        "Calgary, Ab",
+                        "alex.mason@agent.com",
+                        "(356) 346-8288")
 
         ));
 
@@ -204,7 +214,9 @@ public class Property extends Observable implements Parcelable {
                         "Redwood Realty Group",
                         R.drawable.olivia_james,
                         78,
-                        "Vancouver, Bc")
+                        "Vancouver, Bc",
+                        "olivia.james@agent.com",
+                        "(948) 368-8276")
         ));
         setChanged();
         notifyObservers();

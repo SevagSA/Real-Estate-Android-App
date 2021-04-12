@@ -11,21 +11,25 @@ public class Agent implements Parcelable {
 
     private String fullName;
     private String companyName;
+    private String email;
     @DrawableRes
 //    see https://stackoverflow.com/questions/62343576/is-it-possible-to-add-an-image-as-a-class-attribute
     private int profileImgId;
     private int numOfSoldListings;
     private String serviceLocation;
 //    private ArrayList<Property> listedProperties;
+    private String phoneNumber;
 
     public Agent(String fullName, String companyName,
                  @DrawableRes int profileImgId, int numOfSoldListings,
-                 String serviceLocation /**ArrayList<Property> listedProperties*/) {
+                 String serviceLocation, String email, String phoneNumber /**ArrayList<Property> listedProperties*/) {
         this.fullName = fullName;
         this.companyName = companyName;
         this.profileImgId = profileImgId;
         this.numOfSoldListings = numOfSoldListings;
         this.serviceLocation = serviceLocation;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
 //        this.listedProperties = listedProperties;
     }
 
@@ -34,9 +38,11 @@ public class Agent implements Parcelable {
         return "Agent{" +
                 "fullName='" + fullName + '\'' +
                 ", companyName='" + companyName + '\'' +
+                ", email='" + email + '\'' +
                 ", profileImgId=" + profileImgId +
                 ", numOfSoldListings=" + numOfSoldListings +
                 ", serviceLocation='" + serviceLocation + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 
@@ -90,6 +96,22 @@ public class Agent implements Parcelable {
 //    }
 
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -102,6 +124,8 @@ public class Agent implements Parcelable {
         parcel.writeInt(profileImgId);
         parcel.writeInt(numOfSoldListings);
         parcel.writeString(serviceLocation);
+        parcel.writeString(email);
+        parcel.writeString(phoneNumber);
     }
 
     public static final Parcelable.Creator<Agent> CREATOR
@@ -122,6 +146,8 @@ public class Agent implements Parcelable {
         profileImgId = pc.readInt();
         numOfSoldListings = pc.readInt();
         serviceLocation = pc.readString();
+        email = pc.readString();
+        phoneNumber = pc.readString();
     }
 }
 

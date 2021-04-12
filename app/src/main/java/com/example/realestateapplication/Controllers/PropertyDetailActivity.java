@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.realestateapplication.Adapters.PropertyGalleryRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.ContactPropertyAgentFragment;
+import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
@@ -60,7 +61,24 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
 
         agentButton = findViewById(R.id.propertyAgentImageView);
         agentButton.setOnClickListener(view -> {
-            startActivity(new Intent(PropertyDetailActivity.this, AgentActivity.class));
+            Intent intent = new Intent(getApplicationContext(), AgentActivity.class);
+            Agent agent = new Agent(
+                    property.getAgent().getFullName(),
+                    property.getAgent().getCompanyName(),
+                    property.getAgent().getProfileImgId(),
+                    property.getAgent().getNumOfSoldListings(),
+                    property.getAgent().getServiceLocation(),
+                    property.getAgent().getEmail(),
+                    property.getAgent().getPhoneNumber()
+            );
+            Log.d("in the on click", agent.toString());
+            intent.putExtra("agent", agent);
+            startActivity(intent);
+//            startActivity(new Intent(getApplicationContext(), AgentActivity.class));
+
+//            Intent intent = new Intent(getBaseContext(), PropertyDetailActivity.class);
+//            intent.putExtra("agent", property.getAgent());
+//            startActivity(intent);
         });
 
         Glide.with(getApplicationContext())
@@ -68,8 +86,6 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
                 .load(property.getPropertyMainImgURL())
                 .into((ImageView)findViewById(R.id.propertyMainImageView));
 
-        // TODO: After creating the Agent Model
-        Log.d("AGENT IS HERE: ", property.toString());
         ((ImageView)findViewById(R.id.propertyAgentImageView)).setImageResource(property.getAgent().getProfileImgId());
         ((TextView)findViewById(R.id.propertyAgentNameText)).setText(property.getAgent().getFullName());
         ((TextView)findViewById(R.id.propertyAddressText)).setText(property.getPropertyAddress());
@@ -81,8 +97,7 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
         populateRecyclerViewListings();
 
         (findViewById(R.id.propertyAgentContactBtn)).setOnClickListener(e -> {
-
-            // TODO: you can pass the agent in the constructor and use it in the form (for the title maybe)
+            // TODO: you can pass the agent in the constructor and use it in the form (for the email)
             ContactPropertyAgentFragment dialogFragment = new ContactPropertyAgentFragment();
             dialogFragment.show(getSupportFragmentManager(), "ContactPropertyAgentFragment");
         });
