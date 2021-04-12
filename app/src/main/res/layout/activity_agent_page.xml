@@ -1,108 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Controllers.AgentActivity">
 
-    <include
-        android:id="@+id/include2"
-        layout="@layout/activity_action_bar" />
+    <!--
+    <include android:id="@+id/include2" />
+    -->
 
     <ImageView
         android:id="@+id/backgroundImage"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/dtvancouver" />
+        android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/profileImage"
         android:layout_width="136dp"
         android:layout_height="153dp"
+        android:layout_marginBottom="@id/backgroundImage"
         android:layout_marginStart="136dp"
         android:layout_marginLeft="136dp"
-        android:layout_marginTop="168dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2"
-        app:srcCompat="@drawable/agent_profile_img" />
+        android:layout_marginTop="168dp" />
 
-    <EditText
-        android:id="@+id/agentName"
-        android:layout_width="257dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginLeft="84dp"
-        android:layout_marginTop="104dp"
-        android:gravity="center"
-        android:hint="Firstname Lastname"
-        android:textSize="23dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileImage" />
+    <LinearLayout
+        android:id="@+id/propertyQuickInfoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/agentCompany"
-        android:layout_width="149dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginLeft="128dp"
-        android:layout_marginTop="4dp"
-        android:gravity="center"
-        android:hint="Company XYZ"
-        android:textSize="13dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agentName" />
+        <TextView
+            android:id="@+id/agentNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/complementaryBlue" />
 
-    <EditText
-        android:id="@+id/agentEmail"
-        android:layout_width="149dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginLeft="128dp"
-        android:layout_marginTop="4dp"
-        android:gravity="center"
-        android:hint="test123@email.com"
-        android:textSize="13dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agentCompany" />
+        <TextView
+            android:id="@+id/agentEmalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/complementaryBlue" />
 
-    <EditText
-        android:id="@+id/agentPhone"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginLeft="128dp"
-        android:layout_marginTop="4dp"
-        android:gravity="center"
-        android:hint="514)123-4567"
-        android:textSize="13dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/agentEmail" />
+        <TextView
+            android:id="@+id/agentPhoneText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/complementaryBlue" />
 
-    <TextView
-        android:id="@+id/soldNumber"
-        android:layout_width="103dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="124dp"
-        android:gravity="center"
-        android:hint="Sold number:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backgroundImage" />
+        <TextView
+            android:id="@+id/agentSalesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/complementaryBlue" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/soldCounter"
-        android:layout_width="103dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginRight="108dp"
-        android:gravity="center"
-        android:hint="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backgroundImage" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

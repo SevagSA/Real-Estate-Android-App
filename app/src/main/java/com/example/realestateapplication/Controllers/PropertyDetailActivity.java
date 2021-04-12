@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,7 +22,7 @@ public class PropertyDetailActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
-    ImageButton button;
+    ImageButton agentButton;
     Property property;
 
     @Override
@@ -34,7 +36,14 @@ public class PropertyDetailActivity extends AppCompatActivity {
         property = getIntent().getParcelableExtra("property");
         property.setContext(this);
 
-        button = (ImageButton) findViewById(R.id.propertyAgentImageView);
+        agentButton = findViewById(R.id.propertyAgentImageView);
+        agentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(PropertyDetailActivity.this, AgentActivity.class));
+            }
+        });
 
         Glide.with(getApplicationContext())
                 .asBitmap()
