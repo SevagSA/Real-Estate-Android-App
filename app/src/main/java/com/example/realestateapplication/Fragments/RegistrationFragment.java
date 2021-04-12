@@ -59,17 +59,6 @@ public class RegistrationFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        logButton = findViewById(R.id.register_Button);
-        logButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                RegistrationFragment regFrag = new RegistrationFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.loginPage, regFrag).commit();
-            }
-        });
     }
 
     @Override
