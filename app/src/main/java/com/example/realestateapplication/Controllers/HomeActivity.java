@@ -1,7 +1,10 @@
 package com.example.realestateapplication.Controllers;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
@@ -19,29 +22,43 @@ import com.example.realestateapplication.Adapters.RegionsRecyclerViewAdapter;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
 import com.example.realestateapplication.R;
+import com.google.android.material.navigation.NavigationView;
 
 
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class HomeActivity extends AppCompatActivity implements Observer {
+public class HomeActivity extends AppCompatActivity implements Observer, NavigationView.OnNavigationItemSelectedListener {
 
-    private Toolbar toolbar;
+
     private Region region = new Region();
     private final Property property = new Property(this);
 
     Button changeLayoutOrientationBtn;
-    EditText searchBar;
 
+    private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+        // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // Drawer
+        drawer = findViewById(R.id.homeDrawerMenu);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         // creating a relationship between the observable Model and the observer Activity
         region = new Region();
@@ -50,7 +67,7 @@ public class HomeActivity extends AppCompatActivity implements Observer {
         populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL);
 
         changeLayoutOrientationBtn = findViewById(R.id.changeLayoutOrientationBtn);
-        changeLayoutOrientationBtn.setOnClickListener(e ->  handleChangeLayoutBtnClick());
+        changeLayoutOrientationBtn.setOnClickListener(e -> handleChangeLayoutBtnClick());
 
         findViewById(R.id.goToListPropertyPageBtn).setOnClickListener(e -> handleGoToListPropertyPageBtnClick());
     }
@@ -62,29 +79,56 @@ public class HomeActivity extends AppCompatActivity implements Observer {
     }
 
     @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_list_property:
+                startActivity(new Intent(this, ListPropertyActivity.class));
+                break;
+            case R.id.nav_see_sent_messages:
+                Toast.makeText(this, "Sent msg", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.nav_share_fb:
+                Toast.makeText(this, "nav_share_fb", Toast.LENGTH_LONG).show();
+                break;
+            case R.id.nav_share_tweet:
+                Toast.makeText(this, "nav_share_tweet", Toast.LENGTH_LONG).show();
+                break;
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.listProperty) {
-            startActivity(new Intent(this, ListPropertyActivity.class));
-        } else if (id == R.id.search) {
+        if (id == R.id.search) {
             startActivity(new Intent(this, SearchPropertyActivity.class));
         } else if (id == R.id.likeItem) {
-            Toast.makeText(getApplicationContext(), "likeItem", Toast.LENGTH_LONG);
+            Toast.makeText(getApplicationContext(), "likeItem", Toast.LENGTH_LONG).show();
 //            LikedListingFragment dialogFragment = new LikedListingFragment();
 //            dialogFragment.show(getSupportFragmentManager(), "LikedListingFragment");
         } else if (id == R.id.about) {
-            Toast.makeText(getApplicationContext(), "about", Toast.LENGTH_LONG);
+            Toast.makeText(getApplicationContext(), "about", Toast.LENGTH_LONG).show();
 //            AboutCompanyFragment dialogFragment = new AboutCompanyFragment();
 //            dialogFragment.show(getSupportFragmentManager(), "AboutCompanyFragment");
         } else if (id == R.id.logout) {
-            Toast.makeText(getApplicationContext(), "Logged out", Toast.LENGTH_LONG);
+            Toast.makeText(getApplicationContext(), "Logged out", Toast.LENGTH_LONG).show();
         }
         return true;
     }
 
     @Override
-    public void update(Observable o, Object arg) {}
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+    }
 
     /**
      * Render the Regions and Recent Listings in their respective RecyclerView.

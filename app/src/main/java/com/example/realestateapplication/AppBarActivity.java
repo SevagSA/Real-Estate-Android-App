@@ -34,9 +34,7 @@ public class AppBarActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.listProperty) {
-            startActivity(new Intent(this, ListPropertyActivity.class));
-        } else if (id == R.id.search) {
+        if (id == R.id.search) {
             startActivity(new Intent(this, SearchPropertyActivity.class));
         } else if (id == R.id.likeItem) {
             Toast.makeText(getApplicationContext(), "likeItem", Toast.LENGTH_LONG);

@@ -38,4 +38,9 @@
     <string name="communicate">Communicate</string>
     <string name="see_sent_messages">See sent messages</string>
     <string name="share_on_twitter">Share on twitter</string> <!--    pi² -->
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
 </resources>
