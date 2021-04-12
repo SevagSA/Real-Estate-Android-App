@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,6 +57,10 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
             intent.putExtra("property", properties.get(position));
             context.startActivity(intent);
         });
+
+        holder.likedIconBtn.setOnClickListener(e -> {
+            Toast.makeText(context, "likedIconBtn for: " + holder.recentPropertyAddress.getText(), Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
@@ -72,6 +77,7 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         TextView recentPropertyNumOfBath;
         TextView recentPropertySquareFoot;
         Button exploreRecentPropertyBtn;
+        ImageView likedIconBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +89,7 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
             recentPropertyNumOfBath = itemView.findViewById(R.id.recentPropertyNumOfBath);
             recentPropertySquareFoot = itemView.findViewById(R.id.recentPropertySquareFoot);
             exploreRecentPropertyBtn = itemView.findViewById(R.id.exploreRecentPropertyBtn);
+            likedIconBtn = itemView.findViewById(R.id.likedIconBtn);
 
         }
     }

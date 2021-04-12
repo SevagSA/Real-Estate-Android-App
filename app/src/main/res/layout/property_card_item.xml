@@ -4,13 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,19 +35,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:orientation="vertical"
-                android:padding="5dp"
+                android:padding="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recentPropertyImg"
                 android:background="@color/homeCardInfoBg">
 
-                <TextView
-                    android:id="@+id/recentPropertyTypeTextView"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/propertyTypeTxt"
-                    android:text="Appartment"/>
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/recentPropertyTypeTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textColor="@color/propertyTypeTxt"
+                        android:text="Appartment"/>
+
+                    <ImageView
+                        android:id="@+id/likedIconBtn"
+                        style="@style/Widget.AppCompat.ActionButton"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:onClick="toastLove"
+                        android:src="@drawable/like_icon_red"
+                    />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/recentPropertyPrice"
