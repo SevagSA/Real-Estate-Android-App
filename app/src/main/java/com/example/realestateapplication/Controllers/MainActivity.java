@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity{
 
         englishLanguageBtn = findViewById(R.id.englishLanguageBtn);
         englishLanguageBtn.setOnClickListener(e -> {
-            startActivity(new Intent(this, HomeActivity.class));
+            startActivity(new Intent(this, LoginActivity.class));
         });
         createNotificationChannel();
     }

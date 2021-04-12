@@ -44,5 +44,17 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="liked_listings">Liked Listings</string>
     <string name="your_liked_listings">Your liked listings</string>
-
+    <string name="francais">Français</string>
+    <string name="logout">Logout</string>
+    <string name="about">About</string>
+    <string name="search">Search</string>
+    <string name="login">Login</string>
+    <string name="full_name">Full Name</string>
+    <string name="e_mail">E-mail</string>
+    <string name="password">Password</string>
+    <string name="password_confirmation">Password Confirmation</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="english">English</string>
+    <string name="app_contact_email">info@realestateapp.com</string>
 </resources>

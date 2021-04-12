@@ -8,35 +8,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.realestateapplication.Fragments.RegistrationFragment;
+import com.example.realestateapplication.Fragments.ContactPropertyAgentFragment;
+import com.example.realestateapplication.Fragments.RegistrationDialogFragment;
 import com.example.realestateapplication.R;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
-
-    Button regButton;
-    Button loginButton;
+    Button registerBtn;
+    Button loginBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-        regButton = findViewById(R.id.registerButton);
-        regButton.setOnClickListener(view -> {
-
-            RegistrationFragment regFrag = new RegistrationFragment();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.loginPage, regFrag).commit();
+        registerBtn = findViewById(R.id.registerBtn);
+        registerBtn.setOnClickListener(view -> {
+            RegistrationDialogFragment dialogFragment = new RegistrationDialogFragment();
+            dialogFragment.show(getSupportFragmentManager(), "RegistrationDialogFragment");
         });
 
-        loginButton = findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, HomeActivity.class)));
+        loginBtn = findViewById(R.id.loginBtn);
+        loginBtn.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, HomeActivity.class)));
     }
-
-
-    //for registration:
-    //https://www.youtube.com/watch?v=ARezg1D9Zd0
-    //https://www.youtube.com/watch?v=GIiDNiebFt8
-    //9:11
 }

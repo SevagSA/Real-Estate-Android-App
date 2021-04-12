@@ -8,48 +8,50 @@
     tools:context=".Controllers.LoginActivity">
 
     <include
-        android:id="@+id/appBarLogin"
-        layout="@layout/activity_app_bar" />
+        android:id="@+id/loginAppBar"
+        layout="@layout/activity_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp" />
+
 
     <TextView
-        android:id="@+id/logintext"
+        android:id="@+id/loginTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="188dp"
-        android:layout_marginLeft="188dp"
-        android:layout_marginTop="174dp"
-        android:layout_marginEnd="188dp"
-        android:layout_marginRight="188dp"
-        android:text="Login"
+        android:text="@string/login"
+        android:textColor="@color/h1TitleBlack"
+        android:textSize="@dimen/h1Title"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toBottomOf="@+id/loginAppBar"
+        app:layout_constraintVertical_bias="0.13" />
 
     <EditText
         android:id="@+id/username"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="107dp"
-        android:layout_marginLeft="107dp"
+        android:layout_marginStart="@dimen/globalMargin"
+        android:layout_marginLeft="@dimen/globalMargin"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginRight="95dp"
+        android:layout_marginEnd="@dimen/globalMargin"
+        android:layout_marginRight="@dimen/globalMargin"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/email"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logintext" />
+        app:layout_constraintTop_toBottomOf="@+id/loginTextView" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="107dp"
-        android:layout_marginLeft="107dp"
+        android:layout_marginStart="@dimen/globalMargin"
+        android:layout_marginLeft="@dimen/globalMargin"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginRight="95dp"
+        android:layout_marginEnd="@dimen/globalMargin"
+        android:layout_marginRight="@dimen/globalMargin"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPersonName"
@@ -58,25 +60,39 @@
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <Button
-        android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/loginBtn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="95dp"
-        android:layout_marginLeft="95dp"
-        android:layout_marginTop="101dp"
-        android:text="Login"
+        android:layout_marginStart="@dimen/globalMargin"
+        android:layout_marginLeft="@dimen/globalMargin"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/globalMargin"
+        android:layout_marginRight="@dimen/globalMargin"
+        app:backgroundTint="@color/btnColor"
+        android:text="@string/login"
+        android:textAllCaps="false"
+        android:textSize="@dimen/btn_big"
+
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <Button
-        android:id="@+id/registerButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/registerBtn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="101dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginRight="67dp"
-        android:text="Register"
+        android:layout_marginStart="@dimen/globalMargin"
+        android:layout_marginLeft="@dimen/globalMargin"
+        android:layout_marginTop="@dimen/globalMargin"
+        android:layout_marginEnd="@dimen/globalMargin"
+        android:layout_marginRight="@dimen/globalMargin"
+        android:text="@string/register"
+        android:textAllCaps="false"
+        android:textSize="@dimen/btn_big"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

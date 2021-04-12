@@ -130,7 +130,6 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
                     place.getAddress() + ", Name:" + place.getName(),
                     Toast.LENGTH_LONG).show();
             populateRecyclerViewListings(place.getAddress());
-
         }
     }
 

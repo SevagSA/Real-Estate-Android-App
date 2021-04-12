@@ -17,13 +17,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="Real Estate Application"
+        android:text="@string/app_name"
         android:textColor="@color/h1TitleBlack"
         android:textSize="@dimen/h3Title" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="info@realestateapp.com" />
+        android:text="@string/app_contact_email" />
 
 </LinearLayout>

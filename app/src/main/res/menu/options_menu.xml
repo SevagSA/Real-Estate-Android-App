@@ -3,15 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:title="About"
+        android:title="@string/about"
         android:id="@+id/about"/>
 
     <item
-        android:title="Logout"
+        android:title="@string/francais"
+        android:id="@+id/changeLanguage"/>
+
+    <item
+        android:title="@string/logout"
         android:id="@+id/logout"/>
 
     <item
-        android:title="Search"
+        android:title="@string/search"
         android:id="@+id/search"
         android:icon="@drawable/ic_baseline_search_24"
         app:showAsAction="always"/>

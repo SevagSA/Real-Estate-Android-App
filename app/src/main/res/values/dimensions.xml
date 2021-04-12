@@ -4,5 +4,6 @@
     <dimen name="h1Title">26sp</dimen>
     <dimen name="h3Title">22sp</dimen>
     <dimen name="btn">12sp</dimen>
+    <dimen name="btn_big">17sp</dimen>
     <dimen name="cardCornerRadius">50dp</dimen>
 </resources>
