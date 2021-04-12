@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AppBarActivity">
+    tools:context=".Controllers.AppBarActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -14,7 +14,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Real Estate Application"
-        app:titleMarginStart="40dp" />
+        app:title="Real Estate App"
+        app:titleMarginStart="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

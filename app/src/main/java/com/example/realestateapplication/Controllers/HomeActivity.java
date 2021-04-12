@@ -43,7 +43,6 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -67,8 +66,6 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
 
         changeLayoutOrientationBtn = findViewById(R.id.changeLayoutOrientationBtn);
         changeLayoutOrientationBtn.setOnClickListener(e -> handleChangeLayoutBtnClick());
-
-        findViewById(R.id.goToListPropertyPageBtn).setOnClickListener(e -> handleGoToListPropertyPageBtnClick());
     }
 
     @Override

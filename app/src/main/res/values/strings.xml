@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Real Estate Application</string>
+    <string name="app_name">Real Estate App</string>
     <string name="searchBarPlaceholder">Search…</string>
     <string name="regionsTitleHomeActivity">Regions</string>
     <string name="regionsDescHomeActivity">Search high quality listings in your favorite region</string>

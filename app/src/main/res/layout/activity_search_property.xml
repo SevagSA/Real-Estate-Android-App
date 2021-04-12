@@ -1,23 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeDrawerMenu"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center_horizontal"
     android:layout_height="match_parent"
-    tools:context=".Fragments.SearchBarFragment">
+    android:fitsSystemWindows="true"
+    tools:context=".Fragments.SearchBarFragment"
+    tools:openDrawer="start">
 
-    <EditText
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchInputBarSearchView"
-        android:hint="@string/enter_address"
-        android:padding="16dp"
-        android:drawablePadding="16dp"
-        android:drawableLeft="@drawable/location_icon"
-        android:layout_gravity="center_horizontal"
-        android:background="@android:drawable/editbox_background"
-        />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/likedAppBar"
+            layout="@layout/activity_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp" />
+
+        <EditText
+            android:id="@+id/searchInputBarSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@android:drawable/editbox_background"
+            android:drawableLeft="@drawable/location_icon"
+            android:drawablePadding="16dp"
+            android:layout_margin="16dp"
+            android:hint="@string/enter_address"
+            android:padding="16dp" />
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_menu" />
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

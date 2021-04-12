@@ -1,67 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeDrawerMenu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.AgentActivity">
+    android:fitsSystemWindows="true"
+    tools:context=".Controllers.AgentActivity"
+    tools:openDrawer="start">
 
-    <include
-        android:id="@+id/include2"
-        layout="@layout/activity_app_bar" />
-
-    <ImageView
-        android:id="@+id/backgroundImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <ImageView
-        android:id="@+id/profileImage"
-        android:layout_width="136dp"
-        android:layout_height="153dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/propertyQuickInfoLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/agentNameText"
+        <include
+            android:id="@+id/include2"
+            layout="@layout/activity_app_bar" />
+
+        <ImageView
+            android:id="@+id/backgroundImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/complementaryBlue" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/agentEmalText"
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/profileImage"
+            android:layout_width="136dp"
+            android:layout_height="153dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/propertyQuickInfoLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/complementaryBlue" />
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/agentPhoneText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/complementaryBlue" />
+            <TextView
+                android:id="@+id/agentNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/complementaryBlue" />
 
-        <TextView
-            android:id="@+id/agentSalesText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@color/complementaryBlue" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/agentEmalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/complementaryBlue" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/agentPhoneText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/complementaryBlue" />
+
+            <TextView
+                android:id="@+id/agentSalesText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/complementaryBlue" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/drawer_menu" />
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

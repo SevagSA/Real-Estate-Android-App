@@ -1,4 +1,4 @@
-package com.example.realestateapplication;
+package com.example.realestateapplication.Controllers;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.realestateapplication.Controllers.ListPropertyActivity;
 import com.example.realestateapplication.Controllers.SearchPropertyActivity;
+import com.example.realestateapplication.R;
 
 public class AppBarActivity extends AppCompatActivity {
 
