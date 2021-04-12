@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,17 +20,21 @@ public class PropertyDetailActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
 
+    ImageButton button;
     Property property;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_detail);
-        toolbar = findViewById(R.id.appToolbar);
 
-        setSupportActionBar(toolbar);
+        //toolbar = findViewById(R.id.appToolbar);
+        //setSupportActionBar(toolbar);
+
         property = getIntent().getParcelableExtra("property");
         property.setContext(this);
+
+        button = (ImageButton) findViewById(R.id.propertyAgentImageView);
 
         Glide.with(getApplicationContext())
                 .asBitmap()

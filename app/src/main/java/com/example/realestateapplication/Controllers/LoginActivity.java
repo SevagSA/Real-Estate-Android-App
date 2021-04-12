@@ -22,9 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-        toolbar = findViewById(R.id.appToolbar);
 
-        setSupportActionBar(toolbar);
         regButton = findViewById(R.id.registerButton);
         regButton.setOnClickListener(new View.OnClickListener() {
             @Override

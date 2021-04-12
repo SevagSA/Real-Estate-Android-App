@@ -13,8 +13,5 @@ public class LanguageSelectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language__select);
-        toolbar = findViewById(R.id.appToolbar);
-
-        setSupportActionBar(toolbar);
     }
 }

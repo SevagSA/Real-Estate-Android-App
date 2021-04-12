@@ -14,8 +14,5 @@ public class ListPropertyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_property);
-        toolbar = findViewById(R.id.appToolbar);
-
-        setSupportActionBar(toolbar);
     }
 }

@@ -34,7 +34,7 @@
             android:orientation="horizontal"
             android:padding="4dp">
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/propertyAgentImageView"
                 android:layout_width="63dp"
                 android:layout_height="60dp"

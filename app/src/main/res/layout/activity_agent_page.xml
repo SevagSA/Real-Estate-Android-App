@@ -29,54 +29,54 @@
         app:layout_constraintTop_toBottomOf="@+id/include2"
         app:srcCompat="@drawable/agent_profile_img" />
 
-    <TextView
+    <EditText
         android:id="@+id/agentName"
         android:layout_width="257dp"
-        android:layout_height="30dp"
+        android:layout_height="48dp"
         android:layout_marginStart="84dp"
         android:layout_marginLeft="84dp"
         android:layout_marginTop="104dp"
         android:gravity="center"
-        android:text="Firstname Lastname"
+        android:hint="Firstname Lastname"
         android:textSize="23dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileImage" />
 
-    <TextView
+    <EditText
         android:id="@+id/agentCompany"
-        android:layout_width="150dp"
-        android:layout_height="24dp"
+        android:layout_width="149dp"
+        android:layout_height="40dp"
         android:layout_marginStart="128dp"
         android:layout_marginLeft="128dp"
         android:layout_marginTop="4dp"
         android:gravity="center"
-        android:text="Company XYZ"
+        android:hint="Company XYZ"
         android:textSize="13dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/agentName" />
 
-    <TextView
+    <EditText
         android:id="@+id/agentEmail"
-        android:layout_width="150dp"
-        android:layout_height="24dp"
+        android:layout_width="149dp"
+        android:layout_height="40dp"
         android:layout_marginStart="128dp"
         android:layout_marginLeft="128dp"
         android:layout_marginTop="4dp"
         android:gravity="center"
-        android:text="test123@email.com"
+        android:hint="test123@email.com"
         android:textSize="13dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/agentCompany" />
 
-    <TextView
+    <EditText
         android:id="@+id/agentPhone"
         android:layout_width="150dp"
-        android:layout_height="24dp"
+        android:layout_height="40dp"
         android:layout_marginStart="128dp"
         android:layout_marginLeft="128dp"
         android:layout_marginTop="4dp"
         android:gravity="center"
-        android:text="514)123-4567"
+        android:hint="514)123-4567"
         android:textSize="13dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/agentEmail" />
@@ -85,23 +85,24 @@
         android:id="@+id/soldNumber"
         android:layout_width="103dp"
         android:layout_height="20dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginLeft="104dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginTop="124dp"
         android:gravity="center"
-        android:text="Sold number:"
+        android:hint="Sold number:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backgroundImage" />
 
-    <TextView
+    <EditText
         android:id="@+id/soldCounter"
         android:layout_width="103dp"
         android:layout_height="20dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginRight="100dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginRight="108dp"
         android:gravity="center"
-        android:text="number"
+        android:hint="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backgroundImage" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

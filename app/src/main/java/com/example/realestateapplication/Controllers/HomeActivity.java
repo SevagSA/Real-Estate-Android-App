@@ -52,10 +52,6 @@ public class HomeActivity extends AppCompatActivity implements Observer {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        //toolbar
-        toolbar = findViewById(R.id.appToolbar);
-
-        setSupportActionBar(toolbar);
 
         // creating a relationship between the observable Model and the observer Activity
         region = new Region();

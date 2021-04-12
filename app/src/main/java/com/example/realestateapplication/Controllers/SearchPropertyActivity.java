@@ -29,10 +29,6 @@ public class SearchPropertyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_property);
 
-        toolbar = findViewById(R.id.appToolbar);
-
-        setSupportActionBar(toolbar);
-
         searchBar = findViewById(R.id.searchInputBarSearchView);
         searchBar.setFocusable(false);
         Places.initialize(getApplicationContext(), "AIzaSyD3hdT4eY5_Dh2mCrGGV1Rkd_PM4AhcBJM");
