@@ -20,8 +20,6 @@ import java.util.Objects;
 // each activity is a controller for their respective model(s) and view(s);
 public class MainActivity extends AppCompatActivity{
 
-    private Toolbar toolbar;
-
     Button frenchLanguageBtn;
     Button englishLanguageBtn;
 
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity{
 
         englishLanguageBtn = findViewById(R.id.englishLanguageBtn);
         englishLanguageBtn.setOnClickListener(e -> {
-            startActivity(new Intent(this, LoginActivity.class));
+            startActivity(new Intent(this, HomeActivity.class));
         });
         createNotificationChannel();
     }

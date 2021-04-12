@@ -10,7 +10,8 @@
     tools:context=".Controllers.PropertyDetailActivity">
 
     <include
-        layout="@layout/activity_action_bar" />
+        android:id="@+id/appBarAgentList"
+        layout="@layout/activity_app_bar" />
 
     <ImageView
         android:id="@+id/AgencyMainImageView"

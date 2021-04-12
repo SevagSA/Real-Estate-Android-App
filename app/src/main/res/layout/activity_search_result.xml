@@ -10,7 +10,8 @@
     tools:context=".Controllers.PropertyDetailActivity">
 
     <include
-        layout="@layout/activity_action_bar" />
+        android:id="@+id/appBarSearchResult"
+        layout="@layout/activity_app_bar" />
 
     <LinearLayout
         android:layout_width="match_parent"

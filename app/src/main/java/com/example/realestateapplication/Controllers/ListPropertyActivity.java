@@ -8,8 +8,6 @@ import com.example.realestateapplication.R;
 
 public class ListPropertyActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

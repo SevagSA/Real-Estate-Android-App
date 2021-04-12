@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     android:gravity="center_horizontal"
     android:layout_height="match_parent"
     tools:context=".Fragments.SearchBarFragment">
@@ -17,8 +16,9 @@
         android:drawablePadding="16dp"
         android:text="@string/search_a_property_by_address"
         android:textAllCaps="false"
-        android:textSize="@dimen/btn"
+        android:textSize="16sp"
         app:backgroundTint="@color/btnColor"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment"
         android:drawableLeft="@drawable/location_icon"

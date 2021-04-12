@@ -24,26 +24,16 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
-
         regButton = findViewById(R.id.registerButton);
-        regButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        regButton.setOnClickListener(view -> {
 
-                RegistrationFragment regFrag = new RegistrationFragment();
-                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.loginPage, regFrag).commit();
-            }
+            RegistrationFragment regFrag = new RegistrationFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.loginPage, regFrag).commit();
         });
 
         loginButton = findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-               startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-            }
-        });
+        loginButton.setOnClickListener(view -> startActivity(new Intent(LoginActivity.this, HomeActivity.class)));
     }
 
 

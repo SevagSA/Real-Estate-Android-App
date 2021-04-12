@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 public class SearchResultActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

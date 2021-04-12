@@ -7,7 +7,6 @@ import com.example.realestateapplication.R;
 
 public class LanguageSelectActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

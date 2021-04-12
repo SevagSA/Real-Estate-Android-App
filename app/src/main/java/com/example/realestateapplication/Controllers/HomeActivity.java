@@ -1,7 +1,6 @@
 package com.example.realestateapplication.Controllers;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,10 +8,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
@@ -20,21 +19,9 @@ import com.example.realestateapplication.Adapters.RegionsRecyclerViewAdapter;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
 import com.example.realestateapplication.R;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.model.RectangularBounds;
-import com.google.android.libraries.places.api.model.TypeFilter;
-import com.google.android.libraries.places.api.net.PlacesClient;
-import com.google.android.libraries.places.widget.Autocomplete;
-import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
-import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -53,6 +40,9 @@ public class HomeActivity extends AppCompatActivity implements Observer {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         // creating a relationship between the observable Model and the observer Activity
         region = new Region();
         region.addObserver(this);
@@ -63,6 +53,34 @@ public class HomeActivity extends AppCompatActivity implements Observer {
         changeLayoutOrientationBtn.setOnClickListener(e ->  handleChangeLayoutBtnClick());
 
         findViewById(R.id.goToListPropertyPageBtn).setOnClickListener(e -> handleGoToListPropertyPageBtnClick());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.listProperty) {
+            startActivity(new Intent(this, ListPropertyActivity.class));
+        } else if (id == R.id.search) {
+            startActivity(new Intent(this, SearchPropertyActivity.class));
+        } else if (id == R.id.likeItem) {
+            Toast.makeText(getApplicationContext(), "likeItem", Toast.LENGTH_LONG);
+//            LikedListingFragment dialogFragment = new LikedListingFragment();
+//            dialogFragment.show(getSupportFragmentManager(), "LikedListingFragment");
+        } else if (id == R.id.about) {
+            Toast.makeText(getApplicationContext(), "about", Toast.LENGTH_LONG);
+//            AboutCompanyFragment dialogFragment = new AboutCompanyFragment();
+//            dialogFragment.show(getSupportFragmentManager(), "AboutCompanyFragment");
+        } else if (id == R.id.logout) {
+            Toast.makeText(getApplicationContext(), "Logged out", Toast.LENGTH_LONG);
+        }
+        return true;
     }
 
     @Override

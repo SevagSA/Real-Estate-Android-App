@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_list_property"
+            android:icon="@drawable/sell_property"
+            android:title="@string/list_property" />
+
+        <item
+            android:id="@+id/nav_see_sent_messages"
+            android:icon="@drawable/ic_baseline_mail_24"
+            android:title="@string/see_sent_messages" />
+    </group>
+
+    <item android:title="@string/communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share_fb"
+                android:icon="@drawable/ic_baseline_mail_24"
+                android:title="@string/share_fb" />
+
+            <item
+                android:id="@+id/nav_share_tweet"
+                android:icon="@drawable/ic_baseline_mail_24"
+                android:title="@string/share_on_twitter" />
+
+        </menu>
+    </item>
+
+</menu>
