@@ -13,19 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Liked Listings"/>
+        android:text="@string/liked_listings"/>
 
     <ScrollView
         android:id="@+id/likedScroll"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true">
+        android:layout_below="@+id/h1Txt">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/likedRecycler"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         />
 
     </ScrollView>

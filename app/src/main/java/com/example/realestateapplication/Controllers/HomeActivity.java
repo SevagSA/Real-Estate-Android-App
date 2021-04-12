@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Adapters.RegionsRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.ContactPropertyAgentFragment;
+import com.example.realestateapplication.Fragments.LikedListingsDialogFragment;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
 import com.example.realestateapplication.R;
@@ -105,9 +106,8 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
         if (id == R.id.search) {
             startActivity(new Intent(this, SearchPropertyActivity.class));
         } else if (id == R.id.likeItem) {
-            Toast.makeText(getApplicationContext(), "likeItem", Toast.LENGTH_LONG).show();
-//            LikedListingFragment dialogFragment = new LikedListingFragment();
-//            dialogFragment.show(getSupportFragmentManager(), "LikedListingFragment");
+            LikedListingsDialogFragment dialogFragment = new LikedListingsDialogFragment();
+            dialogFragment.show(getSupportFragmentManager(), "LikedListingsDialogFragment");
         } else if (id == R.id.about) {
             Toast.makeText(getApplicationContext(), "about", Toast.LENGTH_LONG).show();
 //            AboutCompanyFragment dialogFragment = new AboutCompanyFragment();
