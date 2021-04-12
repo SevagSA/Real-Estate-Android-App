@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     Button regButton;
+    Button loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,15 @@ public class LoginActivity extends AppCompatActivity {
                 RegistrationFragment regFrag = new RegistrationFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.loginPage, regFrag).commit();
+            }
+        });
+
+        loginButton = findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             }
         });
     }
