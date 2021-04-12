@@ -43,5 +43,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="liked_listings">Liked Listings</string>
+    <string name="your_liked_listings">Your liked listings</string>
 
 </resources>
