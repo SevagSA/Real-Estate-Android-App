@@ -30,19 +30,13 @@ public class PropertyDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_property_detail);
 
-        //toolbar = findViewById(R.id.appToolbar);
-        //setSupportActionBar(toolbar);
 
         property = getIntent().getParcelableExtra("property");
         property.setContext(this);
 
         agentButton = findViewById(R.id.propertyAgentImageView);
-        agentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                startActivity(new Intent(PropertyDetailActivity.this, AgentActivity.class));
-            }
+        agentButton.setOnClickListener(view -> {
+            startActivity(new Intent(PropertyDetailActivity.this, AgentActivity.class));
         });
 
         Glide.with(getApplicationContext())

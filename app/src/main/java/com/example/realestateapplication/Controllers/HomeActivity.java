@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Adapters.RegionsRecyclerViewAdapter;
+import com.example.realestateapplication.Fragments.ContactPropertyAgentFragment;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
 import com.example.realestateapplication.R;

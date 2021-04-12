@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#DFDFDF"
+    android:id="@+id/parent"
+    android:padding="10dp"
+    tools:context=".Fragments.LikedListingsDialogFragment">
+
+    <TextView
+        android:id="@+id/h1Txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Liked Listings"/>
+
+    <ScrollView
+        android:id="@+id/likedScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/likedRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+
+    </ScrollView>
+
+
+</RelativeLayout>
