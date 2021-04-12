@@ -19,19 +19,24 @@ public class Property extends Observable implements Parcelable {
     private String propertyFourthImgURL;
     private String propertyFifthImgURL;
     private String propertySixthImgURL;
-//    TODO: Create this class when you work on the Agent page
+    //    TODO: Create this class when you work on the Agent page
 //     The agents will be pre filled and users can't add agents
 //     so have the profile picture of the agent as a drawable
 //     (take screenshots of the imgs so all have the same dimens)
     private Agent agent;
     private String propertyType;
     private double propertyPrice;
+//    TODO: this will be the address provide by Google Places API.
+//     it will be used by getListingsBySearchQuery(). It is still not implemented
+    private String propertyLocation;
     private String propertyAddress;
     private int propertyNumOfBed;
     private int propertyNumOfBath;
     private int propertySquareFoot;
 
-    public Property(Context context) { this.context = context; }
+    public Property(Context context) {
+        this.context = context;
+    }
 
     public Property(Context context, String propertyMainImgURL, String propertySecondImgURL,
                     String propertyThirdImgURL, String propertyFourthImgURL, String propertyFifthImgURL,
@@ -55,6 +60,7 @@ public class Property extends Observable implements Parcelable {
 
     /**
      * To get the 5 most recent properties from the DB with all of their attributes.
+     *
      * @return An ArrayList<Property> of the 5 most recent properties.
      */
     public ArrayList<Property> getAllProperties() {
@@ -62,75 +68,75 @@ public class Property extends Observable implements Parcelable {
 
         ArrayList<Property> properties = new ArrayList<>();
         properties.add(new Property(
-            context,
-            "https://m.foolcdn.com/media/millionacres/original_images/colonial_house.jpg",
-            "https://i.pinimg.com/originals/e6/81/8f/e6818f770c45e5020f955a0c90a2a0a3.jpg",
-            "https://i.pinimg.com/originals/5a/4a/c1/5a4ac16eb9fd004fe98468e2b50a7569.jpg",
-            "https://livinator.com/wp-content/uploads/2018/11/home-minimalism.jpg",
-            "https://lh3.googleusercontent.com/proxy/sH3PscMIUWOt3BPZpMcqdSQYTsc7g0_OO1JDQeaiS26W749IfBWI5vn3x3fWY133i85b6m_Y-8R4WQYP4IffxLmikXcbhP9F1zCc_f6FZa-7WVliRbh1e0wpi_Tn0-CO",
-            "https://i.pinimg.com/originals/08/9c/65/089c659949c103c7dced21dd057f5f35.jpg",
-            "House",
-            567_000,
-            "7365, McDonald's Street, P0V K9G",
-            2,
-            3,
-            2500,
+                context,
+                "https://m.foolcdn.com/media/millionacres/original_images/colonial_house.jpg",
+                "https://i.pinimg.com/originals/e6/81/8f/e6818f770c45e5020f955a0c90a2a0a3.jpg",
+                "https://i.pinimg.com/originals/5a/4a/c1/5a4ac16eb9fd004fe98468e2b50a7569.jpg",
+                "https://livinator.com/wp-content/uploads/2018/11/home-minimalism.jpg",
+                "https://lh3.googleusercontent.com/proxy/sH3PscMIUWOt3BPZpMcqdSQYTsc7g0_OO1JDQeaiS26W749IfBWI5vn3x3fWY133i85b6m_Y-8R4WQYP4IffxLmikXcbhP9F1zCc_f6FZa-7WVliRbh1e0wpi_Tn0-CO",
+                "https://i.pinimg.com/originals/08/9c/65/089c659949c103c7dced21dd057f5f35.jpg",
+                "House",
+                567_000,
+                "7365, McDonald's Street, P0V K9G",
+                2,
+                3,
+                2500,
                 new Agent(
                         "Raphael Jones",
                         "High Rise Estates",
                         R.drawable.raphael_jones,
                         78,
                         "Toronto, On, and Montreal, Qc",
-                        "raphael.jones@agent.com",
+                        "jones@agent.com",
                         "(435) 547-868")
         ));
 
         properties.add(new Property(
-            context,
-            "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
-            "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
-            "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
-            "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
-            "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
-            "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
-            "Apartment",
-            1_300,
-            "3646, 42nd Road, V0R H95",
-            2,
-            1,
-            1100,
+                context,
+                "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+                "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+                "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+                "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+                "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+                "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+                "Apartment",
+                1_300,
+                "3646, 42nd Road, V0R H95",
+                2,
+                1,
+                1100,
                 new Agent(
                         "Alex Mason",
                         "Alberta Property Agents",
                         R.drawable.alex_mason,
                         78,
                         "Calgary, Ab",
-                        "alex.mason@agent.com",
+                        "mason@agent.com",
                         "(356) 346-8288")
 
         ));
 
         properties.add(new Property(
-            context,
-            "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
-            "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
-            "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
-            "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
-            "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
-            "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
-            "Apartment",
-            1_550,
-            "288, Rue de la Vallée",
-            3,
-            3,
-            1300,
+                context,
+                "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+                "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+                "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+                "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+                "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+                "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+                "Apartment",
+                1_550,
+                "288, Rue de la Vallée",
+                3,
+                3,
+                1300,
                 new Agent(
                         "Olivia James",
                         "Redwood Realty Group",
                         R.drawable.olivia_james,
                         78,
                         "Vancouver, Bc",
-                        "olivia.james@agent.com",
+                        "james@agent.com",
                         "(948) 368-8276")
         ));
         setChanged();
@@ -140,6 +146,7 @@ public class Property extends Observable implements Parcelable {
 
     /**
      * To get all of the liked properties of the current user from the DB with all of their attributes.
+     *
      * @return An ArrayList<Property> of the all of the liked properties of the user.
      */
     public ArrayList<Property> getAllLikedProperties() {
@@ -166,7 +173,7 @@ public class Property extends Observable implements Parcelable {
                         R.drawable.raphael_jones,
                         78,
                         "Toronto, On, and Montreal, Qc",
-                        "raphael.jones@agent.com",
+                        "jones@agent.com",
                         "(435) 547-868")
         ));
 
@@ -190,7 +197,7 @@ public class Property extends Observable implements Parcelable {
                         R.drawable.alex_mason,
                         78,
                         "Calgary, Ab",
-                        "alex.mason@agent.com",
+                        "mason@agent.com",
                         "(356) 346-8288")
 
         ));
@@ -215,7 +222,94 @@ public class Property extends Observable implements Parcelable {
                         R.drawable.olivia_james,
                         78,
                         "Vancouver, Bc",
-                        "olivia.james@agent.com",
+                        "james@agent.com",
+                        "(948) 368-8276")
+        ));
+        setChanged();
+        notifyObservers();
+        return properties;
+    }
+
+    /**
+     * To get all of the properties that match the given query from the DB with all of their attributes.
+     * @param query The String search query provide by the user. This query will be the property's location.
+     *              All properties matching this location will be returned.
+     * @return An ArrayList<Property> of the all of the liked properties of the user.
+     */
+    public ArrayList<Property> getPropertiesBySearchQuery(String query) {
+        // TODO: this will be later queried from the DB, not hardcoded.
+
+        ArrayList<Property> properties = new ArrayList<>();
+        properties.add(new Property(
+                context,
+                "https://m.foolcdn.com/media/millionacres/original_images/colonial_house.jpg",
+                "https://i.pinimg.com/originals/e6/81/8f/e6818f770c45e5020f955a0c90a2a0a3.jpg",
+                "https://i.pinimg.com/originals/5a/4a/c1/5a4ac16eb9fd004fe98468e2b50a7569.jpg",
+                "https://livinator.com/wp-content/uploads/2018/11/home-minimalism.jpg",
+                "https://lh3.googleusercontent.com/proxy/sH3PscMIUWOt3BPZpMcqdSQYTsc7g0_OO1JDQeaiS26W749IfBWI5vn3x3fWY133i85b6m_Y-8R4WQYP4IffxLmikXcbhP9F1zCc_f6FZa-7WVliRbh1e0wpi_Tn0-CO",
+                "https://i.pinimg.com/originals/08/9c/65/089c659949c103c7dced21dd057f5f35.jpg",
+                "House",
+                567_000,
+                "7365, McDonald's Street, P0V K9G",
+                2,
+                3,
+                2500,
+                new Agent(
+                        "Raphael Jones",
+                        "High Rise Estates",
+                        R.drawable.raphael_jones,
+                        78,
+                        "Toronto, On, and Montreal, Qc",
+                        "jones@agent.com",
+                        "(435) 547-868")
+        ));
+
+        properties.add(new Property(
+                context,
+                "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+                "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+                "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+                "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+                "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+                "https://images.rentals.ca/property-pictures/medium/oshawa-on/313877/apartment-1954812.jpg",
+                "Apartment",
+                1_300,
+                "3646, 42nd Road, V0R H95",
+                2,
+                1,
+                1100,
+                new Agent(
+                        "Alex Mason",
+                        "Alberta Property Agents",
+                        R.drawable.alex_mason,
+                        78,
+                        "Calgary, Ab",
+                        "mason@agent.com",
+                        "(356) 346-8288")
+
+        ));
+
+        properties.add(new Property(
+                context,
+                "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+                "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+                "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+                "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+                "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+                "https://www.orizoncondo.com/wp-content/uploads/2017/10/perspective_orizon.jpg",
+                "Apartment",
+                1_550,
+                "288, Rue de la Vallée",
+                3,
+                3,
+                1300,
+                new Agent(
+                        "Olivia James",
+                        "Redwood Realty Group",
+                        R.drawable.olivia_james,
+                        78,
+                        "Vancouver, Bc",
+                        "james@agent.com",
                         "(948) 368-8276")
         ));
         setChanged();
@@ -225,10 +319,11 @@ public class Property extends Observable implements Parcelable {
 
     /**
      * Get all of the images related to this property in a String[].
+     *
      * @return A String[] containing the URLs of all of the images of this property.
      */
     public String[] getGalleryImagesURLs() {
-        return new String[] {getPropertyMainImgURL(), getPropertySecondImgURL(),
+        return new String[]{getPropertyMainImgURL(), getPropertySecondImgURL(),
                 getPropertyThirdImgURL(), getPropertyFourthImgURL(), getPropertyFifthImgURL(),
                 getPropertySixthImgURL()};
     }
@@ -399,7 +494,9 @@ public class Property extends Observable implements Parcelable {
         }
     };
 
-    /** reads back fields IN THE ORDER they were written */
+    /**
+     * reads back fields IN THE ORDER they were written
+     */
     private Property(Parcel pc) {
         propertyMainImgURL = pc.readString();
         propertySecondImgURL = pc.readString();

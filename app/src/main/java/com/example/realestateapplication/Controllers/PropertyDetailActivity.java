@@ -74,11 +74,6 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
             Log.d("in the on click", agent.toString());
             intent.putExtra("agent", agent);
             startActivity(intent);
-//            startActivity(new Intent(getApplicationContext(), AgentActivity.class));
-
-//            Intent intent = new Intent(getBaseContext(), PropertyDetailActivity.class);
-//            intent.putExtra("agent", property.getAgent());
-//            startActivity(intent);
         });
 
         Glide.with(getApplicationContext())

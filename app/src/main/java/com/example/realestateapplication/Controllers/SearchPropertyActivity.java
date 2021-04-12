@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +17,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
+import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.R;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
@@ -22,6 +26,7 @@ import com.google.android.libraries.places.widget.Autocomplete;
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Observer;
@@ -122,9 +127,27 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
         if (requestCode == 100 && resultCode == RESULT_OK) {
             Place place = Autocomplete.getPlaceFromIntent(data);
             Toast.makeText(getApplicationContext(),
-                    place.getAddress() + ", " + place.getName(),
+                    place.getAddress() + ", Name:" + place.getName(),
                     Toast.LENGTH_LONG).show();
+            populateRecyclerViewListings(place.getAddress());
 
         }
+    }
+
+    /**
+     * Render listings that match the search results of the user
+     */
+    private void populateRecyclerViewListings(String query) {
+        Property property = new Property(this);
+        ArrayList<Property> searchResultProperties = property.getPropertiesBySearchQuery(query);
+
+        LinearLayoutManager searchResultPropertyLayoutManager = new LinearLayoutManager(
+                this, LinearLayoutManager.VERTICAL, false
+        );
+        RecyclerView searchResultPropertyRecyclerView = findViewById(R.id.searchResultRecycler);
+        searchResultPropertyRecyclerView.setLayoutManager(searchResultPropertyLayoutManager);
+        PropertyCardRecyclerViewAdapter searchResultPropertyAdapter =
+                new PropertyCardRecyclerViewAdapter(searchResultProperties, this);
+        searchResultPropertyRecyclerView.setAdapter(searchResultPropertyAdapter);
     }
 }

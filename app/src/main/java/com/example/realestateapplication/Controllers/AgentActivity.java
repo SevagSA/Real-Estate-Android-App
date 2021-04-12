@@ -6,18 +6,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Models.Agent;
+import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
 
 public class AgentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -45,14 +52,34 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        populateRecyclerViewListings();
+
         agent = getIntent().getParcelableExtra("agent");
 
         Log.d("AGENT ACTIVITY", agent.toString());
 
+        ((ImageView)findViewById(R.id.agentImg)).setImageResource(agent.getProfileImgId());
         ((TextView)findViewById(R.id.agentNameText)).setText(agent.getFullName());
-        ((TextView)findViewById(R.id.agentEmalText)).setText(agent.getEmail());
+        ((TextView)findViewById(R.id.agentEmailText)).setText(agent.getEmail());
         ((TextView)findViewById(R.id.agentPhoneText)).setText(agent.getPhoneNumber());
         ((TextView)findViewById(R.id.agentSalesText)).setText(Integer.toString(agent.getNumOfSoldListings()));
+    }
+
+    /**
+     * Render the agent's listing by the current user
+     */
+    private void populateRecyclerViewListings() {
+        Agent agent = new Agent(this);
+        ArrayList<Property> agentProperties = agent.getAllProperties();
+
+        LinearLayoutManager agentPropertyLayoutManager = new LinearLayoutManager(
+                this, LinearLayoutManager.VERTICAL, false
+        );
+        RecyclerView agentPropertyRecyclerView = findViewById(R.id.agentListingRecyclerView);
+        agentPropertyRecyclerView.setLayoutManager(agentPropertyLayoutManager);
+        PropertyCardRecyclerViewAdapter agentPropertyAdapter =
+                new PropertyCardRecyclerViewAdapter(agentProperties, this);
+        agentPropertyRecyclerView.setAdapter(agentPropertyAdapter);
     }
 
     @Override
