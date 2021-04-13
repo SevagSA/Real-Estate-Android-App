@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="List property for sale"
+        android:text="@string/list_property_for_sale"
         android:textColor="@color/h1TitleBlack"
         android:textSize="@dimen/h1Title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,17 +21,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/listPropertyAddress"
+
+
+    <Button
+        android:id="@+id/propertyAddressSelectBtn"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Address (DO WITH ADDRESS API)"
-        android:inputType="textPostalAddress"
+        android:textColor="#808080"
+        android:drawableLeft="@drawable/location_icon"
+        android:gravity="center_vertical"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:hint="@string/click_to_enter_address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listPropertyForSaleBtnH1" />
+        app:layout_constraintTop_toBottomOf="@+id/listPropertyForSaleBtnH1"
+        android:layout_gravity="center_horizontal"
+        android:drawablePadding="6dp" />
 
 
     <LinearLayout
@@ -41,7 +49,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listPropertyAddress">
+        app:layout_constraintTop_toBottomOf="@+id/propertyAddressSelectBtn">
 
         <Spinner
             android:id="@+id/listPropertySelectAgent"
@@ -52,7 +60,7 @@
             android:ems="10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listPropertyAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/propertyAddressSelectBtn" />
 
 
         <Spinner
@@ -95,7 +103,8 @@
             android:layout_weight=".90"
             android:ems="10"
             android:hint="@string/squareFeet"
-            android:inputType="number" />
+            android:inputType="number"
+            android:shadowColor="#FFFFFF" />
 
     </LinearLayout>
 

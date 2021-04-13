@@ -28,11 +28,14 @@ public class Property extends Observable implements Parcelable {
     private double propertyPrice;
 //    TODO: this will be the address provide by Google Places API.
 //     it will be used by getListingsBySearchQuery(). It is still not implemented
+//      -> Decide to use either getAddress(), or getName(). getName() seems more concise.
     private String propertyLocation;
     private String propertyAddress;
     private int propertyNumOfBed;
     private int propertyNumOfBath;
     private int propertySquareFoot;
+
+    public static final String[] PROPERTY_TYPES = {"House", "Apartment", "Land", "Duplex"};
 
     public Property(Context context) {
         this.context = context;

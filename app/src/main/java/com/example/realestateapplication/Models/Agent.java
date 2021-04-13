@@ -24,6 +24,10 @@ public class Agent implements Parcelable {
     private String phoneNumber;
     private Context context;
 
+
+    public Agent() {
+    }
+
     public Agent(Context context) { this.context = context; }
 
     public Agent(String fullName, String companyName,
@@ -57,7 +61,7 @@ public class Agent implements Parcelable {
      * To get all of the properties of the current agent from the DB with all of their attributes.
      * @return An ArrayList<Property> of all of the properties of the current agent.
      */
-    public ArrayList<Property> getAllProperties() {
+    public ArrayList<Property> getAllPropertiesOfAgent() {
         // TODO: this will be later queried from the DB, not hardcoded.
         //  and it will be agent specific
 
@@ -135,6 +139,39 @@ public class Agent implements Parcelable {
                         "(948) 368-8276")
         ));
         return properties;
+    }
+
+    /**
+     * To get all of the names of the agents from the DB.
+     * @return An ArrayList<Agent> of all of the agents' names.
+     */
+    public ArrayList<String> getAllAgentsNames() {
+        ArrayList<String> agents = new ArrayList<>();
+        agents.add(new Agent(
+                "Raphael Jones",
+                "High Rise Estates",
+                R.drawable.raphael_jones,
+                78,
+                "Toronto, On, and Montreal, Qc",
+                "jones@agent.com",
+                "(435) 547-868").getFullName());
+        agents.add(new Agent(
+                "Alex Mason",
+                "Alberta Property Agents",
+                R.drawable.alex_mason,
+                78,
+                "Calgary, Ab",
+                "mason@agent.com",
+                "(356) 346-8288").getFullName());
+        agents.add(new Agent(
+                "Olivia James",
+                "Redwood Realty Group",
+                R.drawable.olivia_james,
+                78,
+                "Vancouver, Bc",
+                "james@agent.com",
+                "(948) 368-8276").getFullName());
+        return agents;
     }
 
     public String getFullName() {

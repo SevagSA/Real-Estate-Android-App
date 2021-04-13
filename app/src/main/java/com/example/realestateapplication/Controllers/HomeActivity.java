@@ -173,7 +173,7 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
     }
 }
 
-//Places.initialize(getApplicationContext(), "AIzaSyD3hdT4eY5_Dh2mCrGGV1Rkd_PM4AhcBJM");
+//Places.initialize(getApplicationContext(), "AIzaSyBUUmmyiGdCIlDhGyEvI38S6fExzomHYlE");
 //        PlacesClient placesClient = Places.createClient(getApplicationContext());
 //
 //        Log.d("here", findViewById(R.id.searchInputBarSearchView) + "");

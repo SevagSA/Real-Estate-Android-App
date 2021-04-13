@@ -70,7 +70,7 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
      */
     private void populateRecyclerViewListings() {
         Agent agent = new Agent(this);
-        ArrayList<Property> agentProperties = agent.getAllProperties();
+        ArrayList<Property> agentProperties = agent.getAllPropertiesOfAgent();
 
         LinearLayoutManager agentPropertyLayoutManager = new LinearLayoutManager(
                 this, LinearLayoutManager.VERTICAL, false

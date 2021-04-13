@@ -59,7 +59,7 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
 
         searchBar = findViewById(R.id.searchInputBarSearchView);
         searchBar.setFocusable(false);
-        Places.initialize(getApplicationContext(), "AIzaSyD3hdT4eY5_Dh2mCrGGV1Rkd_PM4AhcBJM");
+        Places.initialize(getApplicationContext(), "AIzaSyBUUmmyiGdCIlDhGyEvI38S6fExzomHYlE");
 
         searchBar.setOnClickListener(e -> {
             List<Place.Field> fieldList = Arrays.asList(Place.Field.ADDRESS, Place.Field.NAME);
@@ -67,6 +67,19 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
                     fieldList).build(SearchPropertyActivity.this);
             startActivityForResult(intent, 100);
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            Place place = Autocomplete.getPlaceFromIntent(data);
+            Toast.makeText(getApplicationContext(),
+                    place.getAddress() + ", Name:" + place.getName(),
+                    Toast.LENGTH_LONG).show();
+            searchBar.setText(place.getAddress());
+            populateRecyclerViewListings(place.getAddress());
+        }
     }
 
     @Override
@@ -121,17 +134,6 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == RESULT_OK) {
-            Place place = Autocomplete.getPlaceFromIntent(data);
-            Toast.makeText(getApplicationContext(),
-                    place.getAddress() + ", Name:" + place.getName(),
-                    Toast.LENGTH_LONG).show();
-            populateRecyclerViewListings(place.getAddress());
-        }
-    }
 
     /**
      * Render listings that match the search results of the user
