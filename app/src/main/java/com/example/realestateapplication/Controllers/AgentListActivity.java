@@ -4,42 +4,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
-import com.example.realestateapplication.Models.Property;
+import com.example.realestateapplication.Adapters.AgentAdapter;
+import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.R;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.widget.Autocomplete;
-import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+public class AgentListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-public class SearchPropertyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
+    GridView agentGridLayout;
     private DrawerLayout drawer;
-
-    EditText searchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_property);
+        setContentView(R.layout.activity_agent_list);
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -56,29 +44,10 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        searchBar = findViewById(R.id.searchInputBarSearchView);
-        searchBar.setFocusable(false);
-        Places.initialize(getApplicationContext(), "AIzaSyBUUmmyiGdCIlDhGyEvI38S6fExzomHYlE");
-
-        searchBar.setOnClickListener(e -> {
-            List<Place.Field> fieldList = Arrays.asList(Place.Field.ADDRESS, Place.Field.NAME);
-            Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY,
-                    fieldList).build(SearchPropertyActivity.this);
-            startActivityForResult(intent, 100);
-        });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == RESULT_OK) {
-            Place place = Autocomplete.getPlaceFromIntent(data);
-            Toast.makeText(getApplicationContext(),
-                    place.getAddress() + ", Name:" + place.getName(),
-                    Toast.LENGTH_LONG).show();
-            searchBar.setText(place.getAddress());
-            populateRecyclerViewListings(place.getAddress());
-        }
+        agentGridLayout = findViewById(R.id.agentGridLayout);
+        AgentAdapter agentAdapter = new AgentAdapter(
+                this, R.layout.agent_item, Agent.getAllAgents());
+        agentGridLayout.setAdapter(agentAdapter);
     }
 
     @Override
@@ -102,6 +71,8 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
             case R.id.nav_share_tweet:
                 Toast.makeText(this, "nav_share_tweet", Toast.LENGTH_LONG).show();
                 break;
+            case R.id.nav_list_of_agents:
+                startActivity(new Intent(this, AgentListActivity.class));
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -131,23 +102,5 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
         } else {
             super.onBackPressed();
         }
-    }
-
-
-    /**
-     * Render listings that match the search results of the user
-     */
-    private void populateRecyclerViewListings(String query) {
-        Property property = new Property(this);
-        ArrayList<Property> searchResultProperties = property.getPropertiesBySearchQuery(query);
-
-        LinearLayoutManager searchResultPropertyLayoutManager = new LinearLayoutManager(
-                this, LinearLayoutManager.VERTICAL, false
-        );
-        RecyclerView searchResultPropertyRecyclerView = findViewById(R.id.searchResultRecycler);
-        searchResultPropertyRecyclerView.setLayoutManager(searchResultPropertyLayoutManager);
-        PropertyCardRecyclerViewAdapter searchResultPropertyAdapter =
-                new PropertyCardRecyclerViewAdapter(searchResultProperties, this);
-        searchResultPropertyRecyclerView.setAdapter(searchResultPropertyAdapter);
     }
 }

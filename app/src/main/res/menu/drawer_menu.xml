@@ -8,6 +8,11 @@
             android:title="@string/list_property" />
 
         <item
+            android:id="@+id/nav_list_of_agents"
+            android:icon="@drawable/ic_agents"
+            android:title="@string/list_of_all_agents" />
+
+        <item
             android:id="@+id/nav_see_sent_messages"
             android:icon="@drawable/ic_baseline_mail_24"
             android:title="@string/see_sent_messages" />
@@ -17,12 +22,12 @@
         <menu>
             <item
                 android:id="@+id/nav_share_fb"
-                android:icon="@drawable/ic_baseline_mail_24"
+                android:icon="@drawable/ic_baseline_share_24"
                 android:title="@string/share_fb" />
 
             <item
                 android:id="@+id/nav_share_tweet"
-                android:icon="@drawable/ic_baseline_mail_24"
+                android:icon="@drawable/ic_baseline_share_24"
                 android:title="@string/share_on_twitter" />
 
         </menu>

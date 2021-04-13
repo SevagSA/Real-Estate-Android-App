@@ -26,13 +26,14 @@
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/agentAppBar">
+            app:layout_constraintTop_toBottomOf="@+id/agentAppBar"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:elevation="10dp"
-                android:layout_gravity="center">
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:elevation="10dp">
 
                 <ImageView
                     android:id="@+id/agentImg"
@@ -163,11 +164,17 @@
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/agentListingRecyclerView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center" />
+                android:layout_height="360dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/agentListingRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -15,8 +15,6 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.realestateapplication.Controllers.HomeActivity;
 import com.example.realestateapplication.R;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.net.PlacesClient;
 
 public class ContactPropertyAgentFragment extends DialogFragment {
 

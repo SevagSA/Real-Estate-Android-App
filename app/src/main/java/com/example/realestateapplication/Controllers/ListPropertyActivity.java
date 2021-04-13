@@ -1,17 +1,16 @@
 package com.example.realestateapplication.Controllers;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.Models.Property;
@@ -25,22 +24,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ListPropertyActivity extends AppCompatActivity{
+public class ListPropertyActivity extends AppCompatActivity {
 
-    Button propertyAddressEditText;
-    Agent agent = new Agent();
-    ArrayList<String> agents = agent.getAllAgentsNames();
+    Button propertyAddressSelectBtn;
+
+    ArrayList<String> agents = Agent.getAllAgentsNames();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_property);
 
-        propertyAddressEditText = findViewById(R.id.propertyAddressSelectBtn);
-        propertyAddressEditText.setFocusable(false);
+
+        propertyAddressSelectBtn = findViewById(R.id.propertyAddressSelectBtn);
+        propertyAddressSelectBtn.setFocusable(false);
         Places.initialize(getApplicationContext(), "AIzaSyBUUmmyiGdCIlDhGyEvI38S6fExzomHYlE");
 
-        propertyAddressEditText.setOnClickListener(e -> {
+        propertyAddressSelectBtn.setOnClickListener(e -> {
             List<Place.Field> fieldList = Arrays.asList(Place.Field.ADDRESS, Place.Field.NAME);
             Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY,
                     fieldList).build(this);
@@ -66,6 +66,18 @@ public class ListPropertyActivity extends AppCompatActivity{
         propertyTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         propertyTypeSpin.setAdapter(propertyTypeAdapter);
         propertyTypeSpin.setOnItemSelectedListener(new PropertyTypeAdapterSpinnerClass());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            Place place = Autocomplete.getPlaceFromIntent(data);
+            Toast.makeText(getApplicationContext(),
+                    place.getAddress() + ", Name:" + place.getName(),
+                    Toast.LENGTH_LONG).show();
+            propertyAddressSelectBtn.setText(place.getAddress());
+        }
     }
 
     class PropertyTypeAdapterSpinnerClass implements AdapterView.OnItemSelectedListener {
@@ -95,33 +107,6 @@ public class ListPropertyActivity extends AppCompatActivity{
 
         }
     }
-
-//
-//    @Override
-//        protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//            super.onActivityResult(requestCode, resultCode, data);
-//            if (requestCode == 100 && resultCode == RESULT_OK) {
-//                Place place = Autocomplete.getPlaceFromIntent(data);
-//                propertyAddressEditText.setText(place.getName());
-//            }
-//        }
-//
-//        //Performing action onItemSelected and onNothing selected
-//        @Override
-//        public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-//            Log.d("ID: ", id + " | ");
-//
-//            if (arg1.getId() == R.id.listPropertySelectAgent) {
-//                Toast.makeText(getApplicationContext(), agents.get(position), Toast.LENGTH_LONG).show();
-//            } else if (arg1.getId() == R.id.listPropertySelectPropertyType) {
-//                Toast.makeText(getApplicationContext(), Property.PROPERTY_TYPES[position], Toast.LENGTH_LONG).show();
-//            }
-//        }
-//
-//        @Override
-//        public void onNothingSelected(AdapterView<?> arg0) {
-//            // TODO Auto-generated method stub
-//        }
-    }
+}
 
 

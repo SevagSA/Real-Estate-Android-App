@@ -1,14 +1,5 @@
 package com.example.realestateapplication.Controllers;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +8,15 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Models.Agent;
@@ -73,7 +73,7 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
         ArrayList<Property> agentProperties = agent.getAllPropertiesOfAgent();
 
         LinearLayoutManager agentPropertyLayoutManager = new LinearLayoutManager(
-                this, LinearLayoutManager.VERTICAL, false
+                this, LinearLayoutManager.HORIZONTAL, false
         );
         RecyclerView agentPropertyRecyclerView = findViewById(R.id.agentListingRecyclerView);
         agentPropertyRecyclerView.setLayoutManager(agentPropertyLayoutManager);
@@ -120,7 +120,7 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
 //            AboutCompanyFragment dialogFragment = new AboutCompanyFragment();
 //            dialogFragment.show(getSupportFragmentManager(), "AboutCompanyFragment");
         } else if (id == R.id.logout) {
-            Toast.makeText(getApplicationContext(), "Logged out", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, LoginActivity.class));
         }
         return true;
     }

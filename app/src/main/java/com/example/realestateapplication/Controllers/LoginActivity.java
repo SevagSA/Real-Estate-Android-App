@@ -1,14 +1,11 @@
 package com.example.realestateapplication.Controllers;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.realestateapplication.Fragments.ContactPropertyAgentFragment;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.realestateapplication.Fragments.RegistrationDialogFragment;
 import com.example.realestateapplication.R;
 

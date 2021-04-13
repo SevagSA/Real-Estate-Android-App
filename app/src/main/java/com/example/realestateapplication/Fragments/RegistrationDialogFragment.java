@@ -2,13 +2,11 @@ package com.example.realestateapplication.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.DialogFragment;
-
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.DialogFragment;
 
 import com.example.realestateapplication.Controllers.HomeActivity;
 import com.example.realestateapplication.R;

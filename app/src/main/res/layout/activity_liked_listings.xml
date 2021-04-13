@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Controllers.LikedListingsActivity"
-    tools:openDrawer="start">
+    tools:context=".Controllers.LikedListingsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +18,18 @@
             android:id="@+id/likedAppBar"
             layout="@layout/activity_app_bar"
             android:layout_width="match_parent"
-            android:layout_height="100dp" />
+            android:layout_height="56dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="@string/your_liked_listings"
+            android:textColor="@color/h1TitleBlack"
+            android:textAlignment="center"
+            android:textSize="@dimen/h1Title"
+            android:gravity="center_horizontal" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_gravity="center"

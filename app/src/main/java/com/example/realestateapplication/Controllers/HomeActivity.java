@@ -1,14 +1,5 @@
 package com.example.realestateapplication.Controllers;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,13 +7,21 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Adapters.RegionsRecyclerViewAdapter;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
-
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -89,6 +88,8 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
             case R.id.nav_share_tweet:
                 Toast.makeText(this, "nav_share_tweet", Toast.LENGTH_LONG).show();
                 break;
+            case R.id.nav_list_of_agents:
+                startActivity(new Intent(this, AgentListActivity.class));
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -106,7 +107,7 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
 //            AboutCompanyFragment dialogFragment = new AboutCompanyFragment();
 //            dialogFragment.show(getSupportFragmentManager(), "AboutCompanyFragment");
         } else if (id == R.id.logout) {
-            Toast.makeText(getApplicationContext(), "Logged out", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, LoginActivity.class));
         }
         return true;
     }

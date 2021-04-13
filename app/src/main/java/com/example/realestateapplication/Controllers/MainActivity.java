@@ -1,8 +1,5 @@
 package com.example.realestateapplication.Controllers;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
@@ -10,12 +7,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.example.realestateapplication.Controllers.HomeActivity;
-import com.example.realestateapplication.R;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.net.PlacesClient;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Objects;
+import com.example.realestateapplication.R;
 
 // each activity is a controller for their respective model(s) and view(s);
 public class MainActivity extends AppCompatActivity{

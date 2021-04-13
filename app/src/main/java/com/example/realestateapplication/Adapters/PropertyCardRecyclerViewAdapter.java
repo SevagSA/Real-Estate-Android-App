@@ -2,7 +2,6 @@ package com.example.realestateapplication.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Controllers.PropertyDetailActivity;
+import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.R;
 
 import java.util.ArrayList;

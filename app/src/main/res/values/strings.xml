@@ -58,4 +58,7 @@
     <string name="app_contact_email">info@realestateapp.com</string>
     <string name="list_property_for_sale">List property for sale</string>
     <string name="click_to_enter_address">Click to enter address</string>
+    <string name="list_of_all_agents">List of all agents</string>
+    <string name="view_agent">View Agent</string>
+    <string name="your_liked_listings">Your liked listings</string>
 </resources>
