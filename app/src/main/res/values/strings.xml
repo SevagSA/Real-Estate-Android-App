@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Real Estate App</string>
+    <string name="app_name">Redwood Realty</string>
     <string name="searchBarPlaceholder">Search…</string>
     <string name="regionsTitleHomeActivity">Regions</string>
     <string name="regionsDescHomeActivity">Search high quality listings in your favorite region</string>
@@ -28,7 +28,6 @@
     <string name="_1stImage">1st image</string>
     <string name="_2ndImage">2nd image</string>
     <string name="sellProperty">Sell property</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_address">Enter address</string>
     <string name="search_a_property_by_address">Search a property by address</string>
@@ -55,10 +54,13 @@
     <string name="register">Register</string>
     <string name="email">Email</string>
     <string name="english">English</string>
-    <string name="app_contact_email">info@realestateapp.com</string>
+    <string name="app_contact_email">info@redwood.com</string>
     <string name="list_property_for_sale">List property for sale</string>
     <string name="click_to_enter_address">Click to enter address</string>
     <string name="list_of_all_agents">List of all agents</string>
     <string name="view_agent">View Agent</string>
-    <string name="your_liked_listings">Your liked listings</string>
+    <string name="about_desc">Redwood Realty is a real estate listing application that allows homeowners who want to sell their house to list their property and be represented by one of many of the top real estate agents that are on our platform.</string>
+    <string name="please_select_a_language">Please select a language.</string>
+    <string name="choisissez_une_langue">Choisissez une langue.</string>
+    <string name="select_image">Select Image (6 required)</string>
 </resources>

@@ -14,7 +14,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Real Estate App"
+        app:title="@string/app_name"
         app:titleMarginStart="10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

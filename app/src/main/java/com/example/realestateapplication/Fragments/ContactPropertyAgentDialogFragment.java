@@ -16,7 +16,7 @@ import androidx.fragment.app.DialogFragment;
 import com.example.realestateapplication.Controllers.HomeActivity;
 import com.example.realestateapplication.R;
 
-public class ContactPropertyAgentFragment extends DialogFragment {
+public class ContactPropertyAgentDialogFragment extends DialogFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

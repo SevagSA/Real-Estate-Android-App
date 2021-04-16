@@ -120,6 +120,7 @@
                         android:layout_gravity="bottom"
                         android:text="@string/explore"
                         android:textSize="@dimen/btn"
+                        android:textColor="@color/white"
                         app:backgroundTint="@color/btnColor" />
 
                 </LinearLayout>

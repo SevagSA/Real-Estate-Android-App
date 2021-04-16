@@ -15,6 +15,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.realestateapplication.Adapters.AgentAdapter;
+import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
@@ -62,9 +63,9 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
             case R.id.nav_list_property:
                 startActivity(new Intent(this, ListPropertyActivity.class));
                 break;
-            case R.id.nav_see_sent_messages:
-                Toast.makeText(this, "Sent msg", Toast.LENGTH_LONG).show();
-                break;
+//            case R.id.nav_see_sent_messages:
+//                Toast.makeText(this, "Sent msg", Toast.LENGTH_LONG).show();
+//                break;
             case R.id.nav_share_fb:
                 Toast.makeText(this, "nav_share_fb", Toast.LENGTH_LONG).show();
                 break;
@@ -86,9 +87,8 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
         } else if (id == R.id.likeItem) {
             startActivity(new Intent(this, LikedListingsActivity.class));
         } else if (id == R.id.about) {
-            Toast.makeText(getApplicationContext(), "about", Toast.LENGTH_LONG).show();
-//            AboutCompanyFragment dialogFragment = new AboutCompanyFragment();
-//            dialogFragment.show(getSupportFragmentManager(), "AboutCompanyFragment");
+            AboutDialogFragment dialogFragment = new AboutDialogFragment();
+            dialogFragment.show(getSupportFragmentManager(), "AboutDialogFragment");
         } else if (id == R.id.logout) {
             startActivity(new Intent(this, LoginActivity.class));
         }

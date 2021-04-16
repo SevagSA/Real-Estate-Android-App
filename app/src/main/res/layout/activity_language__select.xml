@@ -4,55 +4,94 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/nyc"
     tools:context=".Controllers.LanguageSelectActivity">
+
+    <include
+        android:id="@+id/loginAppBar"
+        layout="@layout/activity_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp" />
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="39sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginAppBar" />
 
 
     <TextView
         android:id="@+id/greeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="236dp"
-        android:text="Please select the language."
-        android:textSize="20dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/please_select_a_language"
+        android:textColor="@color/white"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Choisissez la langue."
-        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:text="@string/choisissez_une_langue"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/greeting" />
 
     <Button
         android:id="@+id/englishLanguageBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="32dp"
-        app:backgroundTint="@color/btnColor"
+
+
+
         android:text="@string/english"
-        android:textColor="#fff"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/btnColor"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/globalMargin"
+        android:layout_marginLeft="@dimen/globalMargin"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/globalMargin"
+        android:layout_marginRight="@dimen/globalMargin"
+        android:textAllCaps="false"
+        android:textSize="@dimen/btn_big"
+
+
+        />
 
     <Button
         android:id="@+id/frenchLanguageBtn"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        app:backgroundTint="@color/btnColor"
         android:text="@string/francais"
-        android:textColor="#fff"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/btnColor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/englishLanguageBtn"
+
+        android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/globalMargin"
+        android:layout_marginLeft="@dimen/globalMargin"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="@dimen/globalMargin"
+        android:layout_marginRight="@dimen/globalMargin"
+        android:textAllCaps="false"
+        android:textSize="@dimen/btn_big" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

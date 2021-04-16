@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:background="#DFDFDF"
     android:padding="20dp"
-    tools:context=".Fragments.ContactPropertyAgentFragment">
+    tools:context=".Fragments.ContactPropertyAgentDialogFragment">
 
     <TextView
         android:id="@+id/contactAgentFormH1"
@@ -57,6 +57,7 @@
         android:text="@string/submitEmail"
         android:textAllCaps="false"
         app:backgroundTint="@color/btnColor"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contactAgentFormMessageInput" />

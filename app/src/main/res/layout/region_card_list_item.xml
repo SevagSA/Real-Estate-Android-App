@@ -43,7 +43,8 @@
                 android:layout_centerHorizontal="true"
                 android:text="@string/explore"
                 android:textSize="@dimen/btn"
-                app:backgroundTint="#E68C3C" />
+                android:textColor="@color/white"
+                app:backgroundTint="@color/btnColor" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

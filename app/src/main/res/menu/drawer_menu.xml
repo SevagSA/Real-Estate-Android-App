@@ -12,10 +12,10 @@
             android:icon="@drawable/ic_agents"
             android:title="@string/list_of_all_agents" />
 
-        <item
-            android:id="@+id/nav_see_sent_messages"
-            android:icon="@drawable/ic_baseline_mail_24"
-            android:title="@string/see_sent_messages" />
+<!--        <item-->
+<!--            android:id="@+id/nav_see_sent_messages"-->
+<!--            android:icon="@drawable/ic_baseline_mail_24"-->
+<!--            android:title="@string/see_sent_messages" />-->
     </group>
 
     <item android:title="@string/communicate">

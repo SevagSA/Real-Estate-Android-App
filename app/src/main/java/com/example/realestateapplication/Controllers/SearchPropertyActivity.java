@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
+import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.R;
 import com.google.android.libraries.places.api.Places;
@@ -93,15 +94,17 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
             case R.id.nav_list_property:
                 startActivity(new Intent(this, ListPropertyActivity.class));
                 break;
-            case R.id.nav_see_sent_messages:
-                Toast.makeText(this, "Sent msg", Toast.LENGTH_LONG).show();
-                break;
+//            case R.id.nav_see_sent_messages:
+//                Toast.makeText(this, "Sent msg", Toast.LENGTH_LONG).show();
+//                break;
             case R.id.nav_share_fb:
                 Toast.makeText(this, "nav_share_fb", Toast.LENGTH_LONG).show();
                 break;
             case R.id.nav_share_tweet:
                 Toast.makeText(this, "nav_share_tweet", Toast.LENGTH_LONG).show();
                 break;
+            case R.id.nav_list_of_agents:
+                startActivity(new Intent(this, AgentListActivity.class));
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -115,9 +118,8 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
         } else if (id == R.id.likeItem) {
             startActivity(new Intent(this, LikedListingsActivity.class));
         } else if (id == R.id.about) {
-            Toast.makeText(getApplicationContext(), "about", Toast.LENGTH_LONG).show();
-//            AboutCompanyFragment dialogFragment = new AboutCompanyFragment();
-//            dialogFragment.show(getSupportFragmentManager(), "AboutCompanyFragment");
+            AboutDialogFragment dialogFragment = new AboutDialogFragment();
+            dialogFragment.show(getSupportFragmentManager(), "AboutDialogFragment");
         } else if (id == R.id.logout) {
             startActivity(new Intent(this, LoginActivity.class));
         }

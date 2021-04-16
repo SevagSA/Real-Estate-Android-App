@@ -162,7 +162,7 @@ public class Agent implements Parcelable {
                 "(356) 346-8288").getFullName());
         agents.add(new Agent(
                 "Olivia James",
-                "Redwood Realty Group",
+                "Maxwell Property Agents",
                 R.drawable.olivia_james,
                 78,
                 "Vancouver, Bc",
@@ -195,7 +195,7 @@ public class Agent implements Parcelable {
                 "(356) 346-8288"));
         agents.add(new Agent(
                 "Olivia James",
-                "Redwood Realty Group",
+                "Maxwell Property Agents",
                 R.drawable.olivia_james,
                 78,
                 "Vancouver, Bc",

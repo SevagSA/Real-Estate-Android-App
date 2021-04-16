@@ -74,6 +74,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/btnColor"
                     android:text="Contact"
+                    android:textColor="@color/white"
                     android:textAllCaps="false" />
 
             </LinearLayout>
