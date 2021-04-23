@@ -163,16 +163,6 @@
             android:numColumns="auto_fit"
             />
 
-        <!--        <GridView-->
-        <!--            android:id="@+id/gridview"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_margin="10dp"-->
-        <!--            android:columnWidth="100dp"-->
-        <!--            android:horizontalSpacing="10dp"-->
-        <!--            android:verticalSpacing="10dp"-->
-        <!--            android:numColumns="auto_fit"/>-->
-
         <Button
             android:id="@+id/selectImgBtn"
             android:layout_width="match_parent"
@@ -180,13 +170,6 @@
             android:backgroundTint="@color/white"
             android:text="@string/select_image"
             android:textAllCaps="false" />
-        <!-- android:id="@+id/listPropertyImg2" -->
-        <!-- android:id="@+id/listPropertyImg1" -->
-        <!-- android:id="@+id/listPropertyImg3" -->
-        <!--        android:id="@+id/listPropertyImg4"-->
-        <!--        android:id="@+id/listPropertyImg5"-->
-        <!--        android:id="@+id/listPropertyImg6"-->
-
 
     </LinearLayout>
 

@@ -13,10 +13,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -45,15 +47,69 @@ public class ListPropertyActivity extends AppCompatActivity {
     GridView imageGridView;
     Button selectImgBtn;
 
+
+    ArrayList<String> propertyImages = new ArrayList<>();
+
+    String agentName;
+
+    String propertyType;
+    EditText propertyPrice;
+    EditText propertyNumOfBed;
+    EditText propertyNumOfBath;
+    EditText propertySquareFoot;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_property);
 
-
+        imageGridView = findViewById(R.id.selectedPropertyImagesGridView);
+        propertyPrice = findViewById(R.id.listPropertyPrice);
         propertyAddressSelectBtn = findViewById(R.id.propertyAddressSelectBtn);
+        propertySquareFoot = findViewById(R.id.listPropertySQFT);
+        propertyNumOfBed = findViewById(R.id.listPropertyBed);
+        propertyNumOfBath = findViewById(R.id.listPropertyBath);
+
+
+        findViewById(R.id.listPropertyForSaleBtn).setOnClickListener(e -> {
+            if (
+                    !propertyPrice.getText().toString().isEmpty() &&
+//                    !propertyAddressSelectBtn.getText().toString().isEmpty() &&
+                    !propertyNumOfBed.getText().toString().isEmpty() &&
+                    !propertyNumOfBath.getText().toString().isEmpty() &&
+                    !propertySquareFoot.getText().toString().isEmpty() &&
+                    imageGridView.getChildCount() == 6
+            ) {
+                Property property = new Property();
+                property.setContext(getApplicationContext());
+                property.setPropertyPrice(Double.parseDouble(((EditText)findViewById(R.id.listPropertyPrice)).getText().toString()));
+//                property.setPropertyAddress(propertyAddressSelectBtn.getText().toString());
+                property.setPropertyNumOfBed(Integer.parseInt
+                        (((EditText)findViewById(R.id.listPropertyBed)).getText().toString()));
+                property.setPropertyNumOfBath(Integer.parseInt
+                        (((EditText)findViewById(R.id.listPropertyBath)).getText().toString()));
+                property.setPropertySquareFoot(
+                        Integer.parseInt(
+                                ((EditText)findViewById(R.id.listPropertySQFT)).getText().toString()));
+                property.setPropertyMainImg(propertyImages.get(0));
+                property.setPropertySecondImg(propertyImages.get(1));
+                property.setPropertyThirdImg(propertyImages.get(2));
+                property.setPropertyFourthImg(propertyImages.get(3));
+                property.setPropertyFifthImg(propertyImages.get(4));
+                property.setPropertySixthImg(propertyImages.get(5));
+
+                property.setAgent(Agent.getAgentByName(agentName));
+                property.setPropertyType(propertyType);
+                property.insertProperty();
+//                TODO redirect to the property's detail page.
+            } else {
+                Toast.makeText(getApplicationContext(), "Please fill in all the fields " +
+                        "(6 images are required)", Toast.LENGTH_LONG).show();
+            }
+        });
+
         propertyAddressSelectBtn.setFocusable(false);
-        Places.initialize(getApplicationContext(), "AIzaSyBUUmmyiGdCIlDhGyEvI38S6fExzomHYlE");
+        Places.initialize(getApplicationContext(), "AIzaSyB4Iy3hfKjH3SudYoP1TU_uDF83bvHGMq4");
 
         propertyAddressSelectBtn.setOnClickListener(e -> {
             List<Place.Field> fieldList = Arrays.asList(Place.Field.ADDRESS, Place.Field.NAME);
@@ -62,13 +118,12 @@ public class ListPropertyActivity extends AppCompatActivity {
             startActivityForResult(intent, 100);
         });
 
-
         // Agent spinner
         Spinner agentSpin = (Spinner) findViewById(R.id.listPropertySelectAgent);
 
         ArrayAdapter agentAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, agents);
         agentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //Setting the ArrayAdapter data on the Spinner
+        // Setting the ArrayAdapter data on the Spinner
         agentSpin.setAdapter(agentAdapter);
         agentSpin.setOnItemSelectedListener(new AgentAdapterSpinnerClass());
 
@@ -82,11 +137,10 @@ public class ListPropertyActivity extends AppCompatActivity {
         propertyTypeSpin.setAdapter(propertyTypeAdapter);
         propertyTypeSpin.setOnItemSelectedListener(new PropertyTypeAdapterSpinnerClass());
 
-        imageGridView = findViewById(R.id.selectedPropertyImagesGridView);
         selectImgBtn = findViewById(R.id.selectImgBtn);
         selectImgBtn.setOnClickListener(e -> {
             imageGridView.setBackground(null);
-            startActivityForResult(new Intent(Intent.ACTION_PICK,
+            startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT,
                     android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), 3);
         });
 
@@ -100,18 +154,15 @@ public class ListPropertyActivity extends AppCompatActivity {
             propertyAddressSelectBtn.setText(place.getAddress());
         } else if (requestCode == 3 && resultCode == Activity.RESULT_OK) {
             Uri selectedImage = data.getData();
+            propertyImages.add(selectedImage.toString());
             Bitmap bitmap = null;
             try {
-
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
                 BitmapDrawable drawableImg = new BitmapDrawable(getResources(), bitmap);
                 handlePropertyImgSelected(drawableImg);
-
             } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -142,12 +193,11 @@ public class ListPropertyActivity extends AppCompatActivity {
         imageGridView.setAdapter(adapter);
     }
 
-
-    static class PropertyTypeAdapterSpinnerClass implements AdapterView.OnItemSelectedListener {
+    class PropertyTypeAdapterSpinnerClass implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
             {
-                Toast.makeText(arg1.getContext(), Property.PROPERTY_TYPES[position], Toast.LENGTH_LONG).show();
+                propertyType = Property.PROPERTY_TYPES[position];
             }
         }
 
@@ -162,6 +212,7 @@ public class ListPropertyActivity extends AppCompatActivity {
         public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
             {
                 Toast.makeText(arg1.getContext(), agents.get(position), Toast.LENGTH_LONG).show();
+                agentName = agents.get(position);
             }
         }
 

@@ -2,6 +2,7 @@ package com.example.realestateapplication.Controllers;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
@@ -28,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+// TODO remove observer/observable and just adopts basic MVC
+//  (Model = Class, Controller = Activity classes, View=XML)
 public class HomeActivity extends AppCompatActivity implements Observer, NavigationView.OnNavigationItemSelectedListener {
 
 
@@ -62,10 +65,11 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
         region = new Region();
         region.addObserver(this);
 
-        populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL);
+        Property homeActivityProperty = new Property(this);
+        homeActivityProperty.setAllPropertiesFromDB();
 
         changeLayoutOrientationBtn = findViewById(R.id.changeLayoutOrientationBtn);
-        changeLayoutOrientationBtn.setOnClickListener(e -> handleChangeLayoutBtnClick());
+        changeLayoutOrientationBtn.setOnClickListener(e -> handleChangeLayoutBtnClick(homeActivityProperty.getAllProperties()));
     }
 
     @Override
@@ -128,7 +132,7 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
     /**
      * Render the Regions and Recent Listings in their respective RecyclerView.
      */
-    private void populateRecyclerViewListings(int layoutOrientation) {
+    public void populateRecyclerViewListings(int layoutOrientation, ArrayList<Property> properties) {
         ArrayList<Region> regions = region.getAllRegions();
 
         LinearLayoutManager regionsLayoutManager = new LinearLayoutManager(
@@ -140,7 +144,6 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
                 new RegionsRecyclerViewAdapter(regions, this);
         regionsRecyclerView.setAdapter(regionsAdapter);
 
-        ArrayList<Property> properties = property.getAllProperties();
         LinearLayoutManager propertyLayoutManager = new LinearLayoutManager(
                 this, layoutOrientation, false
         );
@@ -149,32 +152,24 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
         PropertyCardRecyclerViewAdapter propertyAdapter =
                 new PropertyCardRecyclerViewAdapter(properties, this);
         propertyRecyclerView.setAdapter(propertyAdapter);
-
     }
 
     /**
      * Change LinearLayoutManager orientation of regionsLayoutManager and propertyLayoutManager
      * based on their current orientation
      */
-    private void handleChangeLayoutBtnClick() {
+    private void handleChangeLayoutBtnClick(ArrayList<Property> properties) {
         if (changeLayoutOrientationBtn.getText().equals(getString(R.string.verticalLayout))) {
-            populateRecyclerViewListings(LinearLayoutManager.VERTICAL);
+            populateRecyclerViewListings(LinearLayoutManager.VERTICAL, properties);
             changeLayoutOrientationBtn.setText(R.string.horizontalLayout);
         } else if (changeLayoutOrientationBtn.getText().equals(getString(R.string.horizontalLayout))) {
-            populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL);
+            populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL, properties);
             changeLayoutOrientationBtn.setText(R.string.verticalLayout);
         }
     }
-
-    /**
-     * Go to the ListPropertyActivity
-     */
-    private void handleGoToListPropertyPageBtnClick() {
-        startActivity(new Intent(this, ListPropertyActivity.class));
-    }
 }
 
-//Places.initialize(getApplicationContext(), "AIzaSyBUUmmyiGdCIlDhGyEvI38S6fExzomHYlE");
+//Places.initialize(getApplicationContext(), "AIzaSyB4Iy3hfKjH3SudYoP1TU_uDF83bvHGMq4");
 //        PlacesClient placesClient = Places.createClient(getApplicationContext());
 //
 //        Log.d("here", findViewById(R.id.searchInputBarSearchView) + "");

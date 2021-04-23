@@ -1,6 +1,7 @@
 package com.example.realestateapplication.Controllers;
 
 import android.content.Intent;
+import android.icu.lang.UProperty;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -27,14 +28,22 @@ import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class PropertyDetailActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+import java.util.ArrayList;
+
+public class PropertyDetailActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
     private Toolbar toolbar;
 
     ImageButton agentButton;
     Property property;
+    ArrayList<String> imageUrl = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,26 +87,54 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
 
         Glide.with(getApplicationContext())
                 .asBitmap()
-                .load(property.getPropertyMainImgURL())
-                .into((ImageView)findViewById(R.id.propertyMainImageView));
+                .load(property.getPropertyMainImg())
+                .into((ImageView) findViewById(R.id.propertyMainImageView));
 
-        ((ImageView)findViewById(R.id.propertyAgentImageView)).setImageResource(property.getAgent().getProfileImgId());
-        ((TextView)findViewById(R.id.propertyAgentNameText)).setText(property.getAgent().getFullName());
-        ((TextView)findViewById(R.id.propertyAddressText)).setText(property.getPropertyAddress());
-        ((TextView)findViewById(R.id.propertyPriceText)).setText(property.getPropertyPrice());
-        ((TextView)findViewById(R.id.propertyNumOfBathText)).setText(property.getPropertyNumOfBath());
-        ((TextView)findViewById(R.id.propertyNumOfBedText)).setText(property.getPropertyNumOfBed());
-        ((TextView)findViewById(R.id.propertySQFTText)).setText(property.getPropertySquareFoot());
+        ((ImageView) findViewById(R.id.propertyAgentImageView)).setImageResource(property.getAgent().getProfileImgId());
+        ((TextView) findViewById(R.id.propertyAgentNameText)).setText(property.getAgent().getFullName());
+        ((TextView) findViewById(R.id.propertyAddressText)).setText(property.getPropertyAddress());
+        ((TextView) findViewById(R.id.propertyPriceText)).setText(property.getPropertyPrice());
+        ((TextView) findViewById(R.id.propertyNumOfBathText)).setText(property.getPropertyNumOfBath());
+        ((TextView) findViewById(R.id.propertyNumOfBedText)).setText(property.getPropertyNumOfBed());
+        ((TextView) findViewById(R.id.propertySQFTText)).setText(property.getPropertySquareFoot());
 
-        populateRecyclerViewListings();
 
         (findViewById(R.id.propertyAgentContactBtn)).setOnClickListener(e -> {
             // TODO: you can pass the agent in the constructor and use it in the form (for the email)
             ContactPropertyAgentDialogFragment dialogFragment = new ContactPropertyAgentDialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "ContactPropertyAgentDialogFragment");
         });
-    }
 
+        populateRecyclerViewListings();
+
+
+//        FirebaseDatabase.getInstance().getReference()
+//                .child("Property")
+////                TODO the orderByChild will be the address
+//                .orderByChild("propertyNumOfBath")
+////                TODO the equalTo value will be the address
+////                 of the current property
+//                .equalTo(4)
+//                .addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        for (DataSnapshot snap : snapshot.getChildren()) {
+//                            Property property = snap.getValue(Property.class);
+//                            imageUrl.add(property.getPropertyMainImg());
+//                            imageUrl.add(property.getPropertySecondImg());
+//                            imageUrl.add(property.getPropertyThirdImg());
+//                            imageUrl.add(property.getPropertyFourthImg());
+//                            imageUrl.add(property.getPropertyFifthImg());
+//                            imageUrl.add(property.getPropertySixthImg());
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -165,6 +202,14 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
         PropertyGalleryRecyclerViewAdapter propertyGalleryAdapter =
                 new PropertyGalleryRecyclerViewAdapter(
                         this, property.getGalleryImagesURLs());
+
+//        PropertyGalleryRecyclerViewAdapter propertyGalleryAdapter =
+//                new PropertyGalleryRecyclerViewAdapter(
+//                        this, imageUrl);
+
+        for (String url : imageUrl) {
+            Log.d("indi url", url);
+        }
 
         propertyGalleryRecyclerView.setAdapter(propertyGalleryAdapter);
     }

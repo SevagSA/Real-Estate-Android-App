@@ -2,6 +2,7 @@ package com.example.realestateapplication.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 
 public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<PropertyCardRecyclerViewAdapter.ViewHolder> {
 
-    private ArrayList<Property> properties;
+    private final ArrayList<Property> properties;
     private final Context context;
 
     public PropertyCardRecyclerViewAdapter(ArrayList<Property> properties, Context context) {
@@ -40,14 +41,16 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // this is were all of the views will be attached to the View
+        properties.get(position).setContext(context);
         Glide.with(context)
                 .asBitmap()
-                .load(properties.get(position).getPropertyMainImgURL())
+                .load(properties.get(position).getPropertyMainImg())
                 .into(holder.recentPropertyImg);
         String propertyType = properties.get(position).getPropertyType();
         holder.recentPropertyTypeTextView.setText(propertyType);
         holder.recentPropertyPrice.setText(properties.get(position).getPropertyPrice());
         holder.recentPropertyAddress.setText(properties.get(position).getPropertyAddress());
+        Log.d("adapter", properties.toString());
         holder.recentPropertyNumOfBed.setText(properties.get(position).getPropertyNumOfBed());
         holder.recentPropertyNumOfBath.setText(properties.get(position).getPropertyNumOfBath());
         holder.recentPropertySquareFoot.setText(properties.get(position).getPropertySquareFoot());

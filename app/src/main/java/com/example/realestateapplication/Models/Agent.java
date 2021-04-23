@@ -54,6 +54,19 @@ public class Agent implements Parcelable {
                 '}';
     }
 
+    public static Agent getAgentByName(String agentName) {
+//        TODO get from DB
+        return new Agent(
+                agentName,
+                "High Rise Estates",
+                R.drawable.raphael_jones,
+                78,
+                "Toronto, On, and Montreal, Qc",
+                "jones@agent.com",
+                "(435) 547-868"
+        );
+    }
+
     /**
      * To get all of the properties of the current agent from the DB with all of their attributes.
      * @return An ArrayList<Property> of all of the properties of the current agent.

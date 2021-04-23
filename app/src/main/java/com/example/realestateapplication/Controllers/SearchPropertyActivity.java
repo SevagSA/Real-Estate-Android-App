@@ -59,7 +59,7 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
 
         searchBar = findViewById(R.id.searchInputBarSearchView);
         searchBar.setFocusable(false);
-        Places.initialize(getApplicationContext(), "AIzaSyBUUmmyiGdCIlDhGyEvI38S6fExzomHYlE");
+        Places.initialize(getApplicationContext(), "AIzaSyB4Iy3hfKjH3SudYoP1TU_uDF83bvHGMq4");
 
         searchBar.setOnClickListener(e -> {
             List<Place.Field> fieldList = Arrays.asList(Place.Field.ADDRESS, Place.Field.NAME);
