@@ -2,6 +2,7 @@ package com.example.realestateapplication.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +16,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.realestateapplication.Controllers.HomeActivity;
 import com.example.realestateapplication.Controllers.PropertyDetailActivity;
 import com.example.realestateapplication.Models.Property;
+import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -40,7 +48,6 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        // this is were all of the views will be attached to the View
         properties.get(position).setContext(context);
         Glide.with(context)
                 .asBitmap()
@@ -50,7 +57,6 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         holder.recentPropertyTypeTextView.setText(propertyType);
         holder.recentPropertyPrice.setText(properties.get(position).getPropertyPrice());
         holder.recentPropertyAddress.setText(properties.get(position).getPropertyAddress());
-        Log.d("adapter", properties.toString());
         holder.recentPropertyNumOfBed.setText(properties.get(position).getPropertyNumOfBed());
         holder.recentPropertyNumOfBath.setText(properties.get(position).getPropertyNumOfBath());
         holder.recentPropertySquareFoot.setText(properties.get(position).getPropertySquareFoot());
@@ -61,8 +67,9 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
             context.startActivity(intent);
         });
 
-        holder.likedIconBtn.setOnClickListener(e -> {
-            Toast.makeText(context, "likedIconBtn for: " + holder.recentPropertyAddress.getText(), Toast.LENGTH_SHORT).show();
+        holder.likedIconImg.setOnClickListener(e -> {
+            FirebaseAuth fAuth = FirebaseAuth.getInstance();
+            User.handleLikedBtnClick(fAuth.getCurrentUser().getEmail(), holder.recentPropertyAddress.getText().toString());
         });
     }
 
@@ -80,7 +87,7 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         TextView recentPropertyNumOfBath;
         TextView recentPropertySquareFoot;
         Button exploreRecentPropertyBtn;
-        ImageView likedIconBtn;
+        ImageView likedIconImg;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -92,7 +99,7 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
             recentPropertyNumOfBath = itemView.findViewById(R.id.recentPropertyNumOfBath);
             recentPropertySquareFoot = itemView.findViewById(R.id.recentPropertySquareFoot);
             exploreRecentPropertyBtn = itemView.findViewById(R.id.exploreRecentPropertyBtn);
-            likedIconBtn = itemView.findViewById(R.id.likedIconBtn);
+            likedIconImg = itemView.findViewById(R.id.likedIconImg);
 
         }
     }

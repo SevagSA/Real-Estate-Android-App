@@ -24,6 +24,7 @@ import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -66,7 +67,7 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
         region.addObserver(this);
 
         Property homeActivityProperty = new Property(this);
-        homeActivityProperty.setAllPropertiesFromDB();
+        homeActivityProperty.setAllPropertiesFromDB(true);
 
         changeLayoutOrientationBtn = findViewById(R.id.changeLayoutOrientationBtn);
         changeLayoutOrientationBtn.setOnClickListener(e -> handleChangeLayoutBtnClick(homeActivityProperty.getAllProperties()));
@@ -111,6 +112,7 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
             AboutDialogFragment dialogFragment = new AboutDialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "AboutDialogFragment");
         } else if (id == R.id.logout) {
+            FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(this, LoginActivity.class));
         }
         return true;
@@ -144,6 +146,7 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
                 new RegionsRecyclerViewAdapter(regions, this);
         regionsRecyclerView.setAdapter(regionsAdapter);
 
+//        TODO you probably don't need 2 different LayoutManagers
         LinearLayoutManager propertyLayoutManager = new LinearLayoutManager(
                 this, layoutOrientation, false
         );

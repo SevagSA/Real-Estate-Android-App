@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -122,6 +124,7 @@ public class Property extends Observable implements Parcelable {
      */
     public void insertProperty() {
         Map<String, Object> property = new HashMap<>();
+//        TODO change to the real input address, not Calgary
         property.put("propertyAddress", "Calgary, AB, Canada");
         property.put("propertyPrice", this.propertyPrice);
         property.put("propertyNumOfBed", this.propertyNumOfBed);
@@ -138,6 +141,11 @@ public class Property extends Observable implements Parcelable {
         property.put("agent", this.agent.getFullName());
         property.put("propertyType", this.propertyType);
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        Log.d("date: ", dtf.format(now));
+
+        property.put("dateAdded", dtf.format(now));
 
         FirebaseDatabase.getInstance().getReference().child("Property")
                 .push().setValue(property)
@@ -152,12 +160,12 @@ public class Property extends Observable implements Parcelable {
     /**
      * To set the 5 most recent properties from the DB with all of their attributes into the
      * HomeActivity's "Recent Properties"'s sections's recyclerView.
-     *
      */
-    public void setAllPropertiesFromDB() {
+    public void setAllPropertiesFromDB(boolean populateRecentProperties) {
         ArrayList<Property> properties = new ArrayList<>();
 
         FirebaseDatabase.getInstance().getReference().child("Property")
+                .orderByChild("dateAdded")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -166,7 +174,6 @@ public class Property extends Observable implements Parcelable {
                             Property property = new Property();
 
                             property.setPropertyType(propHash.get("propertyType").toString());
-
 
                             property.setPropertyPrice(Double.parseDouble(propHash.get("propertyPrice").toString()));
                             property.setPropertyAddress(propHash.get("propertyAddress").toString());
@@ -185,7 +192,9 @@ public class Property extends Observable implements Parcelable {
                             properties.add(property);
                         }
                         setAllProperties(properties);
-                        homeActivity.populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL, properties);
+                        if (populateRecentProperties) {
+                            homeActivity.populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL, properties);
+                        }
                     }
 
                     @Override
@@ -193,7 +202,6 @@ public class Property extends Observable implements Parcelable {
 
                     }
                 });
-        Log.d("before return", properties.toString());
     }
 
     /**
