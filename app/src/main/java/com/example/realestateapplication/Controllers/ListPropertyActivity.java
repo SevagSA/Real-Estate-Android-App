@@ -151,7 +151,8 @@ public class ListPropertyActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode == RESULT_OK) {
             Place place = Autocomplete.getPlaceFromIntent(data);
-            propertyAddressSelectBtn.setText(place.getAddress());
+//            TODO the "replaceAll" has not been tested.
+            propertyAddressSelectBtn.setText(place.getAddress().replaceAll(",", ""));
         } else if (requestCode == 3 && resultCode == Activity.RESULT_OK) {
             Uri selectedImage = data.getData();
             propertyImages.add(selectedImage.toString());

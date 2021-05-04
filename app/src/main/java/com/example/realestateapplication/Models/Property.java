@@ -11,11 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.realestateapplication.Controllers.HomeActivity;
+import com.example.realestateapplication.Controllers.LikedListingsActivity;
 import com.example.realestateapplication.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDateTime;
@@ -35,10 +37,6 @@ public class Property extends Observable implements Parcelable {
     private String propertyFourthImg;
     private String propertyFifthImg;
     private String propertySixthImg;
-    //    TODO: Create this class when you work on the Agent page
-//     The agents will be pre filled and users can't add agents
-//     so have the profile picture of the agent as a drawable
-//     (take screenshots of the imgs so all have the same dimens)
     private Agent agent;
     private String propertyType;
     private double propertyPrice;
@@ -50,6 +48,7 @@ public class Property extends Observable implements Parcelable {
     private int propertyNumOfBath;
     private int propertySquareFoot;
     private HomeActivity homeActivity;
+    private LikedListingsActivity likedListingsActivity;
 
     private ArrayList<Property> allProperties;
 
@@ -62,39 +61,6 @@ public class Property extends Observable implements Parcelable {
     public Property(HomeActivity homeActivity) {
         this.homeActivity = homeActivity;
     }
-
-//    /**
-//     * Constructor with all parameters excluding `context`. Used for storing properties in the database.
-//     *
-//     * @param propertyMainImg
-//     * @param propertySecondImg
-//     * @param propertyThirdImg
-//     * @param propertyFourthImg
-//     * @param propertyFifthImg
-//     * @param propertySixthImg
-//     * @param agent
-//     * @param propertyType
-//     * @param propertyPrice
-//     * @param propertyAddress
-//     * @param propertyNumOfBed
-//     * @param propertyNumOfBath
-//     * @param propertySquareFoot
-//     */
-//    public Property(String propertyMainImg, String propertySecondImg, String propertyThirdImg, String propertyFourthImg, String propertyFifthImg, String propertySixthImg, Agent agent, String propertyType, double propertyPrice, String propertyAddress, int propertyNumOfBed, int propertyNumOfBath, int propertySquareFoot) {
-//        this.propertyMainImg = propertyMainImg;
-//        this.propertySecondImg = propertySecondImg;
-//        this.propertyThirdImg = propertyThirdImg;
-//        this.propertyFourthImg = propertyFourthImg;
-//        this.propertyFifthImg = propertyFifthImg;
-//        this.propertySixthImg = propertySixthImg;
-//        this.agent = agent;
-//        this.propertyType = propertyType;
-//        this.propertyPrice = propertyPrice;
-//        this.propertyAddress = propertyAddress;
-//        this.propertyNumOfBed = propertyNumOfBed;
-//        this.propertyNumOfBath = propertyNumOfBath;
-//        this.propertySquareFoot = propertySquareFoot;
-//    }
 
     public Property(Context context, String propertyMainImg, String propertySecondImg,
                     String propertyThirdImg, String propertyFourthImg, String propertyFifthImg,
@@ -119,6 +85,10 @@ public class Property extends Observable implements Parcelable {
     public Property() {
     }
 
+    public Property(LikedListingsActivity likedListingsActivity) {
+        this.likedListingsActivity = likedListingsActivity;
+    }
+
     /**
      * To store a property object in the database.
      */
@@ -126,6 +96,8 @@ public class Property extends Observable implements Parcelable {
         Map<String, Object> property = new HashMap<>();
 //        TODO change to the real input address, not Calgary
         property.put("propertyAddress", "Calgary, AB, Canada");
+//        TODO is there a reason these are "this.{attributeName}"
+//         and the other ones are using getters() ?
         property.put("propertyPrice", this.propertyPrice);
         property.put("propertyNumOfBed", this.propertyNumOfBed);
         property.put("propertyNumOfBath", this.propertyNumOfBath);
@@ -157,11 +129,58 @@ public class Property extends Observable implements Parcelable {
                 });
     }
 
+//    public void getPropertyByAddress(ArrayList<String> addresses) {
+//        ArrayList<Property> likedProperties = new ArrayList<>();
+//        Query propertyAddressQuery = FirebaseDatabase.getInstance().getReference()
+//                .child("Property").orderByChild("propertyAddress");
+//        for (String address : addresses) {
+//            propertyAddressQuery.equalTo(address).addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    Log.d("in onDataChange", address);
+//                    for (DataSnapshot snap : snapshot.getChildren()) {
+//                        HashMap<Object, Object> propHash = (HashMap<Object, Object>) snap.getValue();
+//                        Property.this.setPropertyType(propHash.get("propertyType").toString());
+//
+//                        Property.this.setPropertyPrice(Double.parseDouble(propHash.get("propertyPrice").toString()));
+//                        Property.this.setPropertyAddress(propHash.get("propertyAddress").toString());
+//                        Property.this.setPropertyNumOfBed(Integer.parseInt(propHash.get("propertyNumOfBed").toString()));
+//                        Property.this.setPropertyNumOfBath(Integer.parseInt(propHash.get("propertyNumOfBath").toString()));
+//                        Property.this.setPropertySquareFoot(Integer.parseInt(propHash.get("propertySquareFoot").toString()));
+//
+//                        Property.this.setPropertyMainImg(propHash.get("propertyMainImg").toString());
+//                        Property.this.setPropertySecondImg(propHash.get("propertySecondImg").toString());
+//                        Property.this.setPropertyThirdImg(propHash.get("propertyThirdImg").toString());
+//                        Property.this.setPropertyFourthImg(propHash.get("propertyFourthImg").toString());
+//                        Property.this.setPropertyFifthImg(propHash.get("propertyFifthImg").toString());
+//                        Property.this.setPropertySixthImg(propHash.get("propertySixthImg").toString());
+//
+//                        Property.this.setAgent(Agent.getAgentByName(propHash.get("agent").toString()));
+//                        if (!likedProperties.contains(Property.this)) { likedProperties.add(Property.this); }
+////                        Log.d("likedProperties", likedProperties.toString());
+//                        likedListingsActivity.populateRecyclerViewListings(likedProperties);
+//
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
+//        }
+////        Log.d("likedProperties", likedProperties.toString());
+//    }
+
+    public void setLikedListingsInActivity() {
+
+    }
+
     /**
      * To set the 5 most recent properties from the DB with all of their attributes into the
      * HomeActivity's "Recent Properties"'s sections's recyclerView.
      */
-    public void setAllPropertiesFromDB(boolean populateRecentProperties) {
+    public void setAllPropertiesFromDB() {
         ArrayList<Property> properties = new ArrayList<>();
 
         FirebaseDatabase.getInstance().getReference().child("Property")
@@ -192,9 +211,7 @@ public class Property extends Observable implements Parcelable {
                             properties.add(property);
                         }
                         setAllProperties(properties);
-                        if (populateRecentProperties) {
-                            homeActivity.populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL, properties);
-                        }
+                        homeActivity.populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL, properties);
                     }
 
                     @Override
@@ -232,7 +249,7 @@ public class Property extends Observable implements Parcelable {
                         "High Rise Estates",
                         R.drawable.raphael_jones,
                         78,
-                        "Toronto, On, and Montreal, Qc",
+                        "Toronto",
                         "jones@agent.com",
                         "(435) 547-868")
         ));
@@ -320,7 +337,7 @@ public class Property extends Observable implements Parcelable {
                         "High Rise Estates",
                         R.drawable.raphael_jones,
                         78,
-                        "Toronto, On, and Montreal, Qc",
+                        "Toronto On and Montreal Qc",
                         "jones@agent.com",
                         "(435) 547-868")
         ));
@@ -451,7 +468,6 @@ public class Property extends Observable implements Parcelable {
     }
 
     public String getPropertyNumOfBed() {
-        Log.d("getPropertyNumOfBed", propertyNumOfBed + "");
         return propertyNumOfBed + " " + context.getResources().getString(R.string.bed);
     }
 

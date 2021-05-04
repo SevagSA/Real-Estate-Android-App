@@ -69,7 +69,7 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
 
         holder.likedIconImg.setOnClickListener(e -> {
             FirebaseAuth fAuth = FirebaseAuth.getInstance();
-            User.handleLikedBtnClick(fAuth.getCurrentUser().getEmail(), holder.recentPropertyAddress.getText().toString());
+            User.handleLikedBtnClick(fAuth.getCurrentUser().getEmail(), properties.get(position));
         });
     }
 

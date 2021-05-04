@@ -18,21 +18,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Models.Property;
+import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
 public class LikedListingsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
-
+    FirebaseAuth fAuth;
+    User user = new User(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liked_listings);
-        populateRecyclerViewListings();
+        fAuth = FirebaseAuth.getInstance();
+        user.getLikedListingsForUser(fAuth.getCurrentUser().getEmail());
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -107,10 +111,7 @@ public class LikedListingsActivity extends AppCompatActivity implements Navigati
     /**
      * Render the liked listings by the current user
      */
-    private void populateRecyclerViewListings() {
-        Property property = new Property(this);
-        ArrayList<Property> likedProperties = property.getAllLikedProperties();
-
+    public void populateRecyclerViewListings(ArrayList<Property> likedProperties) {
         LinearLayoutManager likedPropertyLayoutManager = new LinearLayoutManager(
                 this, LinearLayoutManager.VERTICAL, false
         );

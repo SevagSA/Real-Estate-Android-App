@@ -36,7 +36,6 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
 
 
     private Region region = new Region();
-    private final Property property = new Property(this);
 
     Button changeLayoutOrientationBtn;
 
@@ -67,7 +66,7 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
         region.addObserver(this);
 
         Property homeActivityProperty = new Property(this);
-        homeActivityProperty.setAllPropertiesFromDB(true);
+        homeActivityProperty.setAllPropertiesFromDB();
 
         changeLayoutOrientationBtn = findViewById(R.id.changeLayoutOrientationBtn);
         changeLayoutOrientationBtn.setOnClickListener(e -> handleChangeLayoutBtnClick(homeActivityProperty.getAllProperties()));

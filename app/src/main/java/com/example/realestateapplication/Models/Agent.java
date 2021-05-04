@@ -61,7 +61,7 @@ public class Agent implements Parcelable {
                 "High Rise Estates",
                 R.drawable.raphael_jones,
                 78,
-                "Toronto, On, and Montreal, Qc",
+                "Toronto",
                 "jones@agent.com",
                 "(435) 547-868"
         );
@@ -95,7 +95,7 @@ public class Agent implements Parcelable {
                         "High Rise Estates",
                         R.drawable.raphael_jones,
                         78,
-                        "Toronto, On, and Montreal, Qc",
+                        "Toronto",
                         "jones@agent.com",
                         "(435) 547-868")
         ));
@@ -162,7 +162,7 @@ public class Agent implements Parcelable {
                 "High Rise Estates",
                 R.drawable.raphael_jones,
                 78,
-                "Toronto, On, and Montreal, Qc",
+                "Toronto",
                 "jones@agent.com",
                 "(435) 547-868").getFullName());
         agents.add(new Agent(
@@ -195,7 +195,7 @@ public class Agent implements Parcelable {
                 "High Rise Estates",
                 R.drawable.raphael_jones,
                 78,
-                "Toronto, On, and Montreal, Qc",
+                "Toronto",
                 "jones@agent.com",
                 "(435) 547-868"));
         agents.add(new Agent(
