@@ -34,12 +34,15 @@ public class Property extends Observable implements Parcelable {
     private int propertyNumOfBed;
     private int propertyNumOfBath;
     private int propertySquareFoot;
+    private String propertyId;
 
     private PropertyDBHelper db;
 
+//    TODO remove this, it was used for dummy data.
     private ArrayList<Property> allProperties;
 
     public static final String[] PROPERTY_TYPES = {"House", "Apartment", "Land", "Duplex"};
+    private int ownerId;
 
 //    TODO you can probably remove this:
 //     it is only used in the search activity and for dummy data purposed (not yet implemented)
@@ -49,10 +52,12 @@ public class Property extends Observable implements Parcelable {
 
     public Property(Context context) { db = new PropertyDBHelper(context); }
 
-    public Property(Context context, String propertyMainImg, String propertySecondImg,
+    public Property(
+//            TODO do you need context?
+            Context context, String propertyId, String propertyMainImg, String propertySecondImg,
                     String propertyThirdImg, String propertyFourthImg, String propertyFifthImg,
                     String propertySixthImg, String propertyType, String propertyPrice, String propertyAddress,
-                    int propertyNumOfBed, int propertyNumOfBath, int propertySquareFoot, int agentId) {
+                    int propertyNumOfBed, int propertyNumOfBath, int propertySquareFoot, int agentId, int ownerId) {
         this.context = context;
         this.propertyMainImg = propertyMainImg;
         this.propertySecondImg = propertySecondImg;
@@ -67,6 +72,8 @@ public class Property extends Observable implements Parcelable {
         this.propertyNumOfBath = propertyNumOfBath;
         this.propertySquareFoot = propertySquareFoot;
         this.agentId = agentId;
+        this.ownerId = ownerId;
+        this.propertyId = propertyId;
     }
 
     public Property() {
@@ -87,30 +94,9 @@ public class Property extends Observable implements Parcelable {
         propertyNumOfBed = in.readInt();
         propertyNumOfBath = in.readInt();
         propertySquareFoot = in.readInt();
+        propertyId = in.readString();
         allProperties = in.createTypedArrayList(Property.CREATOR);
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(propertyMainImg);
-        dest.writeString(propertySecondImg);
-        dest.writeString(propertyThirdImg);
-        dest.writeString(propertyFourthImg);
-        dest.writeString(propertyFifthImg);
-        dest.writeString(propertySixthImg);
-        dest.writeInt(agentId);
-        dest.writeString(propertyType);
-        dest.writeString(propertyPrice);
-        dest.writeString(propertyAddress);
-        dest.writeInt(propertyNumOfBed);
-        dest.writeInt(propertyNumOfBath);
-        dest.writeInt(propertySquareFoot);
-        dest.writeTypedList(allProperties);
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
+        ownerId = in.readInt();
     }
 
     public static final Creator<Property> CREATOR = new Creator<Property>() {
@@ -146,7 +132,9 @@ public class Property extends Observable implements Parcelable {
             this.propertyAddress,
             this.propertyNumOfBed,
             this.propertyNumOfBath,
-            this.propertySquareFoot, date);
+            this.propertySquareFoot,
+            date,
+                this.ownerId);
     }
 
     /**
@@ -161,7 +149,9 @@ public class Property extends Observable implements Parcelable {
                 " ORDER BY date_added DESC")) {
             while (result.moveToNext()) {
                 Property property = new Property(
+        //            TODO do you need context?
                         context,
+                        result.getString(0),
                         result.getString(1),
                         result.getString(2),
                         result.getString(3),
@@ -181,7 +171,8 @@ public class Property extends Observable implements Parcelable {
 //                        sqft
                         result.getInt(13),
 //                        agentid
-                        result.getInt(7)
+                        result.getInt(7),
+                        result.getInt(15)
                 );
                 properties.add(property);
             }
@@ -203,6 +194,7 @@ public class Property extends Observable implements Parcelable {
             while (result.moveToNext()) {
                 Property property = new Property(
                         context,
+                        result.getString(0),
                         result.getString(1),
                         result.getString(2),
                         result.getString(3),
@@ -222,7 +214,8 @@ public class Property extends Observable implements Parcelable {
 //                        sqft
                         result.getInt(13),
 //                        agentid
-                        result.getInt(7)
+                        result.getInt(7),
+                        result.getInt(15)
                 );
                 properties.add(property);
             }
@@ -246,6 +239,7 @@ public class Property extends Observable implements Parcelable {
             while (result.moveToNext()) {
                 Property property = new Property(
                         context,
+                        result.getString(0),
                         result.getString(1),
                         result.getString(2),
                         result.getString(3),
@@ -265,12 +259,18 @@ public class Property extends Observable implements Parcelable {
 //                        sqft
                         result.getInt(13),
 //                        agentid
-                        result.getInt(7)
+                        result.getInt(7),
+                        result.getInt(15)
                 );
                 properties.add(property);
             }
         }
         return properties;
+    }
+
+    public Integer delete() {
+        Log.d("GetPro", getPropertyId());
+        return db.deleteValue(getPropertyId());
     }
 
     /**
@@ -397,10 +397,26 @@ public class Property extends Observable implements Parcelable {
         this.propertySquareFoot = propertySquareFoot;
     }
 
+    public int getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(int ownerId) {
+        this.ownerId = ownerId;
+    }
+
+    public String getPropertyId() {
+        return propertyId;
+    }
+
+    public void setPropertyId(String propertyId) {
+        this.propertyId = propertyId;
+    }
+
+
     @Override
     public String toString() {
         return "Property{" +
-                "context=" + context +
                 ", propertyMainImg='" + propertyMainImg + '\'' +
                 ", propertySecondImg='" + propertySecondImg + '\'' +
                 ", propertyThirdImg='" + propertyThirdImg + '\'' +
@@ -414,8 +430,34 @@ public class Property extends Observable implements Parcelable {
                 ", propertyNumOfBed=" + propertyNumOfBed +
                 ", propertyNumOfBath=" + propertyNumOfBath +
                 ", propertySquareFoot=" + propertySquareFoot +
+                ", propertyId='" + propertyId + '\'' +
                 ", db=" + db +
-                ", allProperties=" + allProperties +
+                ", ownerId=" + ownerId +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(propertyMainImg);
+        dest.writeString(propertySecondImg);
+        dest.writeString(propertyThirdImg);
+        dest.writeString(propertyFourthImg);
+        dest.writeString(propertyFifthImg);
+        dest.writeString(propertySixthImg);
+        dest.writeInt(agentId);
+        dest.writeString(propertyType);
+        dest.writeString(propertyPrice);
+        dest.writeString(propertyAddress);
+        dest.writeInt(propertyNumOfBed);
+        dest.writeInt(propertyNumOfBath);
+        dest.writeInt(propertySquareFoot);
+        dest.writeString(propertyId);
+        dest.writeTypedList(allProperties);
+        dest.writeInt(ownerId);
     }
 }

@@ -47,6 +47,18 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
         region = new Region(this);
         property = new Property(this);
         populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL);
+// alex_mason: 2131165277
+// olivia_james: 2131165371
+// raphael_jones: 2131165379
+        int raph = this.getResources().getIdentifier("raphael_jones", "drawable", this.getPackageName());
+        Log.d("raph", raph + " ");
+
+        int alex_mason_drawable = this.getResources().getIdentifier("alex_mason", "drawable", this.getPackageName());
+
+        Log.d("alex_mason_drawable", alex_mason_drawable + " ");
+        int olivia_james_drawable = this.getResources().getIdentifier("olivia_james", "drawable", this.getPackageName());
+
+        Log.d("olivia_james_drawable", olivia_james_drawable + " ");
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);

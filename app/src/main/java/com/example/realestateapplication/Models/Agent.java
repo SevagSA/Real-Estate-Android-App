@@ -106,10 +106,6 @@ public class Agent implements Parcelable {
                 '}';
     }
 
-// alex_mason_drawable: 2131165277
-// olivia_james_drawable: 2131165371
-// raph_drawable: 2131165379
-
     /**
      * To get all of the names of the agents from the DB.
      *

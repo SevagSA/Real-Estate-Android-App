@@ -15,11 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
+import com.example.realestateapplication.Interfaces.Communication;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.R;
 import com.google.android.libraries.places.api.Places;
@@ -35,7 +37,6 @@ import java.util.List;
 public class SearchPropertyActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
-
     EditText searchBar;
 
     @Override

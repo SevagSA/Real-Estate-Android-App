@@ -29,6 +29,7 @@ public class PropertyDBHelper extends SQLiteOpenHelper {
     public static final String COL_NUM_OF_BATH = "num_of_bath";
     public static final String COL_SQFT = "sqft";
     public static final String COL_DATE_ADDED = "date_added";
+    public static final String COL_OWNER_ID = "owner_id";
 
 
     public PropertyDBHelper(@Nullable Context context) {
@@ -53,7 +54,9 @@ public class PropertyDBHelper extends SQLiteOpenHelper {
                 COL_NUM_OF_BATH + " integer, " +
                 COL_SQFT + " integer, "+
                 COL_DATE_ADDED + " date, " +
-                "FOREIGN KEY(" + COL_AGENT_ID + ") REFERENCES Agent(id))");
+                COL_OWNER_ID + " integer, "+
+                "FOREIGN KEY(" + COL_AGENT_ID + ") REFERENCES Agent(id)," +
+                "FOREIGN KEY(" + COL_OWNER_ID + ") REFERENCES User(id))");
     }
 
     @Override
@@ -67,7 +70,7 @@ public class PropertyDBHelper extends SQLiteOpenHelper {
     public Long addData(String mainImg, String secondImg, String thirdImg, String fourthImg,
                         String fifthImg, String sixthImg, int agentId, String propertyType,
                         String propertyPrice, String propertyAddress, int numOfBed, int numOfBath,
-                        int sqft, String date_added) {
+                        int sqft, String date_added, int ownerId) {
         ContentValues values = new ContentValues();
         values.put(COL_MAIN_IMG, mainImg);
         values.put(COL_SECOND_IMG, secondImg);
@@ -83,6 +86,7 @@ public class PropertyDBHelper extends SQLiteOpenHelper {
         values.put(COL_NUM_OF_BATH, numOfBath);
         values.put(COL_SQFT, sqft);
         values.put(COL_DATE_ADDED, date_added);
+        values.put(COL_OWNER_ID, ownerId);
 
 
         long result = db.insert(TABLE_NAME, null, values);
@@ -102,7 +106,7 @@ public class PropertyDBHelper extends SQLiteOpenHelper {
     public long updateData(String id, String mainImg, String secondImg, String thirdImg, String fourthImg,
                            String fifthImg, String sixthImg, int agentId, String propertyType,
                            String propertyPrice, String propertyAddress, int numOfBed, int numOfBath,
-                           String sqft, String date_added) {
+                           String sqft, String date_added, int ownerId) {
         ContentValues values = new ContentValues();
         values.put(COL_MAIN_IMG, mainImg);
         values.put(COL_SECOND_IMG, secondImg);
@@ -118,6 +122,7 @@ public class PropertyDBHelper extends SQLiteOpenHelper {
         values.put(COL_NUM_OF_BATH, numOfBath);
         values.put(COL_SQFT, sqft);
         values.put(COL_DATE_ADDED, date_added);
+        values.put(COL_OWNER_ID, ownerId);
         return db.update(TABLE_NAME, values, "ID = ?", new String[]{id});
     }
 

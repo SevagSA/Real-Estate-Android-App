@@ -56,9 +56,7 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         holder.recentPropertyNumOfBed.setText(properties.get(position).getPropertyNumOfBed());
         holder.recentPropertyNumOfBath.setText(properties.get(position).getPropertyNumOfBath());
         holder.recentPropertySquareFoot.setText(properties.get(position).getPropertySquareFoot());
-
-        Log.d("property", properties.get(position).toString());
-
+        
         holder.exploreRecentPropertyBtn.setOnClickListener(e -> {
             Intent intent = new Intent(context, PropertyDetailActivity.class);
             intent.putExtra("property", properties.get(position));

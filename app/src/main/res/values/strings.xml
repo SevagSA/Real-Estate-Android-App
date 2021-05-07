@@ -66,4 +66,8 @@
 
     <string name="login_shared_pref">Login</string>
     <string name="user_id_shared_pref">UserId</string>
+    <string name="actions">Property Actions</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="update_or_delete_your_listing">Update or Delete your listing.</string>
 </resources>

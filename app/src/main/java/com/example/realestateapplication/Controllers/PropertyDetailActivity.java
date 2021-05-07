@@ -1,11 +1,17 @@
 package com.example.realestateapplication.Controllers;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +32,7 @@ import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Fragments.ContactPropertyAgentDialogFragment;
 import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.Models.Property;
+import com.example.realestateapplication.PropertyActionAlertDialog;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -38,8 +45,6 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
     ImageButton agentButton;
     Property property;
     Agent agent;
-    ArrayList<String> imageUrl = new ArrayList<>();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +90,19 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
         ((TextView) findViewById(R.id.propertyNumOfBathText)).setText(property.getPropertyNumOfBath());
         ((TextView) findViewById(R.id.propertyNumOfBedText)).setText(property.getPropertyNumOfBed());
         ((TextView) findViewById(R.id.propertySQFTText)).setText(property.getPropertySquareFoot());
+
+        String userId = getSharedPreferences("User", Context.MODE_PRIVATE)
+                .getString(getResources().getString(R.string.user_id_shared_pref), null);
+        if (Integer.toString(property.getOwnerId()).equals(userId)) {
+            Button propertyActionBtn = findViewById(R.id.property_actions_btn);
+            propertyActionBtn.setVisibility(View.VISIBLE);
+            propertyActionBtn.setOnClickListener(e -> {
+                        PropertyActionAlertDialog dialogFragment =
+                                new PropertyActionAlertDialog(property.getPropertyId(), this);
+                        dialogFragment.show(getSupportFragmentManager(), "PropertyActionAlertDialog");
+                    }
+            );
+        }
 
 
         (findViewById(R.id.propertyAgentContactBtn)).setOnClickListener(e -> {

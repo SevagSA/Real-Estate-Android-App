@@ -14,6 +14,8 @@ public class LikedProperty {
 //    TODO if you are going to use address, then use address as the ID for the Property table aswell.
 //     Also, address will need to be UNIQUE (w/Constraint) and enforece the uniquenes on the app
 //     (if a user chooses a same address, notify it to them.)
+//     Right now, since it is not unique, if you like a property, all properties that share
+//     the same address will be rendered in the likedListingActivity.
     private String propertyAddress;
     private LikedPropertyDBHelper db;
     private Context context;
@@ -63,6 +65,7 @@ public class LikedProperty {
             while (cursor.moveToNext()) {
                 Property property = new Property(
                         context,
+                        cursor.getString(0),
                         cursor.getString(1),
                         cursor.getString(2),
                         cursor.getString(3),
@@ -82,7 +85,8 @@ public class LikedProperty {
 //                        sqft
                         cursor.getInt(13),
 //                        agentid
-                        cursor.getInt(7)
+                        cursor.getInt(7),
+                        cursor.getInt(14)
                 );
                 properties.add(property);
             }
