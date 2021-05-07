@@ -1,6 +1,7 @@
 package com.example.realestateapplication.Controllers;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,8 +47,9 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
         toggle.syncState();
 
         agentGridLayout = findViewById(R.id.agentGridLayout);
+        Agent agent = new Agent(this);
         AgentAdapter agentAdapter = new AgentAdapter(
-                this, R.layout.agent_item, Agent.getAllAgents());
+                this, R.layout.agent_item, agent.getAllAgents());
         agentGridLayout.setAdapter(agentAdapter);
     }
 
@@ -90,6 +92,10 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
             AboutDialogFragment dialogFragment = new AboutDialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "AboutDialogFragment");
         } else if (id == R.id.logout) {
+            SharedPreferences shared = getSharedPreferences("User", MODE_PRIVATE);
+            SharedPreferences.Editor editor = shared.edit();
+            editor.putString(getString(R.string.login_shared_pref), "false");
+            editor.apply();
             startActivity(new Intent(this, LoginActivity.class));
         }
         return true;

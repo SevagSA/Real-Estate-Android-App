@@ -1,8 +1,11 @@
 package com.example.realestateapplication.Controllers;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,10 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.realestateapplication.Fragments.RegistrationDialogFragment;
+import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Pattern;
 
@@ -29,15 +30,15 @@ public class LoginActivity extends AppCompatActivity {
     Button loginBtn;
     Button registerBtn;
     TextView forgotPasswordText;
-    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
-        fAuth = FirebaseAuth.getInstance();
-        if (fAuth.getCurrentUser() != null) {
+        String sharedPreRes = getSharedPreferences("User", Context.MODE_PRIVATE)
+                .getString(getString(R.string.login_shared_pref), null);
+        if (sharedPreRes != null && sharedPreRes.equals("true")) {
             startActivity(new Intent(this, HomeActivity.class));
             finish();
         }
@@ -49,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         forgotPasswordText = findViewById(R.id.forgotPasswordText);
-        forgotPasswordText.setOnClickListener(this::resetPassword);
 
         email = findViewById(R.id.loginEmail);
         password = findViewById(R.id.loginPassword);
@@ -72,46 +72,25 @@ public class LoginActivity extends AppCompatActivity {
             }
 
             if (isValid) {
-                fAuth.signInWithEmailAndPassword(emailStr, passwordStr)
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                            } else {
-                                Toast.makeText(
-                                        getApplicationContext(),
-                                        "Error: " + task.getException().getMessage(),
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        });
+                User user = new User(this);
+                user.setEmail(emailStr);
+                user.setPassword(passwordStr);
+                Long result = user.login();
+                if (result != -1) {
+                    SharedPreferences sp = getSharedPreferences("User", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor Ed = sp.edit();
+                    Ed.putString(getString(R.string.login_shared_pref), "true");
+                    Ed.putString(getString(R.string.user_id_shared_pref), result.toString());
+                    Ed.apply();
+                    Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                } else {
+                    Toast.makeText(getApplicationContext(), "Account does not exist.", Toast.LENGTH_LONG).show();
+                }
+
             } else {
                 Toast.makeText(getApplicationContext(), "Please fix the errors", Toast.LENGTH_LONG).show();
             }
         });
     }
-
-//    TODO this is not MVC: The method should be in the User model
-    public void resetPassword(View v) {
-        EditText newEmail = new EditText(v.getContext());
-        AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(v.getContext());
-        passwordResetDialog.setTitle("Reset Password");
-        passwordResetDialog.setMessage("Enter your email to receive a reset link");
-        passwordResetDialog.setView(newEmail);
-
-        passwordResetDialog.setPositiveButton("Reset", (dialog, which) -> {
-            String email = newEmail.getText().toString();
-            fAuth.sendPasswordResetEmail(email)
-                    .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(getApplicationContext(), "Reset link sent to your email", Toast.LENGTH_LONG).show();
-                })
-                    .addOnFailureListener(e -> {
-                        Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                    });
-        });
-        passwordResetDialog.setNegativeButton("Go back", (dialog, which) -> {
-
-        });
-        passwordResetDialog.create().show();
-    }
-
 }

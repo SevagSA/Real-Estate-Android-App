@@ -9,9 +9,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 // each activity is a controller for their respective model(s) and view(s);
 public class MainActivity extends AppCompatActivity{
@@ -23,11 +22,6 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language__select);
-
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-//
-//        myRef.setValue("Hello, World123!");
 
         frenchLanguageBtn = findViewById(R.id.frenchLanguageBtn);
         frenchLanguageBtn.setOnClickListener(e -> {
@@ -46,6 +40,7 @@ public class MainActivity extends AppCompatActivity{
         createNotificationChannel();
     }
 
+//    TODO watch YT vid on how to do this. Also, is this a requirment? if not, don't do it.
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library

@@ -1,6 +1,7 @@
 package com.example.realestateapplication.Controllers;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -24,7 +25,6 @@ import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -34,10 +34,9 @@ import java.util.Observer;
 //  (Model = Class, Controller = Activity classes, View=XML)
 public class HomeActivity extends AppCompatActivity implements Observer, NavigationView.OnNavigationItemSelectedListener {
 
-
-    private Region region = new Region();
-
-    Button changeLayoutOrientationBtn;
+    private Region region;
+    private Property property;
+    private Button changeLayoutOrientationBtn;
 
     private DrawerLayout drawer;
 
@@ -45,6 +44,9 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        region = new Region(this);
+        property = new Property(this);
+        populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL);
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -62,14 +64,11 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
         toggle.syncState();
 
         // creating a relationship between the observable Model and the observer Activity
-        region = new Region();
+        region = new Region(this);
         region.addObserver(this);
 
-        Property homeActivityProperty = new Property(this);
-        homeActivityProperty.setAllPropertiesFromDB();
-
         changeLayoutOrientationBtn = findViewById(R.id.changeLayoutOrientationBtn);
-        changeLayoutOrientationBtn.setOnClickListener(e -> handleChangeLayoutBtnClick(homeActivityProperty.getAllProperties()));
+        changeLayoutOrientationBtn.setOnClickListener(e -> handleChangeLayoutBtnClick());
     }
 
     @Override
@@ -111,7 +110,10 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
             AboutDialogFragment dialogFragment = new AboutDialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "AboutDialogFragment");
         } else if (id == R.id.logout) {
-            FirebaseAuth.getInstance().signOut();
+            SharedPreferences shared = getSharedPreferences("User", MODE_PRIVATE);
+            SharedPreferences.Editor editor = shared.edit();
+            editor.putString(getString(R.string.login_shared_pref), "false");
+            editor.apply();
             startActivity(new Intent(this, LoginActivity.class));
         }
         return true;
@@ -133,22 +135,21 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
     /**
      * Render the Regions and Recent Listings in their respective RecyclerView.
      */
-    public void populateRecyclerViewListings(int layoutOrientation, ArrayList<Property> properties) {
+    public void populateRecyclerViewListings(int layoutOrientation) {
         ArrayList<Region> regions = region.getAllRegions();
 
-        LinearLayoutManager regionsLayoutManager = new LinearLayoutManager(
-                this, layoutOrientation, false
-        );
+        LinearLayoutManager regionLayoutManager = new LinearLayoutManager(
+                this, layoutOrientation, false);
         RecyclerView regionsRecyclerView = findViewById(R.id.regionsRecyclerView);
-        regionsRecyclerView.setLayoutManager(regionsLayoutManager);
+        regionsRecyclerView.setLayoutManager(regionLayoutManager);
         RegionsRecyclerViewAdapter regionsAdapter =
                 new RegionsRecyclerViewAdapter(regions, this);
         regionsRecyclerView.setAdapter(regionsAdapter);
 
-//        TODO you probably don't need 2 different LayoutManagers
         LinearLayoutManager propertyLayoutManager = new LinearLayoutManager(
                 this, layoutOrientation, false
         );
+        ArrayList<Property> properties = property.getRecentProperties();
         RecyclerView propertyRecyclerView = findViewById(R.id.recentPropertiesRecyclerView);
         propertyRecyclerView.setLayoutManager(propertyLayoutManager);
         PropertyCardRecyclerViewAdapter propertyAdapter =
@@ -160,42 +161,13 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
      * Change LinearLayoutManager orientation of regionsLayoutManager and propertyLayoutManager
      * based on their current orientation
      */
-    private void handleChangeLayoutBtnClick(ArrayList<Property> properties) {
+    private void handleChangeLayoutBtnClick() {
         if (changeLayoutOrientationBtn.getText().equals(getString(R.string.verticalLayout))) {
-            populateRecyclerViewListings(LinearLayoutManager.VERTICAL, properties);
+            populateRecyclerViewListings(LinearLayoutManager.VERTICAL);
             changeLayoutOrientationBtn.setText(R.string.horizontalLayout);
         } else if (changeLayoutOrientationBtn.getText().equals(getString(R.string.horizontalLayout))) {
-            populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL, properties);
+            populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL);
             changeLayoutOrientationBtn.setText(R.string.verticalLayout);
         }
     }
 }
-
-//Places.initialize(getApplicationContext(), "AIzaSyB4Iy3hfKjH3SudYoP1TU_uDF83bvHGMq4");
-//        PlacesClient placesClient = Places.createClient(getApplicationContext());
-//
-//        Log.d("here", findViewById(R.id.searchInputBarSearchView) + "");
-//
-//        AutocompleteSupportFragment autocompleteSupportFragment = (AutocompleteSupportFragment)
-//        getSupportFragmentManager().findFragmentById(R.id.searchInputBarSearchView);
-//
-//        autocompleteSupportFragment.setTypeFilter(TypeFilter.CITIES);
-//        autocompleteSupportFragment.setLocationBias(RectangularBounds.newInstance(
-//        new LatLng(48.435135, -125.615663),
-//        new LatLng(69.292697, -68.509274)));
-//        autocompleteSupportFragment.setCountries("CA");
-//        autocompleteSupportFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS));
-//
-//        autocompleteSupportFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
-//@Override
-//public void onPlaceSelected(@NonNull Place place) {
-//        Log.i("onPlaceSelected",
-//        place.getName() + ", "
-//        + place.getAddress() + ", id: " + place.getId());
-//        }
-//
-//@Override
-//public void onError(@NonNull Status status) {
-//        Log.d("onError", "An error occurred: " + status);
-//        }
-//        });

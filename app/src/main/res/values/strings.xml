@@ -63,4 +63,7 @@
     <string name="please_select_a_language">Please select a language.</string>
     <string name="choisissez_une_langue">Choisissez une langue.</string>
     <string name="select_image">Select Image (6 required)</string>
+
+    <string name="login_shared_pref">Login</string>
+    <string name="user_id_shared_pref">UserId</string>
 </resources>

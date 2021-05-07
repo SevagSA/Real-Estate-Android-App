@@ -1,6 +1,8 @@
 package com.example.realestateapplication.Controllers;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,26 +19,27 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
+import com.example.realestateapplication.Models.LikedProperty;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
 public class LikedListingsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
-    FirebaseAuth fAuth;
-    User user = new User(this);
+    private LikedProperty likedProperty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liked_listings);
-        fAuth = FirebaseAuth.getInstance();
-        user.getLikedListingsForUser(fAuth.getCurrentUser().getEmail());
+        String userId = getSharedPreferences("User", Context.MODE_PRIVATE)
+                .getString(getString(R.string.user_id_shared_pref), null);
+        likedProperty = new LikedProperty(userId, this);
+        populateRecyclerViewListings();
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -93,6 +96,10 @@ public class LikedListingsActivity extends AppCompatActivity implements Navigati
             AboutDialogFragment dialogFragment = new AboutDialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "AboutDialogFragment");
         } else if (id == R.id.logout) {
+            SharedPreferences shared = getSharedPreferences("User", MODE_PRIVATE);
+            SharedPreferences.Editor editor = shared.edit();
+            editor.putString(getString(R.string.login_shared_pref), "false");
+            editor.apply();
             startActivity(new Intent(this, LoginActivity.class));
         }
         return true;
@@ -111,14 +118,14 @@ public class LikedListingsActivity extends AppCompatActivity implements Navigati
     /**
      * Render the liked listings by the current user
      */
-    public void populateRecyclerViewListings(ArrayList<Property> likedProperties) {
+    public void populateRecyclerViewListings() {
         LinearLayoutManager likedPropertyLayoutManager = new LinearLayoutManager(
                 this, LinearLayoutManager.VERTICAL, false
         );
         RecyclerView likedPropertyRecyclerView = findViewById(R.id.likedRecycler);
         likedPropertyRecyclerView.setLayoutManager(likedPropertyLayoutManager);
         PropertyCardRecyclerViewAdapter likedPropertyAdapter =
-                new PropertyCardRecyclerViewAdapter(likedProperties, this);
+                new PropertyCardRecyclerViewAdapter(likedProperty.getLikedListingsForUser(),this);
         likedPropertyRecyclerView.setAdapter(likedPropertyAdapter);
     }
 }

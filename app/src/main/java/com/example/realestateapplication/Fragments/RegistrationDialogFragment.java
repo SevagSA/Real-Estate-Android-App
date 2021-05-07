@@ -1,9 +1,9 @@
 package com.example.realestateapplication.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
-import android.media.SoundPool;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.realestateapplication.Controllers.HomeActivity;
-import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class RegistrationDialogFragment extends DialogFragment {
@@ -33,7 +26,6 @@ public class RegistrationDialogFragment extends DialogFragment {
     EditText password;
     EditText password2;
     Button register_btn;
-    FirebaseAuth fAuth;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,8 +37,9 @@ public class RegistrationDialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_registration, container, false);
 
-        fAuth = FirebaseAuth.getInstance();
-        if (fAuth.getCurrentUser() != null) {
+        String sharedPreRes = getActivity().getSharedPreferences("User", Context.MODE_PRIVATE)
+                .getString(getString(R.string.login_shared_pref), null);
+        if (sharedPreRes != null && sharedPreRes.equals("true")) {
             Intent intent = new Intent(getContext(), HomeActivity.class);
             getContext().startActivity(intent);
             getActivity().finish();
@@ -71,7 +64,6 @@ public class RegistrationDialogFragment extends DialogFragment {
                 isValid = false;
             }
 
-
             if (!Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$", emailStr)) {
                 email.setError("Email is not valid");
                 isValid = false;
@@ -93,24 +85,25 @@ public class RegistrationDialogFragment extends DialogFragment {
             }
 
             if (isValid) {
-                fAuth.createUserWithEmailAndPassword(emailStr, passwordStr)
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                User user = new User(fullNameStr, emailStr,
-                                        fAuth.getCurrentUser().getUid(), null);
-                                user.insert();
-                                Toast.makeText(getContext(), "Account created", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(getContext(), HomeActivity.class);
-                                getContext().startActivity(intent);
-                            } else {
-                                Toast.makeText(
-                                        getContext(),
-                                        "Error: " + task.getException().getMessage(),
-                                        Toast.LENGTH_LONG).show();
-                            }
-                        });
-            } else {
-                Toast.makeText(getContext(), "Please fix the errors", Toast.LENGTH_LONG).show();
+                User user = new User(getContext());
+                user.setFullName(fullNameStr);
+                user.setEmail(emailStr);
+                user.setPassword(passwordStr);
+                Long result = user.insert();
+                if (result != -1) {
+                    SharedPreferences sp = getActivity().getSharedPreferences("User", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor Ed = sp.edit();
+                    Ed.putString(getString(R.string.login_shared_pref), "true");
+                    Ed.putString(getString(R.string.user_id_shared_pref), result.toString());
+                    Ed.apply();
+                    Toast.makeText(getActivity(), "Account registered", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(getContext(), HomeActivity.class);
+                    getContext().startActivity(intent);
+                    getActivity().finish();
+                } else {
+                    Toast.makeText(getActivity(),
+                            "There was an error while registering your account.", Toast.LENGTH_LONG).show();
+                }
             }
         });
         return root;

@@ -18,7 +18,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -43,10 +42,12 @@ public class ListPropertyActivity extends AppCompatActivity {
 
     Button propertyAddressSelectBtn;
 
-    ArrayList<String> agents = Agent.getAllAgentsNames();
+
+    Agent agent;
+    ArrayList<String> agents;
+
     GridView imageGridView;
     Button selectImgBtn;
-
 
     ArrayList<String> propertyImages = new ArrayList<>();
 
@@ -62,6 +63,9 @@ public class ListPropertyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_property);
+
+        agent = new Agent(this);
+        agents = agent.getAllAgentsNames();
 
         imageGridView = findViewById(R.id.selectedPropertyImagesGridView);
         propertyPrice = findViewById(R.id.listPropertyPrice);
@@ -80,10 +84,13 @@ public class ListPropertyActivity extends AppCompatActivity {
                     !propertySquareFoot.getText().toString().isEmpty() &&
                     imageGridView.getChildCount() == 6
             ) {
-                Property property = new Property();
+                Property property = new Property(this);
                 property.setContext(getApplicationContext());
-                property.setPropertyPrice(Double.parseDouble(((EditText)findViewById(R.id.listPropertyPrice)).getText().toString()));
+                property.setPropertyPrice(((EditText)findViewById(R.id.listPropertyPrice)).getText().toString());
+//                TODO uncomment during presentations.
 //                property.setPropertyAddress(propertyAddressSelectBtn.getText().toString());
+//                TODO comment during presentations
+                property.setPropertyAddress("8 Av. Forden Westmount, Quebec H3G1K4 Canada");
                 property.setPropertyNumOfBed(Integer.parseInt
                         (((EditText)findViewById(R.id.listPropertyBed)).getText().toString()));
                 property.setPropertyNumOfBath(Integer.parseInt
@@ -98,10 +105,16 @@ public class ListPropertyActivity extends AppCompatActivity {
                 property.setPropertyFifthImg(propertyImages.get(4));
                 property.setPropertySixthImg(propertyImages.get(5));
 
-                property.setAgent(Agent.getAgentByName(agentName));
+                agent.setFullName(agentName);
+                property.setAgentId(agent.getIdOfAgentByName());
                 property.setPropertyType(propertyType);
-                property.insertProperty();
-//                TODO redirect to the property's detail page.
+                Long result = property.insertProperty();
+                if (result != -1) {
+                    Intent intent = new Intent(this, PropertyDetailActivity.class);
+                    intent.putExtra("property", property);
+                    startActivity(intent);
+                    finish();
+                }
             } else {
                 Toast.makeText(getApplicationContext(), "Please fill in all the fields " +
                         "(6 images are required)", Toast.LENGTH_LONG).show();
@@ -141,7 +154,11 @@ public class ListPropertyActivity extends AppCompatActivity {
         selectImgBtn.setOnClickListener(e -> {
             imageGridView.setBackground(null);
             startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT,
-                    android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), 3);
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI), 3);
+
+//            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+//            intent.addCategory(Intent.CATEGORY_OPENABLE);
+//            startActivityForResult(intent, 3);
         });
 
     }

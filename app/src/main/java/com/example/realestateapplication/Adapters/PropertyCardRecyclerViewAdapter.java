@@ -18,14 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.realestateapplication.Controllers.HomeActivity;
 import com.example.realestateapplication.Controllers.PropertyDetailActivity;
+import com.example.realestateapplication.Models.LikedProperty;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -61,6 +57,8 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         holder.recentPropertyNumOfBath.setText(properties.get(position).getPropertyNumOfBath());
         holder.recentPropertySquareFoot.setText(properties.get(position).getPropertySquareFoot());
 
+        Log.d("property", properties.get(position).toString());
+
         holder.exploreRecentPropertyBtn.setOnClickListener(e -> {
             Intent intent = new Intent(context, PropertyDetailActivity.class);
             intent.putExtra("property", properties.get(position));
@@ -68,8 +66,10 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         });
 
         holder.likedIconImg.setOnClickListener(e -> {
-            FirebaseAuth fAuth = FirebaseAuth.getInstance();
-            User.handleLikedBtnClick(fAuth.getCurrentUser().getEmail(), properties.get(position));
+            String userId = context.getSharedPreferences("User", Context.MODE_PRIVATE)
+                    .getString(context.getResources().getString(R.string.user_id_shared_pref), null);
+            LikedProperty likedProperty = new LikedProperty(userId, properties.get(position).getPropertyAddress(), context);
+            likedProperty.handleLikedBtnClick();
         });
     }
 

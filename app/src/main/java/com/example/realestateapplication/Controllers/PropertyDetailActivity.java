@@ -1,7 +1,7 @@
 package com.example.realestateapplication.Controllers;
 
 import android.content.Intent;
-import android.icu.lang.UProperty;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -28,20 +28,16 @@ import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class PropertyDetailActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
-    private Toolbar toolbar;
 
     ImageButton agentButton;
     Property property;
+    Agent agent;
     ArrayList<String> imageUrl = new ArrayList<>();
 
 
@@ -68,19 +64,11 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
         property = getIntent().getParcelableExtra("property");
         property.setContext(this);
 
+        agent = new Agent(this);
+        agent = agent.getAgentById(property.getAgentId());
         agentButton = findViewById(R.id.propertyAgentImageView);
         agentButton.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), AgentActivity.class);
-            Agent agent = new Agent(
-                    property.getAgent().getFullName(),
-                    property.getAgent().getCompanyName(),
-                    property.getAgent().getProfileImgId(),
-                    property.getAgent().getNumOfSoldListings(),
-                    property.getAgent().getServiceLocation(),
-                    property.getAgent().getEmail(),
-                    property.getAgent().getPhoneNumber()
-            );
-            Log.d("in the on click", agent.toString());
             intent.putExtra("agent", agent);
             startActivity(intent);
         });
@@ -90,8 +78,8 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
                 .load(property.getPropertyMainImg())
                 .into((ImageView) findViewById(R.id.propertyMainImageView));
 
-        ((ImageView) findViewById(R.id.propertyAgentImageView)).setImageResource(property.getAgent().getProfileImgId());
-        ((TextView) findViewById(R.id.propertyAgentNameText)).setText(property.getAgent().getFullName());
+        ((ImageView) findViewById(R.id.propertyAgentImageView)).setImageResource(agent.getProfileImgId());
+        ((TextView) findViewById(R.id.propertyAgentNameText)).setText(agent.getFullName());
         ((TextView) findViewById(R.id.propertyAddressText)).setText(property.getPropertyAddress());
         ((TextView) findViewById(R.id.propertyPriceText)).setText(property.getPropertyPrice());
         ((TextView) findViewById(R.id.propertyNumOfBathText)).setText(property.getPropertyNumOfBath());
@@ -104,36 +92,7 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
             ContactPropertyAgentDialogFragment dialogFragment = new ContactPropertyAgentDialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "ContactPropertyAgentDialogFragment");
         });
-
         populateRecyclerViewListings();
-
-
-//        FirebaseDatabase.getInstance().getReference()
-//                .child("Property")
-////                TODO the orderByChild will be the address
-//                .orderByChild("propertyNumOfBath")
-////                TODO the equalTo value will be the address
-////                 of the current property
-//                .equalTo(4)
-//                .addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        for (DataSnapshot snap : snapshot.getChildren()) {
-//                            Property property = snap.getValue(Property.class);
-//                            imageUrl.add(property.getPropertyMainImg());
-//                            imageUrl.add(property.getPropertySecondImg());
-//                            imageUrl.add(property.getPropertyThirdImg());
-//                            imageUrl.add(property.getPropertyFourthImg());
-//                            imageUrl.add(property.getPropertyFifthImg());
-//                            imageUrl.add(property.getPropertySixthImg());
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
     }
 
     @Override
@@ -175,6 +134,10 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
             AboutDialogFragment dialogFragment = new AboutDialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "AboutDialogFragment");
         } else if (id == R.id.logout) {
+            SharedPreferences shared = getSharedPreferences("User", MODE_PRIVATE);
+            SharedPreferences.Editor editor = shared.edit();
+            editor.putString(getString(R.string.login_shared_pref), "false");
+            editor.apply();
             startActivity(new Intent(this, LoginActivity.class));
         }
         return true;
@@ -202,40 +165,6 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
         PropertyGalleryRecyclerViewAdapter propertyGalleryAdapter =
                 new PropertyGalleryRecyclerViewAdapter(
                         this, property.getGalleryImagesURLs());
-
-//        PropertyGalleryRecyclerViewAdapter propertyGalleryAdapter =
-//                new PropertyGalleryRecyclerViewAdapter(
-//                        this, imageUrl);
-
-        for (String url : imageUrl) {
-            Log.d("indi url", url);
-        }
-
         propertyGalleryRecyclerView.setAdapter(propertyGalleryAdapter);
     }
 }
-
-
-//    ImageView propertyMainImageView;
-//    ImageView propertyAgentImageView;
-//
-//    TextView propertyAgentNameText;
-//    TextView propertyAddressText;
-//    TextView propertyPriceText;
-//    TextView propertyNumOfBathText;
-//    TextView propertyNumOfBedText;
-//    TextView propertySQFTText;
-//
-//    Button propertyAgentContactBtn;
-//        propertyMainImageView = findViewById(R.id.propertyMainImageView);
-//        propertyAgentImageView = findViewById(R.id.propertyAgentImageView);
-//        propertyAgentNameText = findViewById(R.id.propertyAgentNameText);
-//        propertyAddressText = findViewById(R.id.propertyAddressText);
-//        propertyPriceText = findViewById(R.id.propertyPriceText);
-//        propertyNumOfBathText = findViewById(R.id.propertyNumOfBathText);
-//        propertyNumOfBedText = findViewById(R.id.propertyNumOfBedText);
-//        propertySQFTText = findViewById(R.id.propertySQFTText);
-//        propertyAgentContactBtn = findViewById(R.id.propertyAgentContactBtn);
-
-//        findViewById(R.id.propertyMainImageView).setBackground(
-//                ContextCompat.getDrawable(getApplicationContext(), R.drawable.property_1));

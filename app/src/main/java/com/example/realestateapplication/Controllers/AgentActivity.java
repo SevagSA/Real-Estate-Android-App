@@ -1,6 +1,7 @@
 package com.example.realestateapplication.Controllers;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -30,7 +31,6 @@ import java.util.ArrayList;
 public class AgentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
-    private Agent agent;
 
 
     @Override
@@ -53,11 +53,9 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        populateRecyclerViewListings();
-
-        agent = getIntent().getParcelableExtra("agent");
-
-        Log.d("AGENT ACTIVITY", agent.toString());
+        Agent agent = getIntent().getParcelableExtra("agent");
+        Log.d("agent", agent.toString());
+        populateRecyclerViewListings(agent.getAgentId());
 
         ((ImageView)findViewById(R.id.agentImg)).setImageResource(agent.getProfileImgId());
         ((TextView)findViewById(R.id.agentNameText)).setText(agent.getFullName());
@@ -69,13 +67,12 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
     /**
      * Render the agent's listing by the current user
      */
-    private void populateRecyclerViewListings() {
-        Agent agent = new Agent(this);
-        ArrayList<Property> agentProperties = agent.getAllPropertiesOfAgent();
+    private void populateRecyclerViewListings(String agentId) {
+        Property property = new Property(this);
+        ArrayList<Property> agentProperties = property.getAllPropertiesOfAgent(agentId);
 
         LinearLayoutManager agentPropertyLayoutManager = new LinearLayoutManager(
-                this, LinearLayoutManager.HORIZONTAL, false
-        );
+                this, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView agentPropertyRecyclerView = findViewById(R.id.agentListingRecyclerView);
         agentPropertyRecyclerView.setLayoutManager(agentPropertyLayoutManager);
         PropertyCardRecyclerViewAdapter agentPropertyAdapter =
@@ -122,6 +119,10 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
             AboutDialogFragment dialogFragment = new AboutDialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "AboutDialogFragment");
         } else if (id == R.id.logout) {
+            SharedPreferences shared = getSharedPreferences("User", MODE_PRIVATE);
+            SharedPreferences.Editor editor = shared.edit();
+            editor.putString(getString(R.string.login_shared_pref), "false");
+            editor.apply();
             startActivity(new Intent(this, LoginActivity.class));
         }
         return true;
