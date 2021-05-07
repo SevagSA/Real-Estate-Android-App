@@ -2,6 +2,7 @@ package com.example.realestateapplication.Fragments;
 
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,14 +43,17 @@ public class ContactPropertyAgentDialogFragment extends DialogFragment {
         // notificationId is a unique int for each notification that you must define
 //        notificationManager.notify(notificationId, builder.build());
 
-
-
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.fragment_contact_property_agent, container, false);
+        View root = inflater.inflate(R.layout.fragment_contact_property_agent, container, false);;
+        root.findViewById(R.id.sendEmailBtn).setOnClickListener(e -> {
+            MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.caching);
+            mediaPlayer.start();
+        });
+        return root;
     }
 }
