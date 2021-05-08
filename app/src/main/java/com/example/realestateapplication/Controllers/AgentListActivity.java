@@ -17,6 +17,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.realestateapplication.Adapters.AgentAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
+import com.example.realestateapplication.Fragments.ProfileDialogFragment;
 import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
@@ -97,6 +98,9 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
             editor.putString(getString(R.string.login_shared_pref), "false");
             editor.apply();
             startActivity(new Intent(this, LoginActivity.class));
+        } else if (id == R.id.your_profile) {
+            ProfileDialogFragment dialogFragment = new ProfileDialogFragment();
+            dialogFragment.show(getSupportFragmentManager(), "ProfileDialogFragment");
         }
         return true;
     }

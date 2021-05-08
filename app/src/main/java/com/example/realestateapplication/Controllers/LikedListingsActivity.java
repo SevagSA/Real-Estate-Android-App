@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
+import com.example.realestateapplication.Fragments.ProfileDialogFragment;
 import com.example.realestateapplication.Models.LikedProperty;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.User;
@@ -101,6 +102,9 @@ public class LikedListingsActivity extends AppCompatActivity implements Navigati
             editor.putString(getString(R.string.login_shared_pref), "false");
             editor.apply();
             startActivity(new Intent(this, LoginActivity.class));
+        } else if (id == R.id.your_profile) {
+            ProfileDialogFragment dialogFragment = new ProfileDialogFragment();
+            dialogFragment.show(getSupportFragmentManager(), "ProfileDialogFragment");
         }
         return true;
     }

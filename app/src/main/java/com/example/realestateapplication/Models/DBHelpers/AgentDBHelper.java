@@ -71,7 +71,7 @@ public class AgentDBHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public boolean updateData(String id, String fullName, String companyName, String email, String propertyId, int profileImgId,
+    public int updateData(String id, String fullName, String companyName, String email, String propertyId, int profileImgId,
                               int numOfSoldListings, String serviceLocation, String phoneNumber) {
         ContentValues values = new ContentValues();
         values.put(COL_ID, id);
@@ -82,8 +82,7 @@ public class AgentDBHelper extends SQLiteOpenHelper {
         values.put(COL_NUM_OF_SOLD_LISTINGS, numOfSoldListings);
         values.put(COL_SERVICE_LOCATION, serviceLocation);
         values.put(COL_PHONE_NUMBER, phoneNumber);
-        db.update(TABLE_NAME, values, "ID = ?", new String[]{id});
-        return false;
+        return db.update(TABLE_NAME, values, "ID = ?", new String[]{id});
     }
 
     public Integer deleteValue(String id) {

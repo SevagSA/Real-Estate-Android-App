@@ -7,6 +7,10 @@
         android:id="@+id/about"/>
 
     <item
+        android:title="@string/your_profile"
+        android:id="@+id/your_profile"/>
+
+    <item
         android:title="@string/francais"
         android:id="@+id/changeLanguage"/>
 

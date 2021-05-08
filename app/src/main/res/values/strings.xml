@@ -70,4 +70,9 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="update_or_delete_your_listing">Update or Delete your listing.</string>
+    <string name="your_profile">Your Profile</string>
+    <string name="your_email">Your Email:</string>
+    <string name="your_full_name">Your Full Name:</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit_your_profile">Edit your profile</string>
 </resources>

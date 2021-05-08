@@ -50,13 +50,12 @@ public class RegionDBHelper extends SQLiteOpenHelper {
         return db.rawQuery(query, selectionArgs);
     }
 
-    public boolean updateData(String id, String imgUrl, String locationTitle) {
+    public int updateData(String id, String imgUrl, String locationTitle) {
         ContentValues values = new ContentValues();
         values.put(COL_ID, id);
         values.put(COL_IMG_URL, imgUrl);
         values.put(COL_LOCATION_TITLE, locationTitle);
-        db.update(TABLE_NAME, values, "ID = ?", new String[]{id});
-        return false;
+        return db.update(TABLE_NAME, values, "ID = ?", new String[]{id});
     }
 
     public Integer deleteValue(String id) {

@@ -59,13 +59,12 @@ public class LikedPropertyDBHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public boolean updateData(String id, String userId, String propertyId) {
+    public int updateData(String id, String userId, String propertyId) {
         ContentValues values = new ContentValues();
         values.put(COL_ID, id);
         values.put(COL_USER_ID, userId);
         values.put(COL_PROPERTY_ID, propertyId);
-        db.update(TABLE_NAME, values, "ID = ?", new String[] {id});
-        return false;
+        return db.update(TABLE_NAME, values, "ID = ?", new String[] {id});
     }
 
     public Integer deleteValue(String id) {

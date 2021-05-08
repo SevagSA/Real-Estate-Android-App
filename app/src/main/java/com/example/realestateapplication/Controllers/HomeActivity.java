@@ -15,14 +15,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Adapters.RegionsRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
+import com.example.realestateapplication.Fragments.EditProfileDialogFragment;
+import com.example.realestateapplication.Interfaces.Communication;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
+import com.example.realestateapplication.Fragments.ProfileDialogFragment;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -32,7 +36,8 @@ import java.util.Observer;
 
 // TODO remove observer/observable and just adopts basic MVC
 //  (Model = Class, Controller = Activity classes, View=XML)
-public class HomeActivity extends AppCompatActivity implements Observer, NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements Observer, NavigationView.OnNavigationItemSelectedListener
+            /**Communication */{
 
     private Region region;
     private Property property;
@@ -127,6 +132,9 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
             editor.putString(getString(R.string.login_shared_pref), "false");
             editor.apply();
             startActivity(new Intent(this, LoginActivity.class));
+        } else if (id == R.id.your_profile) {
+            ProfileDialogFragment dialogFragment = new ProfileDialogFragment();
+            dialogFragment.show(getSupportFragmentManager(), "ProfileDialogFragment");
         }
         return true;
     }
@@ -143,6 +151,21 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
     @Override
     public void update(Observable o, Object arg) {
     }
+
+//    @Override
+//    public void handleData(String message) {
+////        pass success message notifiying the user of what their
+////        old full name and email was and what their new one is now.
+//        ProfileDialogFragment f1 = new ProfileDialogFragment();
+//        f1.handleData2(message);
+//    }
+
+//    @Override
+//    public void handleData2(String email, String fullName) {
+////        pass the email and full name
+//        EditProfileDialogFragment f2 = new EditProfileDialogFragment();
+//        f2.handleData(email, fullName);
+//    }
 
     /**
      * Render the Regions and Recent Listings in their respective RecyclerView.

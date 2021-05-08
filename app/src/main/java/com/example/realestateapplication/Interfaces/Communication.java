@@ -1,6 +1,6 @@
 package com.example.realestateapplication.Interfaces;
 
 public interface Communication {
-    void respond(String data);
-    void respond2(String data);
+    void handleData(String message);
+    void handleData2(String email, String fullName);
 }

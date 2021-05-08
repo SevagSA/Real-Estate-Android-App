@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/globalMargin"
-    tools:context=".PropertyActionAlertDialog">
+    tools:context=".Fragments.PropertyActionAlertDialog">
 
     <TextView
         android:id="@+id/propActionH1"
@@ -31,7 +31,7 @@
 
     <Button
         android:id="@+id/propActionDeleteBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:backgroundTint="#FF0000"
@@ -43,30 +43,16 @@
         app:layout_constraintTop_toBottomOf="@id/textView4" />
 
     <Button
-        android:id="@+id/propActionEditBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/btnColor"
-        android:text="@string/edit"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="@dimen/btn_big"
-        app:layout_constraintStart_toEndOf="@+id/propActionDeleteBtn"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <Button
         android:id="@+id/propActionCancelBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:backgroundTint="#3f3f3f"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/btn_big"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/propActionEditBtn"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

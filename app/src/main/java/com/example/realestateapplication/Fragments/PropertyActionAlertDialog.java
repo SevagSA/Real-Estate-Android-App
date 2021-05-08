@@ -1,4 +1,4 @@
-package com.example.realestateapplication;
+package com.example.realestateapplication.Fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.realestateapplication.Controllers.HomeActivity;
 import com.example.realestateapplication.Models.Property;
+import com.example.realestateapplication.R;
 
 public class PropertyActionAlertDialog extends DialogFragment {
 

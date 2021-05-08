@@ -1,13 +1,9 @@
 package com.example.realestateapplication.Controllers;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,13 +26,12 @@ import com.bumptech.glide.Glide;
 import com.example.realestateapplication.Adapters.PropertyGalleryRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Fragments.ContactPropertyAgentDialogFragment;
+import com.example.realestateapplication.Fragments.ProfileDialogFragment;
 import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.Models.Property;
-import com.example.realestateapplication.PropertyActionAlertDialog;
+import com.example.realestateapplication.Fragments.PropertyActionAlertDialog;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
 
 public class PropertyDetailActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -157,6 +152,9 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
             editor.putString(getString(R.string.login_shared_pref), "false");
             editor.apply();
             startActivity(new Intent(this, LoginActivity.class));
+        } else if (id == R.id.your_profile) {
+            ProfileDialogFragment dialogFragment = new ProfileDialogFragment();
+            dialogFragment.show(getSupportFragmentManager(), "ProfileDialogFragment");
         }
         return true;
     }

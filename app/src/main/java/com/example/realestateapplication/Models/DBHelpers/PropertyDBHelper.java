@@ -103,7 +103,7 @@ public class PropertyDBHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public long updateData(String id, String mainImg, String secondImg, String thirdImg, String fourthImg,
+    public int updateData(String id, String mainImg, String secondImg, String thirdImg, String fourthImg,
                            String fifthImg, String sixthImg, int agentId, String propertyType,
                            String propertyPrice, String propertyAddress, int numOfBed, int numOfBath,
                            String sqft, String date_added, int ownerId) {

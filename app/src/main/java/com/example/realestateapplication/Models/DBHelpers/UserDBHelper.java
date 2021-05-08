@@ -61,14 +61,13 @@ public class UserDBHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public boolean updateData(String id, String email, String fullName, String password) {
+    public int updateData(String id, String email, String fullName, String password) {
         ContentValues values = new ContentValues();
         values.put(COL_ID, id);
         values.put(COL_EMAIL, email);
         values.put(COL_FULL_NAME, fullName);
         values.put(COL_PASSWORD, password);
-        db.update(TABLE_NAME, values, "ID = ?", new String[] {id});
-        return false;
+        return db.update(TABLE_NAME, values, "ID = ?", new String[] {id});
     }
 
     public Integer deleteValue(String id) {
