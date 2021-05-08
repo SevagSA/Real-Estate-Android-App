@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -102,7 +103,7 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
 
         (findViewById(R.id.propertyAgentContactBtn)).setOnClickListener(e -> {
             // TODO: you can pass the agent in the constructor and use it in the form (for the email)
-            ContactPropertyAgentDialogFragment dialogFragment = new ContactPropertyAgentDialogFragment();
+            ContactPropertyAgentDialogFragment dialogFragment = new ContactPropertyAgentDialogFragment(property);
             dialogFragment.show(getSupportFragmentManager(), "ContactPropertyAgentDialogFragment");
         });
         populateRecyclerViewListings();

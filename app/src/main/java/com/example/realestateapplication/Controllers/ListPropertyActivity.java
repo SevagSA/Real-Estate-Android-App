@@ -90,7 +90,7 @@ public class ListPropertyActivity extends AppCompatActivity {
 //                TODO uncomment during presentations.
 //                property.setPropertyAddress(propertyAddressSelectBtn.getText().toString());
 //                TODO comment during presentations
-                property.setPropertyAddress("8 Av. Forden Westmount, Quebec H3G1K4 Canada");
+                property.setPropertyAddress("8 Av. Forden Westmount, Quebec H3G1K4");
                 property.setPropertyNumOfBed(Integer.parseInt
                         (((EditText)findViewById(R.id.listPropertyBed)).getText().toString()));
                 property.setPropertyNumOfBath(Integer.parseInt
