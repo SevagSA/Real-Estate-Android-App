@@ -27,6 +27,7 @@ import com.example.realestateapplication.Interfaces.Communication;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
 import com.example.realestateapplication.Fragments.ProfileDialogFragment;
+import com.example.realestateapplication.Models.Unsplash;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -49,6 +50,7 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        new Unsplash();
         region = new Region(this);
         property = new Property(this);
         populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL);

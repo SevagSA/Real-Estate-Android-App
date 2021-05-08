@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.example.realestateapplication.Models.DBHelpers.RegionDBHelper;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 import java.util.Observable;

@@ -9,20 +9,30 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.realestateapplication.Models.Unsplash;
 import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
 
 // each activity is a controller for their respective model(s) and view(s);
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     Button frenchLanguageBtn;
     Button englishLanguageBtn;
+
+    /**
+     * An API that returns images of regions (the ones you have listed). So every time, there would
+     * be a new image of that place
+     *
+     * OR
+     *
+     * An Activity that displays various numbers relating to the current housing market in Canada.
+     * Liked avg mortgage prices, house prices, etc.
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language__select);
-
         frenchLanguageBtn = findViewById(R.id.frenchLanguageBtn);
         frenchLanguageBtn.setOnClickListener(e -> {
 //            TODO: 1. translate the app to english.
