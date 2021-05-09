@@ -51,26 +51,39 @@ public class RegistrationDialogFragment extends DialogFragment {
             String password2Str = password2.getText().toString().trim();
             boolean isValid = true;
 
-            if (fullNameStr.isEmpty() || emailStr.isEmpty() || passwordStr.isEmpty() || password2Str.isEmpty()) {
-                fullName.setError("Full name is required");
-                email.setError("Email is required");
-                password.setError("Password is required");
-                password2.setError("Password confirmation is required");
+            if (fullNameStr.isEmpty()) {
+                fullName.setError(getString(R.string.full_name_required));
                 isValid = false;
             }
 
+            if (emailStr.isEmpty()) {
+                email.setError(getString(R.string.email_is_required));
+                isValid = false;
+            }
+
+            if (passwordStr.isEmpty()) {
+                password.setError(getString(R.string.password_is_required));
+                isValid = false;
+            }
+
+            if (password2Str.isEmpty()) {
+                password2.setError(getString(R.string.password2_is_required));
+                isValid = false;
+            }
+
+
             if (!Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$", emailStr)) {
-                email.setError("Email is not valid");
+                email.setError(getString(R.string.email_not_valid));
                 isValid = false;
             }
 
             if (passwordStr.length() < 6) {
-                password.setError("Password must be longer than 6 characters");
+                password.setError(getString(R.string.pass_must_be_longer));
                 isValid = false;
             }
 
             if (!passwordStr.equals(password2Str)) {
-                password2.setError("Passwords don't match");
+                password2.setError(getString(R.string.passwords_dont_match));
                 isValid = false;
             }
 
@@ -86,13 +99,13 @@ public class RegistrationDialogFragment extends DialogFragment {
                     Ed.putString(getString(R.string.login_shared_pref), "true");
                     Ed.putString(getString(R.string.user_id_shared_pref), result.toString());
                     Ed.apply();
-                    Toast.makeText(getActivity(), "Account registered", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), getString(R.string.account_registered), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(getContext(), HomeActivity.class);
                     getContext().startActivity(intent);
                     getActivity().finish();
                 } else {
                     Toast.makeText(getActivity(),
-                            "There was an error while registering your account.", Toast.LENGTH_LONG).show();
+                            R.string.error_while_registering_your_account, Toast.LENGTH_LONG).show();
                 }
             }
         });

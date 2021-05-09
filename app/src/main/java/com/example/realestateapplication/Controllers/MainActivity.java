@@ -9,14 +9,15 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.localehelper.LocaleHelper;
 import com.example.realestateapplication.Models.Unsplash;
 import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
-import com.example.realestateapplication.Utils.LocalHelper;
 
 import java.util.Locale;
 
@@ -44,29 +45,31 @@ public class MainActivity extends AppCompatActivity {
 
         String isloggedInStr = getSharedPreferences("User", Context.MODE_PRIVATE)
                 .getString(getString(R.string.login_shared_pref), null);
+        Log.d("isloggedInStr", isloggedInStr);
+
         if (isloggedInStr != null && isloggedInStr.equals("true")) {
             startActivity(new Intent(this, HomeActivity.class));
             finish();
         }
 
-        LocalHelper localHelper = new LocalHelper(this);
+        LocaleHelper localeHelper = new LocaleHelper(this);
 
         String chosenLang = getSharedPreferences("User", Context.MODE_PRIVATE)
                 .getString(getString(R.string.selected_language), null);
         if (chosenLang != null && (chosenLang.equals("hy") || chosenLang.equals("en"))) {
-            localHelper.changeLocale(chosenLang);
+            localeHelper.changeLocale(chosenLang, "User", R.string.selected_language);
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         }
 
         armenianLanguageBtn.setOnClickListener(e -> {
-            localHelper.changeLocale("hy");
+            localeHelper.changeLocale("hy", "User", R.string.selected_language);
             startActivity(new Intent(this, LoginActivity.class));
         });
 
         englishLanguageBtn = findViewById(R.id.englishLanguageBtn);
         englishLanguageBtn.setOnClickListener(e -> {
-            localHelper.changeLocale("en");
+            localeHelper.changeLocale("en", "User", R.string.selected_language);
             startActivity(new Intent(this, LoginActivity.class));
         });
     }

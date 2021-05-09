@@ -66,27 +66,27 @@ public class EditProfileDialogFragment extends DialogFragment {
             boolean isValid = true;
 
             if (emailStr.isEmpty()) {
-                email.setError("Email is required");
+                email.setError(getString(R.string.email_is_required));
                 isValid = false;
             }
 
             if (!Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$", emailStr)) {
-                email.setError("Email is not valid");
+                email.setError(getString(R.string.email_not_valid));
                 isValid = false;
             }
 
             if (passwordStr.isEmpty()) {
-                password.setError("Password is required");
+                password.setError(getString(R.string.password_is_required));
                 isValid = false;
             }
 
             if (passwordStr.length() < 6) {
-                password.setError("Password must be longer than 6 characters");
+                password.setError(getString(R.string.pass_must_be_longer));
                 isValid = false;
             }
 
             if (!passwordStr.equals(password2Str)) {
-                password2.setError("Passwords don't match");
+                password2.setError(getString(R.string.passwords_dont_match));
                 isValid = false;
             }
 
@@ -106,7 +106,7 @@ public class EditProfileDialogFragment extends DialogFragment {
                 dialogFragment.show(getActivity().getSupportFragmentManager(), "ProfileDialogFragment");
                 if (result == 0) {
                     Toast.makeText(getActivity(),
-                            "There was an error while updating your account.", Toast.LENGTH_LONG).show();
+                            R.string.error_while_updating_your_account, Toast.LENGTH_LONG).show();
                 }
             }
         });

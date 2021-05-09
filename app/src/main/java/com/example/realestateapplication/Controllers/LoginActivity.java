@@ -60,12 +60,17 @@ public class LoginActivity extends AppCompatActivity {
             boolean isValid = true;
 
             if (emailStr.isEmpty()) {
-                email.setError("Email is required");
+                email.setError(getString(R.string.email_is_required));
+                isValid = false;
+            }
+
+            if (!Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$", emailStr)) {
+                email.setError(getString(R.string.email_not_valid));
                 isValid = false;
             }
 
             if (passwordStr.isEmpty()) {
-                password.setError("Password is required");
+                password.setError(getString(R.string.password_is_required));
                 isValid = false;
             }
 
@@ -80,14 +85,14 @@ public class LoginActivity extends AppCompatActivity {
                     Ed.putString(getString(R.string.login_shared_pref), "true");
                     Ed.putString(getString(R.string.user_id_shared_pref), result.toString());
                     Ed.apply();
-                    Toast.makeText(getApplicationContext(), "Logged in", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.logged_in), Toast.LENGTH_LONG).show();
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                 } else {
-                    Toast.makeText(getApplicationContext(), "Account does not exist.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.account_does_not_exits), Toast.LENGTH_LONG).show();
                 }
 
             } else {
-                Toast.makeText(getApplicationContext(), "Please fix the errors", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.fix_the_errors), Toast.LENGTH_LONG).show();
             }
         });
     }

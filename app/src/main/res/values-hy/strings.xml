@@ -55,7 +55,6 @@
     <string name="register">Գրանցվել</string>
     <string name="email">Էլ</string>
     <string name="english">Անգլերեն</string>
-    <string name="app_contact_email">info@redwood.com</string>
     <string name="list_property_for_sale">Նշեք վաճառքի գույք</string>
     <string name="click_to_enter_address">հասցեն մուտքագրելու համար</string>
     <string name="list_of_all_agents">Բոլոր գործակալների ցուցակ</string>
@@ -65,9 +64,6 @@
     <string name="choose_lang_armenian">Ընտրեք լեզու</string>
     <string name="select_image">Ընտրեք պատկեր (պահանջվում է 6)</string>
 
-    <string name="login_shared_pref">Մուտք</string>
-    <!-- The same -->
-    <string name="user_id_shared_pref">UserId</string>
     <string name="actions">Գույքի գործողություններ</string>
     <string name="delete">ջնջել</string>
     <string name="your_profile">Քո պրոֆիլը</string>
@@ -76,9 +72,24 @@
     <string name="cancel">Չեղարկել</string>
     <string name="edit_your_profile">Խմբագրեք ձեր պրոֆիլը</string>
 
-    <string name="selected_language">Խմբագրեք ձեր պրոֆիլը</string>
     <string name="home_page">Գլխավոր էջ</string>
     <string name="edit">Խմբագրել</string>
     <string name="permanently_delete_your_listing">Մշտապես ջնջե՞լ ձեր ցուցակը:</string>
+    <string name="contact">Կապ</string>
+    <string name="email_is_required">Փոստը պարտադիր է</string>
+    <string name="password_is_required">Գաղտնաբառը պարտադիր է</string>
+    <string name="logged_in">Մուտք գործել</string>
+    <string name="account_does_not_exits">Հաշիվ գոյություն չունի</string>
+    <string name="fix_the_errors">Խնդրում ենք շտկել սխալները</string>
+    <string name="fill_in_all_fields">Լրացրեք բոլոր դաշտերը (պարտադիր է 6 պատկեր)</string>
+    <string name="full_name_required">Անունը պարտադիր է</string>
+    <string name="password2_is_required">Գաղտնաբառի հաստատումը պարտադիր է</string>
+    <string name="email_not_valid">Էլփոստը վավեր չէ</string>
+    <string name="pass_must_be_longer">Գաղտնաբառը պետք է լինի ավելի քան 6 նիշ</string>
+    <string name="passwords_dont_match">Գաղտնաբառերը համընկնում չեն</string>
+    <string name="error_while_updating_your_account">Ձեր հաշիվը թարմացնելիս սխալ տեղի ունեցավ</string>
+    <string name="error_while_registering_your_account">Ձեր հաշիվը գրանցելիս սխալ տեղի ունեցավ:</string>
+    <string name="account_registered">Հաշիվը գրանցված է</string>
+
 
 </resources>

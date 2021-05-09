@@ -43,7 +43,7 @@ public class ContactPropertyAgentDialogFragment extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View root = inflater.inflate(R.layout.fragment_contact_property_agent, container, false);;
+        View root = inflater.inflate(R.layout.fragment_contact_property_agent, container, false);
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("Channel ID", "Notification Name", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manager = getContext().getSystemService(NotificationManager.class);
@@ -66,7 +66,7 @@ public class ContactPropertyAgentDialogFragment extends DialogFragment {
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "Channel ID");
             builder.setContentTitle("Message has been sent");
-            builder.setContentText("Your message for " + property.getPropertyAddress() +" was sent!");
+            builder.setContentText("Your message for " + property.getPropertyAddress() + " was sent!");
             builder.setSmallIcon(R.drawable.house_notification_icon);
             builder.addAction(R.drawable.house_notification_icon, "Home Page", contentPendingIntent);
             builder.addAction(R.drawable.ic_agents, "View Agents", agentPendingIntent);

@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.localehelper.LocaleHelper;
 import com.example.realestateapplication.Adapters.PropertyGalleryRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Fragments.ContactPropertyAgentDialogFragment;
@@ -32,7 +33,6 @@ import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Fragments.PropertyActionAlertDialog;
 import com.example.realestateapplication.R;
-import com.example.realestateapplication.Utils.LocalHelper;
 import com.google.android.material.navigation.NavigationView;
 
 public class PropertyDetailActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -167,11 +167,11 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
             ProfileDialogFragment dialogFragment = new ProfileDialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "ProfileDialogFragment");
         } else if (id == R.id.changeLanguage) {
-            LocalHelper localHelper = new LocalHelper(this);
+            LocaleHelper localeHelper = new LocaleHelper(this);
             if (chosenLang.equals("hy")) {
-                localHelper.changeLocale("en");
+                localeHelper.changeLocale("en", "User", R.string.selected_language);
             } else {
-                localHelper.changeLocale("hy");
+                localeHelper.changeLocale("hy", "User", R.string.selected_language);
             }
             Intent intent = getIntent();
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

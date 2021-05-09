@@ -116,8 +116,7 @@ public class ListPropertyActivity extends AppCompatActivity {
                     finish();
                 }
             } else {
-                Toast.makeText(getApplicationContext(), "Please fill in all the fields " +
-                        "(6 images are required)", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), getString(R.string.fill_in_all_fields), Toast.LENGTH_LONG).show();
             }
         });
 

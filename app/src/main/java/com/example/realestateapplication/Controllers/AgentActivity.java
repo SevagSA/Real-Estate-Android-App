@@ -20,13 +20,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.localehelper.LocaleHelper;
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Fragments.ProfileDialogFragment;
 import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.R;
-import com.example.realestateapplication.Utils.LocalHelper;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -137,11 +137,11 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
             ProfileDialogFragment dialogFragment = new ProfileDialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "ProfileDialogFragment");
         } else if (id == R.id.changeLanguage) {
-            LocalHelper localHelper = new LocalHelper(this);
+            LocaleHelper localeHelper = new LocaleHelper(this);
             if (chosenLang.equals("hy")) {
-                localHelper.changeLocale("en");
+                localeHelper.changeLocale("en", "User", R.string.selected_language);
             } else {
-                localHelper.changeLocale("hy");
+                localeHelper.changeLocale("hy", "User", R.string.selected_language);
             }
             Intent intent = getIntent();
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

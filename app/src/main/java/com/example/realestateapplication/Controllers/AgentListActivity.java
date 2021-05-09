@@ -16,12 +16,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.localehelper.LocaleHelper;
 import com.example.realestateapplication.Adapters.AgentAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Fragments.ProfileDialogFragment;
 import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.R;
-import com.example.realestateapplication.Utils.LocalHelper;
 import com.google.android.material.navigation.NavigationView;
 
 public class AgentListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -113,11 +113,11 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
             ProfileDialogFragment dialogFragment = new ProfileDialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "ProfileDialogFragment");
         } else if (id == R.id.changeLanguage) {
-            LocalHelper localHelper = new LocalHelper(this);
+            LocaleHelper localeHelper = new LocaleHelper(this);
             if (chosenLang.equals("hy")) {
-                localHelper.changeLocale("en");
+                localeHelper.changeLocale("en", "User", R.string.selected_language);
             } else {
-                localHelper.changeLocale("hy");
+                localeHelper.changeLocale("hy", "User", R.string.selected_language);
             }
             Intent intent = getIntent();
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

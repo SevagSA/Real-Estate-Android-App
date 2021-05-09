@@ -1,2 +1,3 @@
+include ':app:LocaleHelper'
 include ':app'
 rootProject.name = "RealEstateApplication"
