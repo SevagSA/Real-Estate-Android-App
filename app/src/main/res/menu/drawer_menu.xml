@@ -17,6 +17,11 @@
             android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/home_page" />
 
+        <item
+            android:id="@+id/nav_down_payment_calculator"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/down_payment_calculator" />
+
     </group>
 
     <item android:title="@string/communicate">

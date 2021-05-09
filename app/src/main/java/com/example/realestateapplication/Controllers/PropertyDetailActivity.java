@@ -29,7 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.localehelper.LocaleHelper;
 import com.example.realestateapplication.Adapters.PropertyGalleryRecyclerViewAdapter;
-import com.example.realestateapplication.ContactEmailSuccessFragment;
+import com.example.realestateapplication.Fragments.ContactEmailSuccessFragment;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Fragments.ContactPropertyAgentDialogFragment;
 import com.example.realestateapplication.Fragments.ProfileDialogFragment;
@@ -192,6 +192,9 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
                 break;
             case R.id.nav_home_page:
                 startActivity(new Intent(this, HomeActivity.class));
+                break;
+            case R.id.nav_down_payment_calculator:
+                startActivity(new Intent(this, DownPaymentActivity.class));
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

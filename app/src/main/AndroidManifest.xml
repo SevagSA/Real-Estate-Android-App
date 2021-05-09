@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Controllers.AgentListActivity"></activity>
+        <activity android:name=".Controllers.DownPaymentActivity"></activity>
+        <activity android:name=".Controllers.AgentListActivity" />
         <activity android:name=".Controllers.LikedListingsActivity" />
         <activity android:name=".Controllers.AppBarActivity" />
 

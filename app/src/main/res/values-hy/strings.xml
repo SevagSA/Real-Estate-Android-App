@@ -96,4 +96,9 @@
     <string name="share_title">Ստուգեք Ռեդվուդ Ռիելթիը `անշարժ գույքի ցուցակման նոր android հավելված:</string>
     <string name="share_via">բաժանել Ռեդվուդ Ռիելթիը ի միջոցով</string>
     <string name="share">բաժանել</string>
+    <string name="calculate">հաշվարկել</string>
+    <string name="monthly_payment">Ամսական վճար</string>
+    <string name="price_of_the_house">Տան գինը</string>
+    <string name="down_payment">Կանխավճար (%)</string>
+    <string name="down_payment_calculator">Կանխավճարի հաշվիչ</string>
 </resources>

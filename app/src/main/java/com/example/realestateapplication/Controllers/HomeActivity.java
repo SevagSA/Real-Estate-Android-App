@@ -26,7 +26,6 @@ import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapte
 import com.example.realestateapplication.Adapters.RegionsRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Fragments.EditProfileDialogFragment;
-import com.example.realestateapplication.Interfaces.Communication;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
 import com.example.realestateapplication.Fragments.ProfileDialogFragment;
@@ -38,9 +37,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
-        /**Communication */
-{
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Region region;
     private Property property;
@@ -117,6 +114,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_home_page:
                 startActivity(new Intent(this, HomeActivity.class));
                 break;
+            case R.id.nav_down_payment_calculator:
+                startActivity(new Intent(this, DownPaymentActivity.class));
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -179,22 +179,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
-
-
-//    @Override
-//    public void handleData(String message) {
-////        pass success message notifiying the user of what their
-////        old full name and email was and what their new one is now.
-//        ProfileDialogFragment f1 = new ProfileDialogFragment();
-//        f1.handleData2(message);
-//    }
-
-//    @Override
-//    public void handleData2(String email, String fullName) {
-////        pass the email and full name
-//        EditProfileDialogFragment f2 = new EditProfileDialogFragment();
-//        f2.handleData(email, fullName);
-//    }
 
     /**
      * Render the Regions and Recent Listings in their respective RecyclerView.

@@ -14,8 +14,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.realestateapplication.Fragments.ProfileDialogFragment;
-import com.example.realestateapplication.Interfaces.Communication;
 import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
 
@@ -25,7 +23,7 @@ public class EditProfileDialogFragment extends DialogFragment {
 
     User user;
     String userId;
-    private Communication comm;
+
 
     public EditProfileDialogFragment() {
         // Required empty public constructor
@@ -111,19 +109,5 @@ public class EditProfileDialogFragment extends DialogFragment {
         });
 
         return root;
-    }
-
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-//        comm = (Communication)getActivity();
-//        getActivity().findViewById(R.id.userEditBtn).setOnClickListener(e -> {
-//            comm.handleData2("this is the message");
-//        });
-    }
-
-    public void handleData(String email, String fullName) {
-        Toast.makeText(getActivity(), email + " " + fullName, Toast.LENGTH_LONG).show();
     }
 }

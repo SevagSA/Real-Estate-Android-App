@@ -112,6 +112,9 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
             case R.id.nav_home_page:
                 startActivity(new Intent(this, HomeActivity.class));
                 break;
+            case R.id.nav_down_payment_calculator:
+                startActivity(new Intent(this, DownPaymentActivity.class));
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;

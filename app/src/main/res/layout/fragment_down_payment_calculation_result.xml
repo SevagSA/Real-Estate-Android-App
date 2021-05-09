@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:padding="@dimen/globalMargin"
+    tools:context=".Fragments.DownPaymentResultFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/h3Title"
+        android:textColor="@color/h1TitleBlack"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:text="@string/monthly_payment"/>
+
+
+    <EditText
+        android:id="@+id/calulationResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="5,000$"
+        android:focusable="true"
+        />
+
+</LinearLayout>

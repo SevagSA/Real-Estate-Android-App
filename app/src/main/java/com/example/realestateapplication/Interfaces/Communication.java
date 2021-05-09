@@ -1,6 +1,6 @@
 package com.example.realestateapplication.Interfaces;
 
 public interface Communication {
-    void handleData(String message);
-    void handleData2(String email, String fullName);
+    void calculateTotalAmount(double totalHousePrice, double downPayment);
+    void updateHousePrice(double newResult);
 }

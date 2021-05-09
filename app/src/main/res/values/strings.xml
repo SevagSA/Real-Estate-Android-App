@@ -101,5 +101,9 @@
     <string name="share_title">Hey! Check Redwood Realty, a new real estate listing android app!</string>
     <string name="share_via">Share Redwood Realty via</string>
     <string name="share">Share</string>
-
+    <string name="calculate">Calculate</string>
+    <string name="monthly_payment">Monthly Payment</string>
+    <string name="price_of_the_house">Price of the house</string>
+    <string name="down_payment">Down Payment (%)</string>
+    <string name="down_payment_calculator">Down Payment Calculator</string>
 </resources>

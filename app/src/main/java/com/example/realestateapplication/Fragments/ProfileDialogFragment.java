@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.realestateapplication.Interfaces.Communication;
 import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
 
@@ -20,7 +19,6 @@ import com.example.realestateapplication.R;
 public class ProfileDialogFragment extends DialogFragment {
 
     private User user;
-    private Communication comm;
 
     public ProfileDialogFragment() {
         // Required empty public constructor
@@ -61,18 +59,5 @@ public class ProfileDialogFragment extends DialogFragment {
         fullName.setText(user.getFullName());
         
         return root;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-//        comm = (Communication)getActivity();
-//        getActivity().findViewById(R.id.userEditBtn).setOnClickListener(e -> {
-//            comm.handleData("email", "full name");
-//        });
-    }
-
-    public void handleData2(String message) {
-        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
     }
 }
