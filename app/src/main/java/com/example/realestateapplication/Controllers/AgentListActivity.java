@@ -73,12 +73,17 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
             case R.id.nav_list_property:
                 startActivity(new Intent(this, ListPropertyActivity.class));
                 break;
-            case R.id.nav_share_fb:
-                Toast.makeText(this, "nav_share_fb", Toast.LENGTH_LONG).show();
+            case R.id.nav_share:
+
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = getString(R.string.about);
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+                        getString(R.string.share_title));
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_via)));
                 break;
-            case R.id.nav_share_tweet:
-                Toast.makeText(this, "nav_share_tweet", Toast.LENGTH_LONG).show();
-                break;
+
             case R.id.nav_list_of_agents:
                 startActivity(new Intent(this, AgentListActivity.class));
                 break;

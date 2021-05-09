@@ -57,7 +57,7 @@
     <string name="click_to_enter_address">հասցեն մուտքագրելու համար</string>
     <string name="list_of_all_agents">Բոլոր գործակալների ցուցակ</string>
     <string name="view_agent">Դիտել գործակալը</string>
-    <string name="about_desc">Redwood Realty- ը անշարժ գույքի ցուցակման ծրագիր է, որը թույլ է տալիս տանտերերին, ովքեր ցանկանում են վաճառել իրենց տունը, ցուցակագրել իրենց ունեցվածքը և ներկայանալ մեր հարթակում գտնվող անշարժ գույքի լավագույն գործակալներից մեկի կողմից:</string>
+    <string name="about_desc">Ռեդվուդ Ռիելթիը անշարժ գույքի ցուցակման ծրագիր է, որը թույլ է տալիս տանտերերին, ովքեր ցանկանում են վաճառել իրենց տունը, ցուցակագրել իրենց ունեցվածքը և ներկայանալ մեր հարթակում գտնվող անշարժ գույքի լավագույն գործակալներից մեկի կողմից:</string>
     <string name="please_select_a_language">Խնդրում ենք ընտրել լեզու:</string>
     <string name="choose_lang_armenian">Ընտրեք լեզու</string>
     <string name="select_image">Ընտրեք պատկեր (պահանջվում է 6)</string>
@@ -93,5 +93,7 @@
     <string name="your_message_for">Ձեր հաղորդագրությունը հանուն </string>
     <string name="view_agents">Դիտել գործակալներին</string>
     <string name="email_sent">Նամակն ուղարկվել է</string>
-
+    <string name="share_title">Ստուգեք Ռեդվուդ Ռիելթիը `անշարժ գույքի ցուցակման նոր android հավելված:</string>
+    <string name="share_via">բաժանել Ռեդվուդ Ռիելթիը ի միջոցով</string>
+    <string name="share">բաժանել</string>
 </resources>

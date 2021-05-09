@@ -98,5 +98,8 @@
     <string name="your_message_for">Your message for </string>
     <string name="view_agents">View Agents</string>
     <string name="email_sent">Email sent</string>
+    <string name="share_title">Hey! Check Redwood Realty, a new real estate listing android app!</string>
+    <string name="share_via">Share Redwood Realty via</string>
+    <string name="share">Share</string>
 
 </resources>
