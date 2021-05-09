@@ -44,8 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:text="@string/choose_lang_armenian"
         android:textColor="@color/white"
-        android:text="@string/choisissez_une_langue"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,22 +76,22 @@
         />
 
     <Button
-        android:id="@+id/frenchLanguageBtn"
-        android:layout_height="wrap_content"
-        android:text="@string/francais"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/btnColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/englishLanguageBtn"
-
+        android:id="@+id/armenianLanguageBtn"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/globalMargin"
         android:layout_marginLeft="@dimen/globalMargin"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="@dimen/globalMargin"
         android:layout_marginRight="@dimen/globalMargin"
+
+        android:text="@string/armenian"
         android:textAllCaps="false"
-        android:textSize="@dimen/btn_big" />
+        android:textColor="@color/white"
+        android:textSize="@dimen/btn_big"
+        app:backgroundTint="@color/btnColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/englishLanguageBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

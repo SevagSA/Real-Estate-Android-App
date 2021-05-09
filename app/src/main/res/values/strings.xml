@@ -28,7 +28,6 @@
     <string name="_1stImage">1st image</string>
     <string name="_2ndImage">2nd image</string>
     <string name="sellProperty">Sell property</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_address">Enter address</string>
     <string name="search_a_property_by_address">Search a property by address</string>
     <string name="list_property">List property</string>
@@ -42,7 +41,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="liked_listings">Liked Listings</string>
     <string name="your_liked_listings">Your liked listings</string>
-    <string name="francais">Français</string>
+    <string name="armenian">հայերեն</string>
     <string name="logout">Logout</string>
     <string name="about">About</string>
     <string name="search">Search</string>
@@ -61,18 +60,21 @@
     <string name="view_agent">View Agent</string>
     <string name="about_desc">Redwood Realty is a real estate listing application that allows homeowners who want to sell their house to list their property and be represented by one of many of the top real estate agents that are on our platform.</string>
     <string name="please_select_a_language">Please select a language.</string>
-    <string name="choisissez_une_langue">Choisissez une langue.</string>
+    <string name="choose_lang_armenian">Ընտրեք լեզու</string>
     <string name="select_image">Select Image (6 required)</string>
 
     <string name="login_shared_pref">Login</string>
     <string name="user_id_shared_pref">UserId</string>
     <string name="actions">Property Actions</string>
-    <string name="edit">Edit</string>
     <string name="delete">Delete</string>
-    <string name="update_or_delete_your_listing">Update or Delete your listing.</string>
     <string name="your_profile">Your Profile</string>
     <string name="your_email">Your Email:</string>
     <string name="your_full_name">Your Full Name:</string>
     <string name="cancel">Cancel</string>
     <string name="edit_your_profile">Edit your profile</string>
+
+    <string name="selected_language">Selected Language</string>
+    <string name="home_page">Home Page</string>
+    <string name="edit">Edit</string>
+    <string name="permanently_delete_your_listing">Permanently delete your listing?</string>
 </resources>

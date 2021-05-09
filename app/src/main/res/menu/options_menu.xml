@@ -11,7 +11,7 @@
         android:id="@+id/your_profile"/>
 
     <item
-        android:title="@string/francais"
+        android:title="@string/armenian"
         android:id="@+id/changeLanguage"/>
 
     <item

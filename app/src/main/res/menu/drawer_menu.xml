@@ -12,6 +12,11 @@
             android:icon="@drawable/ic_agents"
             android:title="@string/list_of_all_agents" />
 
+        <item
+            android:id="@+id/nav_home_page"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/home_page" />
+
 <!--        <item-->
 <!--            android:id="@+id/nav_see_sent_messages"-->
 <!--            android:icon="@drawable/ic_baseline_mail_24"-->

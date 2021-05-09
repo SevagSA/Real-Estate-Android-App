@@ -37,14 +37,6 @@ public class RegistrationDialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_registration, container, false);
 
-        String sharedPreRes = getActivity().getSharedPreferences("User", Context.MODE_PRIVATE)
-                .getString(getString(R.string.login_shared_pref), null);
-        if (sharedPreRes != null && sharedPreRes.equals("true")) {
-            Intent intent = new Intent(getContext(), HomeActivity.class);
-            getContext().startActivity(intent);
-            getActivity().finish();
-        }
-
         fullName = root.findViewById(R.id.fullName);
         email = root.findViewById(R.id.email);
         password = root.findViewById(R.id.password);
@@ -59,18 +51,16 @@ public class RegistrationDialogFragment extends DialogFragment {
             String password2Str = password2.getText().toString().trim();
             boolean isValid = true;
 
-            if (emailStr.isEmpty()) {
+            if (fullNameStr.isEmpty() || emailStr.isEmpty() || passwordStr.isEmpty() || password2Str.isEmpty()) {
+                fullName.setError("Full name is required");
                 email.setError("Email is required");
+                password.setError("Password is required");
+                password2.setError("Password confirmation is required");
                 isValid = false;
             }
 
             if (!Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$", emailStr)) {
                 email.setError("Email is not valid");
-                isValid = false;
-            }
-
-            if (passwordStr.isEmpty()) {
-                password.setError("Password is required");
                 isValid = false;
             }
 

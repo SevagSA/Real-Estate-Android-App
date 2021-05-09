@@ -1,5 +1,6 @@
 package com.example.realestateapplication.Controllers;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Fragments.ProfileDialogFragment;
 import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.R;
+import com.example.realestateapplication.Utils.LocalHelper;
 import com.google.android.material.navigation.NavigationView;
 
 public class AgentListActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,10 +29,15 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
     GridView agentGridLayout;
     private DrawerLayout drawer;
 
+    private String chosenLang;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agent_list);
+
+        chosenLang = getSharedPreferences("User", Context.MODE_PRIVATE)
+                .getString(getString(R.string.selected_language), null);
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -77,6 +84,10 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
                 break;
             case R.id.nav_list_of_agents:
                 startActivity(new Intent(this, AgentListActivity.class));
+                break;
+            case R.id.nav_home_page:
+                startActivity(new Intent(this, HomeActivity.class));
+                break;
         }
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -101,8 +112,34 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
         } else if (id == R.id.your_profile) {
             ProfileDialogFragment dialogFragment = new ProfileDialogFragment();
             dialogFragment.show(getSupportFragmentManager(), "ProfileDialogFragment");
+        } else if (id == R.id.changeLanguage) {
+            LocalHelper localHelper = new LocalHelper(this);
+            if (chosenLang.equals("hy")) {
+                localHelper.changeLocale("en");
+            } else {
+                localHelper.changeLocale("hy");
+            }
+            Intent intent = getIntent();
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            finish();
+            startActivity(intent);
+            chosenLang = getSharedPreferences("User", Context.MODE_PRIVATE)
+                    .getString(getString(R.string.selected_language), null);
+            Toast.makeText(this, chosenLang, Toast.LENGTH_LONG).show();
+            invalidateOptionsMenu();
         }
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem item = menu.findItem(R.id.changeLanguage);
+        if (chosenLang.equals("hy")) {
+            item.setTitle(R.string.english);
+        } else {
+            item.setTitle(R.string.armenian);
+        }
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

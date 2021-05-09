@@ -29,16 +29,15 @@ public class LoginActivity extends AppCompatActivity {
     EditText password;
     Button loginBtn;
     Button registerBtn;
-    TextView forgotPasswordText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
-        String sharedPreRes = getSharedPreferences("User", Context.MODE_PRIVATE)
+        String isloggedInStr = getSharedPreferences("User", Context.MODE_PRIVATE)
                 .getString(getString(R.string.login_shared_pref), null);
-        if (sharedPreRes != null && sharedPreRes.equals("true")) {
+        if (isloggedInStr != null && isloggedInStr.equals("true")) {
             startActivity(new Intent(this, HomeActivity.class));
             finish();
         }
@@ -49,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
             dialogFragment.show(getSupportFragmentManager(), "RegistrationDialogFragment");
         });
 
-        forgotPasswordText = findViewById(R.id.forgotPasswordText);
 
         email = findViewById(R.id.loginEmail);
         password = findViewById(R.id.loginPassword);
