@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class Region extends Observable {
+public class Region {
 
     private String imgURL;
     private String locationTitle;
@@ -39,7 +39,6 @@ public class Region extends Observable {
         }
         return regions;
     }
-
 
     public String getLocationTitle() {
         return locationTitle;

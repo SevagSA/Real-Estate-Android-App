@@ -49,25 +49,12 @@ public class LikedPropertyDBHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public Cursor runQuery(String query) {
-        Cursor result = db.rawQuery(query, null);
-        return result;
-    }
-
     public Cursor runQuery(String query, String[] selectionArgs) {
         Cursor result = db.rawQuery(query, selectionArgs);
         return result;
     }
 
-    public int updateData(String id, String userId, String propertyId) {
-        ContentValues values = new ContentValues();
-        values.put(COL_ID, id);
-        values.put(COL_USER_ID, userId);
-        values.put(COL_PROPERTY_ID, propertyId);
-        return db.update(TABLE_NAME, values, "ID = ?", new String[] {id});
-    }
-
     public Integer deleteValue(String id) {
-        return db.delete(TABLE_NAME,"ID = ?", new String[] {id});
+        return db.delete(TABLE_NAME, "ID = ?", new String[]{id});
     }
 }

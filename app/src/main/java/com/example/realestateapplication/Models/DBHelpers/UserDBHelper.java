@@ -17,9 +17,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
     private static final String COL_ID = "ID";
     private static final String COL_EMAIL = "email";
     private static final String COL_FULL_NAME = "fullName";
-//    TODO given that this is a school project, hashing the password
-//     does not really matter. However, if you have time, make sure
-//     to implemented encryption and decryption
+    //  Given that this is a school project, hashing the password does not really matter.
     private static final String COL_PASSWORD = "password";
 
 
@@ -31,7 +29,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS User(" + COL_ID + "integer primary key autoincrement," +
-                                COL_EMAIL + " text, " + COL_FULL_NAME + " text, " + COL_PASSWORD + " text)");
+                COL_EMAIL + " text, " + COL_FULL_NAME + " text, " + COL_PASSWORD + " text)");
     }
 
     @Override
@@ -51,11 +49,6 @@ public class UserDBHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public Cursor runQuery(String query) {
-        Cursor result = db.rawQuery(query, null);
-        return result;
-    }
-
     public Cursor runQuery(String query, String[] selectionArgs) {
         Cursor result = db.rawQuery(query, selectionArgs);
         return result;
@@ -67,10 +60,6 @@ public class UserDBHelper extends SQLiteOpenHelper {
         values.put(COL_EMAIL, email);
         values.put(COL_FULL_NAME, fullName);
         values.put(COL_PASSWORD, password);
-        return db.update(TABLE_NAME, values, "ID = ?", new String[] {id});
-    }
-
-    public Integer deleteValue(String id) {
-        return db.delete(TABLE_NAME,"ID = ?", new String[] {id});
+        return db.update(TABLE_NAME, values, "ID = ?", new String[]{id});
     }
 }

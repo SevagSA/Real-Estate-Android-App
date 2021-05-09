@@ -52,9 +52,9 @@ public class PropertyDBHelper extends SQLiteOpenHelper {
                 COL_PROPERTY_ADDRESS + " text, " +
                 COL_NUM_OF_BED + " integer, " +
                 COL_NUM_OF_BATH + " integer, " +
-                COL_SQFT + " integer, "+
+                COL_SQFT + " integer, " +
                 COL_DATE_ADDED + " date, " +
-                COL_OWNER_ID + " integer, "+
+                COL_OWNER_ID + " integer, " +
                 "FOREIGN KEY(" + COL_AGENT_ID + ") REFERENCES Agent(id)," +
                 "FOREIGN KEY(" + COL_OWNER_ID + ") REFERENCES User(id))");
     }
@@ -101,29 +101,6 @@ public class PropertyDBHelper extends SQLiteOpenHelper {
     public Cursor runQuery(String query, String[] selectionArgs) {
         Cursor result = db.rawQuery(query, selectionArgs);
         return result;
-    }
-
-    public int updateData(String id, String mainImg, String secondImg, String thirdImg, String fourthImg,
-                           String fifthImg, String sixthImg, int agentId, String propertyType,
-                           String propertyPrice, String propertyAddress, int numOfBed, int numOfBath,
-                           String sqft, String date_added, int ownerId) {
-        ContentValues values = new ContentValues();
-        values.put(COL_MAIN_IMG, mainImg);
-        values.put(COL_SECOND_IMG, secondImg);
-        values.put(COL_THIRD_IMG, thirdImg);
-        values.put(COL_FOURTH_IMG, fourthImg);
-        values.put(COL_FIFTH_IMG, fifthImg);
-        values.put(COL_SIXTH_IMG, sixthImg);
-        values.put(COL_AGENT_ID, agentId);
-        values.put(COL_PROPERTY_TYPE, propertyType);
-        values.put(COL_PROPERTY_PRICE, propertyPrice);
-        values.put(COL_PROPERTY_ADDRESS, propertyAddress);
-        values.put(COL_NUM_OF_BED, numOfBed);
-        values.put(COL_NUM_OF_BATH, numOfBath);
-        values.put(COL_SQFT, sqft);
-        values.put(COL_DATE_ADDED, date_added);
-        values.put(COL_OWNER_ID, ownerId);
-        return db.update(TABLE_NAME, values, "ID = ?", new String[]{id});
     }
 
     public Integer deleteValue(String id) {

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -127,9 +126,7 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
             case R.id.nav_list_property:
                 startActivity(new Intent(this, ListPropertyActivity.class));
                 break;
-//            case R.id.nav_see_sent_messages:
-//                Toast.makeText(this, "Sent msg", Toast.LENGTH_LONG).show();
-//                break;
+
             case R.id.nav_share_fb:
                 Toast.makeText(this, "nav_share_fb", Toast.LENGTH_LONG).show();
                 break;

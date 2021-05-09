@@ -43,7 +43,6 @@
     <string name="navigation_drawer_close">Փակել նավիգացիոն դարակը</string>
     <string name="liked_listings">Հավանած ցանկեր</string>
     <string name="your_liked_listings">Ձեր հավանած ցանկերը</string>
-    <string name="armenian">հայերեն</string>
     <string name="logout">Դուրս</string>
     <string name="about">Մասին</string>
     <string name="search">Որոնում</string>
@@ -54,7 +53,6 @@
     <string name="password_confirmation">Գաղտնաբառի հաստատում</string>
     <string name="register">Գրանցվել</string>
     <string name="email">Էլ</string>
-    <string name="english">Անգլերեն</string>
     <string name="list_property_for_sale">Նշեք վաճառքի գույք</string>
     <string name="click_to_enter_address">հասցեն մուտքագրելու համար</string>
     <string name="list_of_all_agents">Բոլոր գործակալների ցուցակ</string>
@@ -90,6 +88,9 @@
     <string name="error_while_updating_your_account">Ձեր հաշիվը թարմացնելիս սխալ տեղի ունեցավ</string>
     <string name="error_while_registering_your_account">Ձեր հաշիվը գրանցելիս սխալ տեղի ունեցավ:</string>
     <string name="account_registered">Հաշիվը գրանցված է</string>
-
+    <string name="message_has_been_sent">Հաղորդագրությունն ուղարկվել է</string>
+    <string name="was_sent"> ուղարկված է</string>
+    <string name="your_message_for">Ձեր հաղորդագրությունը հանուն </string>
+    <string name="view_agents">Դիտել գործակալներին</string>
 
 </resources>

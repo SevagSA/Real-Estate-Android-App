@@ -43,7 +43,7 @@ public class RegistrationDialogFragment extends DialogFragment {
         password2 = root.findViewById(R.id.password2);
         register_btn = root.findViewById(R.id.register_btn);
 
-//    TODO this is not MVC: The method should be in the User model
+        // Validating user input before passing it to the model.
         register_btn.setOnClickListener(e -> {
             String fullNameStr = fullName.getText().toString().trim();
             String emailStr = email.getText().toString().trim();

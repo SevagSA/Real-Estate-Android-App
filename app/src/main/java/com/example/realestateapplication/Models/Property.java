@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class Property extends Observable implements Parcelable {
+public class Property implements Parcelable {
 
     private Context context;
     private String propertyMainImg;
@@ -27,7 +27,7 @@ public class Property extends Observable implements Parcelable {
     private int agentId;
     private String propertyType;
     private String propertyPrice;
-    //    TODO: this will be the address provide by Google Places API.
+//    TODO: this will be the address provide by Google Places API.
 //     it will be used by getListingsBySearchQuery(). It is still not implemented
 //     Decide to use either getAddress(), or getName(). getName() seems more concise.
     private String propertyAddress;

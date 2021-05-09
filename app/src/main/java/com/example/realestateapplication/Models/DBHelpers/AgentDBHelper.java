@@ -47,20 +47,6 @@ public class AgentDBHelper extends SQLiteOpenHelper {
     }
 
 
-    public Long addData(String fullName, String companyName, String email, String propertyId, int profileImgId,
-                        int numOfSoldListings, String serviceLocation, String phoneNumber) {
-        ContentValues values = new ContentValues();
-        values.put(COL_FULL_NAME, fullName);
-        values.put(COL_COMPANY_NAME, companyName);
-        values.put(COL_EMAIL, email);
-        values.put(COL_PROFILE_IMG_ID, propertyId);
-        values.put(COL_NUM_OF_SOLD_LISTINGS, numOfSoldListings);
-        values.put(COL_SERVICE_LOCATION, serviceLocation);
-        values.put(COL_PHONE_NUMBER, phoneNumber);
-        long result = db.insert(TABLE_NAME, null, values);
-        return result;
-    }
-
     public Cursor runQuery(String query) {
         Cursor result = db.rawQuery(query, null);
         return result;
@@ -69,23 +55,5 @@ public class AgentDBHelper extends SQLiteOpenHelper {
     public Cursor runQuery(String query, String[] selectionArgs) {
         Cursor result = db.rawQuery(query, selectionArgs);
         return result;
-    }
-
-    public int updateData(String id, String fullName, String companyName, String email, String propertyId, int profileImgId,
-                              int numOfSoldListings, String serviceLocation, String phoneNumber) {
-        ContentValues values = new ContentValues();
-        values.put(COL_ID, id);
-        values.put(COL_FULL_NAME, fullName);
-        values.put(COL_COMPANY_NAME, companyName);
-        values.put(COL_EMAIL, email);
-        values.put(COL_PROFILE_IMG_ID, propertyId);
-        values.put(COL_NUM_OF_SOLD_LISTINGS, numOfSoldListings);
-        values.put(COL_SERVICE_LOCATION, serviceLocation);
-        values.put(COL_PHONE_NUMBER, phoneNumber);
-        return db.update(TABLE_NAME, values, "ID = ?", new String[]{id});
-    }
-
-    public Integer deleteValue(String id) {
-        return db.delete(TABLE_NAME, "ID = ?", new String[]{id});
     }
 }

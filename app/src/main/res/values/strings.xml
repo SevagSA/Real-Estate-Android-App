@@ -34,14 +34,14 @@
     <string name="share_fb">Share on Facebook</string>
     <string name="communicate">Communicate</string>
     <string name="see_sent_messages">See sent messages</string>
-    <string name="share_on_twitter">Share on twitter</string> <!--    pi² -->
+    <string name="share_on_twitter">Share on twitter</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="liked_listings">Liked Listings</string>
     <string name="your_liked_listings">Your liked listings</string>
-    <string name="armenian">հայերեն</string>
+    <string name="armenian" translatable="false">հայերեն</string>
     <string name="logout">Logout</string>
     <string name="about">About</string>
     <string name="search">Search</string>
@@ -52,7 +52,7 @@
     <string name="password_confirmation">Password Confirmation</string>
     <string name="register">Register</string>
     <string name="email">Email</string>
-    <string name="english">English</string>
+    <string name="english" translatable="false">English</string>
     <string name="app_contact_email" translatable="false">info@redwood.com</string>
     <string name="list_property_for_sale">List property for sale</string>
     <string name="click_to_enter_address">Click to enter address</string>
@@ -93,5 +93,9 @@
     <string name="error_while_updating_your_account">There was an error while updating your account.</string>
     <string name="error_while_registering_your_account">There was an error while registering your account.</string>
     <string name="account_registered">Account registered</string>
+    <string name="message_has_been_sent">Message has been sent</string>
+    <string name="was_sent"> was sent!</string>
+    <string name="your_message_for">Your message for </string>
+    <string name="view_agents">View Agents</string>
 
 </resources>

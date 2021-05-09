@@ -35,30 +35,7 @@ public class RegionDBHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public Long addData(String imgUrl, String locationTitle) {
-        ContentValues values = new ContentValues();
-        values.put(COL_IMG_URL, imgUrl);
-        values.put(COL_LOCATION_TITLE, locationTitle);
-        return db.insert(TABLE_NAME, null, values);
-    }
-
     public Cursor runQuery(String query) {
         return db.rawQuery(query, null);
-    }
-
-    public Cursor runQuery(String query, String[] selectionArgs) {
-        return db.rawQuery(query, selectionArgs);
-    }
-
-    public int updateData(String id, String imgUrl, String locationTitle) {
-        ContentValues values = new ContentValues();
-        values.put(COL_ID, id);
-        values.put(COL_IMG_URL, imgUrl);
-        values.put(COL_LOCATION_TITLE, locationTitle);
-        return db.update(TABLE_NAME, values, "ID = ?", new String[]{id});
-    }
-
-    public Integer deleteValue(String id) {
-        return db.delete(TABLE_NAME, "ID = ?", new String[]{id});
     }
 }

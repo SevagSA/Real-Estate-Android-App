@@ -57,7 +57,6 @@ public class EditProfileDialogFragment extends DialogFragment {
         EditText password = root.findViewById(R.id.editPasswordInput);
         EditText password2 = root.findViewById(R.id.editPassword2Input);
 
-
         root.findViewById(R.id.editUserBtn).setOnClickListener(e -> {
             String emailStr = email.getText().toString().trim();
             String passwordStr = password.getText().toString().trim();

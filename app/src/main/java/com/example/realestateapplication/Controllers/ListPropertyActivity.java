@@ -40,24 +40,20 @@ import java.util.List;
 
 public class ListPropertyActivity extends AppCompatActivity {
 
-    Button propertyAddressSelectBtn;
-
-
     Agent agent;
     ArrayList<String> agents;
-
-    GridView imageGridView;
-    Button selectImgBtn;
-
     ArrayList<String> propertyImages = new ArrayList<>();
 
     String agentName;
-
     String propertyType;
     EditText propertyPrice;
     EditText propertyNumOfBed;
     EditText propertyNumOfBath;
     EditText propertySquareFoot;
+
+    Button propertyAddressSelectBtn;
+    GridView imageGridView;
+    Button selectImgBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,26 +74,27 @@ public class ListPropertyActivity extends AppCompatActivity {
         findViewById(R.id.listPropertyForSaleBtn).setOnClickListener(e -> {
             if (
                     !propertyPrice.getText().toString().isEmpty() &&
+//                    TODO uncomment during presentations:
 //                    !propertyAddressSelectBtn.getText().toString().isEmpty() &&
-                    !propertyNumOfBed.getText().toString().isEmpty() &&
-                    !propertyNumOfBath.getText().toString().isEmpty() &&
-                    !propertySquareFoot.getText().toString().isEmpty() &&
-                    imageGridView.getChildCount() == 6
+                            !propertyNumOfBed.getText().toString().isEmpty() &&
+                            !propertyNumOfBath.getText().toString().isEmpty() &&
+                            !propertySquareFoot.getText().toString().isEmpty() &&
+                            imageGridView.getChildCount() == 6
             ) {
                 Property property = new Property(this);
                 property.setContext(getApplicationContext());
-                property.setPropertyPrice(((EditText)findViewById(R.id.listPropertyPrice)).getText().toString());
-//                TODO uncomment during presentations.
+                property.setPropertyPrice(((EditText) findViewById(R.id.listPropertyPrice)).getText().toString());
+//                TODO uncomment during presentations:
 //                property.setPropertyAddress(propertyAddressSelectBtn.getText().toString());
-//                TODO comment during presentations
+//                TODO comment during presentations:
                 property.setPropertyAddress("8 Av. Forden Westmount, Quebec H3G1K4");
                 property.setPropertyNumOfBed(Integer.parseInt
-                        (((EditText)findViewById(R.id.listPropertyBed)).getText().toString()));
+                        (((EditText) findViewById(R.id.listPropertyBed)).getText().toString()));
                 property.setPropertyNumOfBath(Integer.parseInt
-                        (((EditText)findViewById(R.id.listPropertyBath)).getText().toString()));
+                        (((EditText) findViewById(R.id.listPropertyBath)).getText().toString()));
                 property.setPropertySquareFoot(
                         Integer.parseInt(
-                                ((EditText)findViewById(R.id.listPropertySQFT)).getText().toString()));
+                                ((EditText) findViewById(R.id.listPropertySQFT)).getText().toString()));
                 property.setPropertyMainImg(propertyImages.get(0));
                 property.setPropertySecondImg(propertyImages.get(1));
                 property.setPropertyThirdImg(propertyImages.get(2));
@@ -167,7 +164,11 @@ public class ListPropertyActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode == RESULT_OK) {
             Place place = Autocomplete.getPlaceFromIntent(data);
-//            TODO the "replaceAll" has not been tested.
+//
+//            TODO: You put this todo:
+//                  "TODO the "replaceAll" has not been tested."
+//             when you you were working with FireBase. See if it's still necessary
+//             to do replaceAll (it should not be).
             propertyAddressSelectBtn.setText(place.getAddress().replaceAll(",", ""));
         } else if (requestCode == 3 && resultCode == Activity.RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -186,36 +187,23 @@ public class ListPropertyActivity extends AppCompatActivity {
     }
 
     public void handlePropertyImgSelected(BitmapDrawable newImg) {
-//        TODO: add a functionality to delete the selected images.
-//         While doing so, check if getChildCount == 0, if so, set grid.setBackground
-//         to the default img
         ArrayList<Drawable> images = new ArrayList<>();
         for (int i = 0; i < imageGridView.getChildCount(); i++) {
             ImageView img = ((ImageView) ((RelativeLayout) imageGridView.getChildAt(i)).getChildAt(0));
             images.add((img).getDrawable());
         }
         images.add(newImg);
-        SelectedPropertyImageAdapter adapter = new SelectedPropertyImageAdapter(
-                getApplicationContext(), images);
-        Log.d("imageGridView.", (imageGridView.getChildCount() + 1) + "");
+        SelectedPropertyImageAdapter adapter = new SelectedPropertyImageAdapter(getApplicationContext(), images);
         if (imageGridView.getChildCount() + 1 == 6) {
             selectImgBtn.setEnabled(false);
         }
-
-//        TODO onClick = delete image and update the btn enabled
-//            - If there's no img, set bg
-//        imageGridView.setOnItemClickListener((parent, view, position, id) -> {
-//            parent.removeViewInLayout(view);
-//        });
         imageGridView.setAdapter(adapter);
     }
 
     class PropertyTypeAdapterSpinnerClass implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-            {
-                propertyType = Property.PROPERTY_TYPES[position];
-            }
+            propertyType = Property.PROPERTY_TYPES[position];
         }
 
         @Override
@@ -227,10 +215,7 @@ public class ListPropertyActivity extends AppCompatActivity {
     class AgentAdapterSpinnerClass implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-            {
-                Toast.makeText(arg1.getContext(), agents.get(position), Toast.LENGTH_LONG).show();
-                agentName = agents.get(position);
-            }
+            agentName = agents.get(position);
         }
 
         @Override

@@ -44,7 +44,7 @@ public class RegionsRecyclerViewAdapter extends RecyclerView.Adapter<RegionsRecy
                 .into(holder.locationImg);
         holder.locationTitle.setText(regions.get(position).getLocationTitle());
         holder.exploreBtn.setOnClickListener(e -> {
-//            go to the search page, with the query of the locationTitles
+//            TODO go to the search page, with the query of the locationTitles
             Toast.makeText(context, regions.get(position).getLocationTitle(), Toast.LENGTH_SHORT).show();
         });
     }

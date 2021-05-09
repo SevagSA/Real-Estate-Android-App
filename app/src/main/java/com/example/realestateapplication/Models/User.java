@@ -13,11 +13,7 @@ public class User {
     private String fullName;
     private String email;
     private String password;
-//    private ArrayList<Property> likedListings;
-//    private LikedListingsActivity likedListingsActivity;
-
     private UserDBHelper db;
-
 
     public User() {
 
@@ -32,9 +28,6 @@ public class User {
         db = new UserDBHelper(context);
     }
 
-//    public User(LikedListingsActivity likedListingsActivity) {
-//        this.likedListingsActivity = likedListingsActivity;
-//    }
 
     public Long insert() {
         return db.addData(this.getEmail(), this.getFullName(), this.getPassword());

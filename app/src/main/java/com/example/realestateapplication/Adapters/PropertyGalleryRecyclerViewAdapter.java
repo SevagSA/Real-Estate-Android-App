@@ -15,18 +15,13 @@ import com.example.realestateapplication.R;
 
 import java.util.ArrayList;
 
-//  TODO you changed propertyGalleryImageURLs from a String[] to ArrayList.
-//   See if re-changing it is necesarry once you put the db fetching logic in the Property
-//    class.
-public class PropertyGalleryRecyclerViewAdapter extends RecyclerView.Adapter<PropertyGalleryRecyclerViewAdapter.ViewHolder>  {
+public class PropertyGalleryRecyclerViewAdapter extends RecyclerView.Adapter<PropertyGalleryRecyclerViewAdapter.ViewHolder> {
     Context context;
     String[] propertyGalleryImageURLs;
-//    ArrayList<String> propertyGalleryImageURLs;
 
     public PropertyGalleryRecyclerViewAdapter(Context context, String[] propertyGalleryImageURLs) {
         this.context = context;
         this.propertyGalleryImageURLs = propertyGalleryImageURLs;
-        Log.d("in bind iew holder", propertyGalleryImageURLs.toString());
     }
 
     @NonNull

@@ -21,7 +21,6 @@ public class Agent implements Parcelable {
     private String companyName;
     private String email;
     @DrawableRes
-//    see https://stackoverflow.com/questions/62343576/is-it-possible-to-add-an-image-as-a-class-attribute
     private int profileImgId;
     private int numOfSoldListings;
     private String serviceLocation;

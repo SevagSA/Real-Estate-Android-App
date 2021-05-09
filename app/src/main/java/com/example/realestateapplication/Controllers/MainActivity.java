@@ -30,9 +30,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * An API that returns images of regions (the ones you have listed). So every time, there would
      * be a new image of that place
-     * <p>
      * OR
-     * <p>
      * An Activity that displays various numbers relating to the current housing market in Canada.
      * Liked avg mortgage prices, house prices, etc.
      */
@@ -45,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
         String isloggedInStr = getSharedPreferences("User", Context.MODE_PRIVATE)
                 .getString(getString(R.string.login_shared_pref), null);
-        Log.d("isloggedInStr", isloggedInStr);
 
         if (isloggedInStr != null && isloggedInStr.equals("true")) {
             startActivity(new Intent(this, HomeActivity.class));

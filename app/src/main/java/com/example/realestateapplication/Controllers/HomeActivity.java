@@ -38,10 +38,9 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-// TODO remove observer/observable and just adopts basic MVC
-//  (Model = Class, Controller = Activity classes, View=XML)
-public class HomeActivity extends AppCompatActivity implements Observer, NavigationView.OnNavigationItemSelectedListener
-            /**Communication */{
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
+        /**Communication */
+{
 
     private Region region;
     private Property property;
@@ -60,9 +59,7 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
         populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL);
         chosenLang = getSharedPreferences("User", Context.MODE_PRIVATE)
                 .getString(getString(R.string.selected_language), null);
-// alex_mason: 2131165277
-// olivia_james: 2131165371
-// raphael_jones: 2131165379
+
         int raph = this.getResources().getIdentifier("raphael_jones", "drawable", this.getPackageName());
         Log.d("raph", raph + " ");
 
@@ -88,9 +85,6 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        // creating a relationship between the observable Model and the observer Activity
-        region = new Region(this);
-        region.addObserver(this);
 
         changeLayoutOrientationBtn = findViewById(R.id.changeLayoutOrientationBtn);
         changeLayoutOrientationBtn.setOnClickListener(e -> handleChangeLayoutBtnClick());
@@ -108,9 +102,6 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
             case R.id.nav_list_property:
                 startActivity(new Intent(this, ListPropertyActivity.class));
                 break;
-//            case R.id.nav_see_sent_messages:
-//                Toast.makeText(this, "Sent msg", Toast.LENGTH_LONG).show();
-//                break;
             case R.id.nav_share_fb:
                 Toast.makeText(this, "nav_share_fb", Toast.LENGTH_LONG).show();
                 break;
@@ -186,9 +177,6 @@ public class HomeActivity extends AppCompatActivity implements Observer, Navigat
         }
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-    }
 
 //    @Override
 //    public void handleData(String message) {

@@ -65,11 +65,11 @@ public class ContactPropertyAgentDialogFragment extends DialogFragment {
                     0, agentIntent, 0);
 
             NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "Channel ID");
-            builder.setContentTitle("Message has been sent");
-            builder.setContentText("Your message for " + property.getPropertyAddress() + " was sent!");
+            builder.setContentTitle(getString(R.string.message_has_been_sent));
+            builder.setContentText(getString(R.string.your_message_for) + " " + property.getPropertyAddress() + " " +  getString(R.string.was_sent));
             builder.setSmallIcon(R.drawable.house_notification_icon);
-            builder.addAction(R.drawable.house_notification_icon, "Home Page", contentPendingIntent);
-            builder.addAction(R.drawable.ic_agents, "View Agents", agentPendingIntent);
+            builder.addAction(R.drawable.house_notification_icon, getString(R.string.home_page), contentPendingIntent);
+            builder.addAction(R.drawable.ic_agents, getString(R.string.view_agents), agentPendingIntent);
             builder.setColor(getResources().getColor(R.color.btnColor));
             builder.setAutoCancel(true);
 

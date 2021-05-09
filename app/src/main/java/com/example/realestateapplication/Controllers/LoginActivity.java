@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.loginPassword);
         loginBtn = findViewById(R.id.loginBtn);
 
-//    TODO this is not MVC: The method should be in the User model
+        // Validating user input before passing it to the model.
         loginBtn.setOnClickListener(view -> {
             String emailStr = email.getText().toString().trim();
             String passwordStr = password.getText().toString().trim();

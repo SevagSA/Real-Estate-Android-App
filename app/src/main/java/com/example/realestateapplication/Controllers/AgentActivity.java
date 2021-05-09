@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -59,7 +58,6 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
         toggle.syncState();
 
         Agent agent = getIntent().getParcelableExtra("agent");
-        Log.d("agent", agent.toString());
         populateRecyclerViewListings(agent.getAgentId());
 
         ((ImageView)findViewById(R.id.agentImg)).setImageResource(agent.getProfileImgId());
@@ -97,9 +95,6 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
             case R.id.nav_list_property:
                 startActivity(new Intent(this, ListPropertyActivity.class));
                 break;
-//            case R.id.nav_see_sent_messages:
-//                Toast.makeText(this, "Sent msg", Toast.LENGTH_LONG).show();
-//                break;
             case R.id.nav_share_fb:
                 Toast.makeText(this, "nav_share_fb", Toast.LENGTH_LONG).show();
                 break;

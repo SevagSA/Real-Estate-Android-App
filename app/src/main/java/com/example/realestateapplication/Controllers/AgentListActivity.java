@@ -73,9 +73,6 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
             case R.id.nav_list_property:
                 startActivity(new Intent(this, ListPropertyActivity.class));
                 break;
-//            case R.id.nav_see_sent_messages:
-//                Toast.makeText(this, "Sent msg", Toast.LENGTH_LONG).show();
-//                break;
             case R.id.nav_share_fb:
                 Toast.makeText(this, "nav_share_fb", Toast.LENGTH_LONG).show();
                 break;

@@ -22,12 +22,8 @@ import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapte
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Fragments.ProfileDialogFragment;
 import com.example.realestateapplication.Models.LikedProperty;
-import com.example.realestateapplication.Models.Property;
-import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
 
 public class LikedListingsActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -78,9 +74,6 @@ public class LikedListingsActivity extends AppCompatActivity implements Navigati
             case R.id.nav_list_property:
                 startActivity(new Intent(this, ListPropertyActivity.class));
                 break;
-//            case R.id.nav_see_sent_messages:
-//                Toast.makeText(this, "Sent msg", Toast.LENGTH_LONG).show();
-//                break;
             case R.id.nav_share_fb:
                 Toast.makeText(this, "nav_share_fb", Toast.LENGTH_LONG).show();
                 break;
@@ -167,7 +160,7 @@ public class LikedListingsActivity extends AppCompatActivity implements Navigati
         RecyclerView likedPropertyRecyclerView = findViewById(R.id.likedRecycler);
         likedPropertyRecyclerView.setLayoutManager(likedPropertyLayoutManager);
         PropertyCardRecyclerViewAdapter likedPropertyAdapter =
-                new PropertyCardRecyclerViewAdapter(likedProperty.getLikedListingsForUser(),this);
+                new PropertyCardRecyclerViewAdapter(likedProperty.getLikedListingsForUser(), this);
         likedPropertyRecyclerView.setAdapter(likedPropertyAdapter);
     }
 }
