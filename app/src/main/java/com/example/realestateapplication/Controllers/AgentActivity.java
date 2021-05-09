@@ -139,7 +139,7 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
                 localeHelper.changeLocale("hy", "User", R.string.selected_language);
             }
             Intent intent = getIntent();
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             finish();
             startActivity(intent);
             chosenLang = getSharedPreferences("User", Context.MODE_PRIVATE)

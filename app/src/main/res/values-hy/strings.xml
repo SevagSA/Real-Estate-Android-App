@@ -92,5 +92,6 @@
     <string name="was_sent"> ուղարկված է</string>
     <string name="your_message_for">Ձեր հաղորդագրությունը հանուն </string>
     <string name="view_agents">Դիտել գործակալներին</string>
+    <string name="email_sent">Նամակն ուղարկվել է</string>
 
 </resources>

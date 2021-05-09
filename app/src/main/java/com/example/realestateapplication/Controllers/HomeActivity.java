@@ -146,7 +146,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 localeHelper.changeLocale("hy", "User", R.string.selected_language);
             }
             Intent intent = getIntent();
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             finish();
             startActivity(intent);
             chosenLang = getSharedPreferences("User", Context.MODE_PRIVATE)

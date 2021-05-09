@@ -97,5 +97,6 @@
     <string name="was_sent"> was sent!</string>
     <string name="your_message_for">Your message for </string>
     <string name="view_agents">View Agents</string>
+    <string name="email_sent">Email sent</string>
 
 </resources>

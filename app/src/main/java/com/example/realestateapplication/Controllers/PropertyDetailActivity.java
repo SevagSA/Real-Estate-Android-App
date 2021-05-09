@@ -1,8 +1,10 @@
 package com.example.realestateapplication.Controllers;
 
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.localehelper.LocaleHelper;
 import com.example.realestateapplication.Adapters.PropertyGalleryRecyclerViewAdapter;
+import com.example.realestateapplication.ContactEmailSuccessFragment;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Fragments.ContactPropertyAgentDialogFragment;
 import com.example.realestateapplication.Fragments.ProfileDialogFragment;
@@ -107,8 +112,7 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
 
 
         (findViewById(R.id.propertyAgentContactBtn)).setOnClickListener(e -> {
-            // TODO: you can pass the agent in the constructor and use it in the form (for the email)
-            ContactPropertyAgentDialogFragment dialogFragment = new ContactPropertyAgentDialogFragment(property);
+            ContactPropertyAgentDialogFragment dialogFragment = new ContactPropertyAgentDialogFragment(property, agent);
             dialogFragment.show(getSupportFragmentManager(), "ContactPropertyAgentDialogFragment");
         });
         populateRecyclerViewListings();
@@ -119,6 +123,51 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
         getMenuInflater().inflate(R.menu.options_menu, menu);
         return true;
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Toast.makeText(this,"before if: " + requestCode, Toast.LENGTH_SHORT).show();
+
+        if (requestCode  == 0) {
+            Toast.makeText(this,"in if", Toast.LENGTH_SHORT).show();
+            sendNotification();
+            playSuccessSound();
+            ContactEmailSuccessFragment dialogFragment = new ContactEmailSuccessFragment();
+            dialogFragment.show(getSupportFragmentManager(), "ContactEmailSuccessFragment");
+        }
+    }
+
+    public void playSuccessSound() {
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.caching);
+        mediaPlayer.start();
+    }
+
+    public void sendNotification() {
+//            TODO create a "viewAllSentMessages" activity for the owner of the proeprty and
+//             put the intent there, not HomeActivity
+        Intent propertyDetailIntent = new Intent(this, HomeActivity.class);
+        PendingIntent contentPendingIntent = PendingIntent.getActivity(this,
+                0, propertyDetailIntent, 0);
+
+        Intent agentIntent = new Intent(this, AgentListActivity.class);
+        PendingIntent agentPendingIntent = PendingIntent.getActivity(this,
+                0, agentIntent, 0);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "Channel ID");
+        builder.setContentTitle(getString(R.string.message_has_been_sent));
+        builder.setContentText(getString(R.string.your_message_for) + " " + property.getPropertyAddress() + " " + getString(R.string.was_sent));
+        builder.setSmallIcon(R.drawable.house_notification_icon);
+        builder.addAction(R.drawable.house_notification_icon, getString(R.string.home_page), contentPendingIntent);
+        builder.addAction(R.drawable.ic_agents, getString(R.string.view_agents), agentPendingIntent);
+        builder.setColor(getResources().getColor(R.color.btnColor));
+        builder.setAutoCancel(true);
+
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
+        managerCompat.notify(1, builder.build());
+    }
+//
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -171,7 +220,7 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
                 localeHelper.changeLocale("hy", "User", R.string.selected_language);
             }
             Intent intent = getIntent();
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             finish();
             startActivity(intent);
             chosenLang = getSharedPreferences("User", Context.MODE_PRIVATE)
