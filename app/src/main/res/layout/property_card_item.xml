@@ -8,9 +8,13 @@
     android:layout_marginLeft="10dp"
     android:layout_height="wrap_content">
 
+<!--    android:layout_marginLeft="10dp"-->
+<!--    android:layout_marginBottom="5dp"-->
+<!--    android:layout_marginRight="10dp"-->
+
     <androidx.cardview.widget.CardView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,28 +22,29 @@
         android:elevation="20dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:background="@color/homeCardInfoBg"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/recentPropertyImg"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:scaleType="fitXY"
+                android:background="@drawable/dtvancouver"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recentPropertyImg"
-                android:background="@color/homeCardInfoBg">
+                app:layout_constraintTop_toBottomOf="@+id/recentPropertyImg">
 
                 <LinearLayout
                     android:layout_width="match_parent"
