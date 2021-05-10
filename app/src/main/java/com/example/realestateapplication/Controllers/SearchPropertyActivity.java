@@ -89,10 +89,6 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode == RESULT_OK) {
             Place place = Autocomplete.getPlaceFromIntent(data);
-//            TODO remove in presentations
-            Toast.makeText(getApplicationContext(),
-                    place.getAddress() + ", Name:" + place.getName(),
-                    Toast.LENGTH_LONG).show();
             populateRecyclerViewListings(place.getName());
         }
     }

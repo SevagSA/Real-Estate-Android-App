@@ -75,7 +75,7 @@ public class ListPropertyActivity extends AppCompatActivity {
             if (
                     !propertyPrice.getText().toString().isEmpty() &&
 //                    TODO uncomment during presentations:
-//                    !propertyAddressSelectBtn.getText().toString().isEmpty() &&
+                            !propertyAddressSelectBtn.getText().toString().isEmpty() &&
                             !propertyNumOfBed.getText().toString().isEmpty() &&
                             !propertyNumOfBath.getText().toString().isEmpty() &&
                             !propertySquareFoot.getText().toString().isEmpty() &&
@@ -85,9 +85,9 @@ public class ListPropertyActivity extends AppCompatActivity {
                 property.setContext(getApplicationContext());
                 property.setPropertyPrice(((EditText) findViewById(R.id.listPropertyPrice)).getText().toString());
 //                TODO uncomment during presentations:
-//                property.setPropertyAddress(propertyAddressSelectBtn.getText().toString());
+                property.setPropertyAddress(propertyAddressSelectBtn.getText().toString());
 //                TODO comment during presentations:
-                property.setPropertyAddress("8 Av. Forden Westmount, Quebec H3G1K4");
+//                property.setPropertyAddress("8 Av. Forden Westmount, Quebec H3G1K4");
                 property.setPropertyNumOfBed(Integer.parseInt
                         (((EditText) findViewById(R.id.listPropertyBed)).getText().toString()));
                 property.setPropertyNumOfBath(Integer.parseInt
@@ -164,12 +164,7 @@ public class ListPropertyActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode == RESULT_OK) {
             Place place = Autocomplete.getPlaceFromIntent(data);
-//
-//            TODO: You put this todo:
-//                  "TODO the "replaceAll" has not been tested."
-//             when you you were working with FireBase. See if it's still necessary
-//             to do replaceAll (it should not be).
-            propertyAddressSelectBtn.setText(place.getAddress().replaceAll(",", ""));
+            propertyAddressSelectBtn.setText(place.getName().replaceAll(",", ""));
         } else if (requestCode == 3 && resultCode == Activity.RESULT_OK) {
             Uri selectedImage = data.getData();
             propertyImages.add(selectedImage.toString());
