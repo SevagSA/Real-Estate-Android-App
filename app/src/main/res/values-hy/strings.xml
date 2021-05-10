@@ -101,4 +101,6 @@
     <string name="price_of_the_house">Տան գինը</string>
     <string name="down_payment">Կանխավճար (%)</string>
     <string name="down_payment_calculator">Կանխավճարի հաշվիչ</string>
+    <string name="house_price_required">Տան գինը պարտադիր է</string>
+    <string name="down_payment_required">Պահանջվում է կանխավճար</string>
 </resources>

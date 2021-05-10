@@ -1,48 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/homeDrawerMenu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".Controllers.DownPaymentActivity">
 
-    <LinearLayout
+    <fragment
+        android:id="@+id/calculationFragmentFromMain"
+        android:name="com.example.realestateapplication.Fragments.DownPaymentCalculationFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <fragment
-                android:id="@+id/calculationFragmentFromMain"
-                android:name="com.example.realestateapplication.Fragments.DownPaymentCalculationFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <fragment
-                android:id="@+id/resultFragmentFromMain"
-                android:name="com.example.realestateapplication.Fragments.DownPaymentResultFragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/drawer_menu" />
-
-
-</androidx.drawerlayout.widget.DrawerLayout>
+    <fragment
+        android:id="@+id/resultFragmentFromMain"
+        android:name="com.example.realestateapplication.Fragments.DownPaymentResultFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+</LinearLayout>

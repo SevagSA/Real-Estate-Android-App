@@ -21,7 +21,8 @@
         android:id="@+id/housePrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="100,000$"
+        android:hint="100000"
+        android:inputType="numberDecimal"
         android:layout_marginBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +39,8 @@
         android:id="@+id/downPaymentPercentage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="5.00%"
+        android:hint="Default is 5%"
+        android:inputType="numberDecimal"
         android:layout_marginBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

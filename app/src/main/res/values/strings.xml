@@ -106,4 +106,6 @@
     <string name="price_of_the_house">Price of the house</string>
     <string name="down_payment">Down Payment (%)</string>
     <string name="down_payment_calculator">Down Payment Calculator</string>
+    <string name="house_price_required">House price required</string>
+    <string name="down_payment_required">Down payment required</string>
 </resources>
