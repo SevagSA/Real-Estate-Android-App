@@ -90,14 +90,6 @@ public class EditProfileDialogFragment extends DialogFragment {
             if (isValid) {
                 int result = user.update(userId, email.getText().toString(), fullName.getText().toString(),
                         password.getText().toString());
-
-//                TODO there might be opppruitun to do 2 way communication here
-//                 (maybe like a success message? e.g. after edditing prfile, a msg
-//                  is sent to the ProfileDialogFragment -> "Profile edited succesfully").
-//                 OK but what will ProfileDialogFragment send to EditProfileDialogFragment?
-//                  Maybe, it can send the user info: email and full name, instead of getting
-//                      the email and full name from the DB in this fragment.
-
                 dismiss();
                 ProfileDialogFragment dialogFragment = new ProfileDialogFragment();
                 dialogFragment.show(getActivity().getSupportFragmentManager(), "ProfileDialogFragment");

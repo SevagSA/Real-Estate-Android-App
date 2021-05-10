@@ -66,35 +66,33 @@ public class ContactPropertyAgentDialogFragment extends DialogFragment {
             manager.createNotificationChannel(channel);
         }
     }
-
-    public void playSuccessSound() {
-        MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.caching);
-        mediaPlayer.start();
-    }
-
-    public void sendNotification() {
-//            TODO create a "viewAllSentMessages" activity for the owner of the proeprty and
-//             put the intent there, not HomeActivity
-        Intent propertyDetailIntent = new Intent(getActivity(), HomeActivity.class);
-        PendingIntent contentPendingIntent = PendingIntent.getActivity(getContext(),
-                0, propertyDetailIntent, 0);
-
-        Intent agentIntent = new Intent(getActivity(), AgentListActivity.class);
-        PendingIntent agentPendingIntent = PendingIntent.getActivity(getContext(),
-                0, agentIntent, 0);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "Channel ID");
-        builder.setContentTitle(getString(R.string.message_has_been_sent));
-        builder.setContentText(getString(R.string.your_message_for) + " " + property.getPropertyAddress() + " " + getString(R.string.was_sent));
-        builder.setSmallIcon(R.drawable.house_notification_icon);
-        builder.addAction(R.drawable.house_notification_icon, getString(R.string.home_page), contentPendingIntent);
-        builder.addAction(R.drawable.ic_agents, getString(R.string.view_agents), agentPendingIntent);
-        builder.setColor(getResources().getColor(R.color.btnColor));
-        builder.setAutoCancel(true);
-
-        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext());
-        managerCompat.notify(1, builder.build());
-    }
+//
+//    public void playSuccessSound() {
+//        MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), R.raw.caching);
+//        mediaPlayer.start();
+//    }
+//
+//    public void sendNotification() {
+//        Intent propertyDetailIntent = new Intent(getActivity(), HomeActivity.class);
+//        PendingIntent contentPendingIntent = PendingIntent.getActivity(getContext(),
+//                0, propertyDetailIntent, 0);
+//
+//        Intent agentIntent = new Intent(getActivity(), AgentListActivity.class);
+//        PendingIntent agentPendingIntent = PendingIntent.getActivity(getContext(),
+//                0, agentIntent, 0);
+//
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "Channel ID");
+//        builder.setContentTitle(getString(R.string.message_has_been_sent));
+//        builder.setContentText(getString(R.string.your_message_for) + " " + property.getPropertyAddress() + " " + getString(R.string.was_sent));
+//        builder.setSmallIcon(R.drawable.house_notification_icon);
+//        builder.addAction(R.drawable.house_notification_icon, getString(R.string.home_page), contentPendingIntent);
+//        builder.addAction(R.drawable.ic_agents, getString(R.string.view_agents), agentPendingIntent);
+//        builder.setColor(getResources().getColor(R.color.btnColor));
+//        builder.setAutoCancel(true);
+//
+//        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(getContext());
+//        managerCompat.notify(1, builder.build());
+//    }
 
     public void emailAgent() {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
@@ -107,16 +105,16 @@ public class ContactPropertyAgentDialogFragment extends DialogFragment {
         dismiss();
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode  == 0) {
-            sendNotification();
-            playSuccessSound();
-            ContactEmailSuccessFragment dialogFragment = new ContactEmailSuccessFragment();
-            dialogFragment.show(getActivity().getSupportFragmentManager(), "ContactEmailSuccessFragment");
-        }
-
-    }
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (requestCode  == 0) {
+//            sendNotification();
+//            playSuccessSound();
+//            ContactEmailSuccessFragment dialogFragment = new ContactEmailSuccessFragment();
+//            dialogFragment.show(getActivity().getSupportFragmentManager(), "ContactEmailSuccessFragment");
+//        }
+//
+//    }
 }

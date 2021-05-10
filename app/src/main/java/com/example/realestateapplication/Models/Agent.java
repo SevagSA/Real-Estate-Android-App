@@ -4,14 +4,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import androidx.annotation.DrawableRes;
 
 import com.example.realestateapplication.Models.DBHelpers.AgentDBHelper;
-import com.example.realestateapplication.Models.DBHelpers.PropertyDBHelper;
-import com.example.realestateapplication.Models.DBHelpers.UserDBHelper;
-import com.example.realestateapplication.R;
 
 import java.util.ArrayList;
 
@@ -25,8 +21,6 @@ public class Agent implements Parcelable {
     private int numOfSoldListings;
     private String serviceLocation;
     private String phoneNumber;
-    //    TODO remove the context attribute; it was used for dummy data before DB config.
-    private Context context;
 
     private String agentId;
 
@@ -34,7 +28,6 @@ public class Agent implements Parcelable {
 
     public Agent(Context context) {
         db = new AgentDBHelper(context);
-        this.context = context;
     }
 
     public Agent(String agentId, String fullName, String companyName,
@@ -211,14 +204,6 @@ public class Agent implements Parcelable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public Context getContext() {
-        return context;
-    }
-
-    public void setContext(Context context) {
-        this.context = context;
     }
 
     public String getAgentId() {

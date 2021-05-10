@@ -145,8 +145,6 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
     }
 
     public void sendNotification() {
-//            TODO create a "viewAllSentMessages" activity for the owner of the proeprty and
-//             put the intent there, not HomeActivity
         Intent propertyDetailIntent = new Intent(this, HomeActivity.class);
         PendingIntent contentPendingIntent = PendingIntent.getActivity(this,
                 0, propertyDetailIntent, 0);
