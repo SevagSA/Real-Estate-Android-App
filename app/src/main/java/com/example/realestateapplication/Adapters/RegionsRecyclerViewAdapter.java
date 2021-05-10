@@ -1,6 +1,7 @@
 package com.example.realestateapplication.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.realestateapplication.Controllers.PropertyDetailActivity;
+import com.example.realestateapplication.Controllers.SearchPropertyActivity;
 import com.example.realestateapplication.Models.Region;
 import com.example.realestateapplication.R;
 
@@ -44,8 +47,9 @@ public class RegionsRecyclerViewAdapter extends RecyclerView.Adapter<RegionsRecy
                 .into(holder.locationImg);
         holder.locationTitle.setText(regions.get(position).getLocationTitle());
         holder.exploreBtn.setOnClickListener(e -> {
-//            TODO go to the search page, with the query of the locationTitles
-            Toast.makeText(context, regions.get(position).getLocationTitle(), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, SearchPropertyActivity.class);
+            intent.putExtra("region", regions.get(position).getLocationTitle());
+            context.startActivity(intent);
         });
     }
 

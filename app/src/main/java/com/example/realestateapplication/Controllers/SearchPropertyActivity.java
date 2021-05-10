@@ -24,6 +24,7 @@ import com.example.localehelper.LocaleHelper;
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
 import com.example.realestateapplication.Fragments.ProfileDialogFragment;
+import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.R;
 import com.google.android.libraries.places.api.Places;
@@ -76,6 +77,11 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
                     fieldList).build(SearchPropertyActivity.this);
             startActivityForResult(intent, 100);
         });
+
+        if (getIntent().hasExtra("region")) {
+            populateRecyclerViewListings(getIntent().getStringExtra("region"));
+        }
+
     }
 
     @Override
@@ -87,8 +93,7 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
             Toast.makeText(getApplicationContext(),
                     place.getAddress() + ", Name:" + place.getName(),
                     Toast.LENGTH_LONG).show();
-            searchBar.setText(place.getAddress());
-            populateRecyclerViewListings(place.getAddress());
+            populateRecyclerViewListings(place.getName());
         }
     }
 
@@ -193,6 +198,8 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
      * Render listings that match the search results of the user
      */
     private void populateRecyclerViewListings(String query) {
+        Toast.makeText(this, query, Toast.LENGTH_LONG).show();
+        searchBar.setText(query);
         Property property = new Property(this);
         ArrayList<Property> searchResultProperties = property.getPropertiesBySearchQuery(query);
 
