@@ -108,4 +108,5 @@
     <string name="down_payment_calculator">Down Payment Calculator</string>
     <string name="house_price_required">House price required</string>
     <string name="down_payment_required">Down payment required</string>
+    <string name="email_exists">An account with that email already exists.</string>
 </resources>

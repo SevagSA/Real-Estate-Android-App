@@ -33,12 +33,20 @@ public class User {
         return db.addData(this.getEmail(), this.getFullName(), this.getPassword());
     }
 
+    /**
+     * To check if an email already exists in the database.
+     * @return Returns true if the email exists.
+     */
+    public boolean emailDoesNotExists() {
+        Cursor cursor = db.runQuery("SELECT * FROM " + UserDBHelper.TABLE_NAME + " WHERE email = ?", new String[]{getEmail()});
+        return cursor.moveToFirst();
+    }
+
     public Long login() {
         Cursor cursor = db.runQuery(
                 "SELECT * FROM " + UserDBHelper.TABLE_NAME +
                         " WHERE email = ? AND password = ?",
                 new String[]{getEmail(), getPassword()});
-//        TODO email must be unique in the DB for this to work.
         if (cursor.moveToFirst()) {
             return cursor.getLong(0);
         } else {

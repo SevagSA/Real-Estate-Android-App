@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,13 @@ public class RegistrationDialogFragment extends DialogFragment {
                 isValid = false;
             }
 
+            User user = new User(getContext());
+            user.setEmail(emailStr);
+            if(user.emailDoesNotExists()) {
+                email.setError(getString(R.string.email_exists));
+                isValid = false;
+            }
+
             if (passwordStr.isEmpty()) {
                 password.setError(getString(R.string.password_is_required));
                 isValid = false;
@@ -70,7 +78,6 @@ public class RegistrationDialogFragment extends DialogFragment {
                 password2.setError(getString(R.string.password2_is_required));
                 isValid = false;
             }
-
 
             if (!Pattern.matches("^[A-Za-z0-9+_.-]+@(.+)$", emailStr)) {
                 email.setError(getString(R.string.email_not_valid));
@@ -88,9 +95,7 @@ public class RegistrationDialogFragment extends DialogFragment {
             }
 
             if (isValid) {
-                User user = new User(getContext());
                 user.setFullName(fullNameStr);
-                user.setEmail(emailStr);
                 user.setPassword(passwordStr);
                 Long result = user.insert();
                 if (result != -1) {
