@@ -120,6 +120,8 @@ Users are not limited to searching by the displayed regions, they can type in th
 
 ## Listing properties for sale
 Users can list their property for sale on Redwood's application. They will need to specify some relevant information like price and square footage. Also, users can decide which agent they want to represent their property.
+
+
 **![](https://lh5.googleusercontent.com/k4LXtbs_xFuLwmA9TlywGNzaDnsIg_bBy9XUqy89GK26WKuyaqTc3PhApCDK8oHaF3fxJI2vpDcRXOPETN16SVB1tiG_h1GvOulv-WELuF2l30HHaGIqaLtKEa9pBnz-cTjzmrHT)**
 
 ![](https://lh4.googleusercontent.com/1C3Vxc1cOOdbkkcRc-Exts2QTkjOiuCTaKqxQNd9Yk4w5DY3pGmOFa-tobwnVmZDTtdfLUTEWnYCRQl5O6cP90z7mFlQBNOEFXBWNLHhldFfGsxOERemDrYMq1HXWmPtDYm_Tc3n)
