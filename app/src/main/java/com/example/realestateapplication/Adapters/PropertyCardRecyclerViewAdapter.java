@@ -66,7 +66,7 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
         holder.likedIconImg.setOnClickListener(e -> {
             String userId = context.getSharedPreferences("User", Context.MODE_PRIVATE)
                     .getString(context.getResources().getString(R.string.user_id_shared_pref), null);
-            LikedProperty likedProperty = new LikedProperty(userId, properties.get(position).getPropertyAddress(), context);
+            LikedProperty likedProperty = new LikedProperty(userId, properties.get(position).getPropertyId(), context);
             likedProperty.handleLikedBtnClick();
         });
     }

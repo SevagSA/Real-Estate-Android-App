@@ -11,18 +11,13 @@ import java.util.ArrayList;
 public class LikedProperty {
 
     private String userId;
-//    TODO if you are going to use address, then use address as the ID for the Property table aswell.
-//     Also, address will need to be UNIQUE (w/Constraint) and enforece the uniquenes on the app
-//     (if a user chooses a same address, notify it to them.)
-//     Right now, since it is not unique, if you like a property, all properties that share
-//     the same address will be rendered in the likedListingActivity.
-    private String propertyAddress;
+    private String propertyId;
     private LikedPropertyDBHelper db;
-    private Context context;
+    private final Context context;
 
-    public LikedProperty(String userId, String propertyAddress, Context context) {
+    public LikedProperty(String userId, String propertyId, Context context) {
         this.userId = userId;
-        this.propertyAddress = propertyAddress;
+        this.propertyId = propertyId;
         this.context = context;
         db = new LikedPropertyDBHelper(context);
     }
@@ -36,13 +31,13 @@ public class LikedProperty {
     public boolean handleLikedBtnClick() {
         Cursor cursor = db.runQuery("SELECT * FROM " + LikedPropertyDBHelper.TABLE_NAME +
                         " WHERE user_id = ? AND property_id = ?",
-                new String[]{getUserId(), getPropertyAddress()});
+                new String[]{getUserId(), getPropertyId()});
         boolean has_liked = cursor.moveToFirst();
         if (has_liked) {
             long result = (long) db.deleteValue(cursor.getString(0));
             return result != -1;
         } else {
-            Long result = db.addData(getUserId(), getPropertyAddress());
+            Long result = db.addData(getUserId(), getPropertyId());
             return result != -1;
         }
     }
@@ -56,11 +51,11 @@ public class LikedProperty {
         ArrayList<Property> properties = new ArrayList<>();
         try (Cursor cursor = db.runQuery(
                 "SELECT property.* " +
-                "FROM " + LikedPropertyDBHelper.TABLE_NAME + " " +
-                "JOIN " + PropertyDBHelper.TABLE_NAME + " " +
-                "ON " + LikedPropertyDBHelper.TABLE_NAME + "." + LikedPropertyDBHelper.COL_PROPERTY_ID +
-                    " = " + PropertyDBHelper.TABLE_NAME + "." + PropertyDBHelper.COL_PROPERTY_ADDRESS + " " +
-                "WHERE " + LikedPropertyDBHelper.COL_USER_ID + " = ?",
+                        "FROM " + LikedPropertyDBHelper.TABLE_NAME + " " +
+                        "JOIN " + PropertyDBHelper.TABLE_NAME + " " +
+                        "ON " + LikedPropertyDBHelper.TABLE_NAME + "." + LikedPropertyDBHelper.COL_PROPERTY_ID +
+                        " = " + PropertyDBHelper.TABLE_NAME + "." + PropertyDBHelper.COL_ID + " " +
+                        "WHERE " + LikedPropertyDBHelper.COL_USER_ID + " = ?",
                 new String[]{getUserId()})) {
             while (cursor.moveToNext()) {
                 Property property = new Property(
@@ -102,11 +97,11 @@ public class LikedProperty {
         this.userId = userId;
     }
 
-    public String getPropertyAddress() {
-        return propertyAddress;
+    public String getPropertyId() {
+        return propertyId;
     }
 
-    public void setPropertyAddress(String propertyAddress) {
-        this.propertyAddress = propertyAddress;
+    public void setPropertyId(String propertyId) {
+        this.propertyId = propertyId;
     }
 }

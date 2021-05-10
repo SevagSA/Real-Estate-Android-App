@@ -23,8 +23,7 @@ import java.util.Currency;
 import java.util.Locale;
 
 
-public class DownPaymentResultFragment extends Fragment /**implements KeyEvent.Callback*/
-{
+public class DownPaymentResultFragment extends Fragment {
 
     private Communication comm;
     private EditText result;
@@ -51,7 +50,6 @@ public class DownPaymentResultFragment extends Fragment /**implements KeyEvent.C
         comm = (Communication) getActivity();
         result = getActivity().findViewById(R.id.calulationResult);
         result.setOnKeyListener((v, keyCode, event) -> {
-            Log.d("bool", (event.getAction() == KeyEvent.ACTION_UP) + "");
             if (event.getAction() != KeyEvent.ACTION_UP) {
                 return false;
             }
