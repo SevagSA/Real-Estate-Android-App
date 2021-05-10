@@ -27,9 +27,6 @@ public class Property implements Parcelable {
     private int agentId;
     private String propertyType;
     private String propertyPrice;
-//    TODO: this will be the address provide by Google Places API.
-//     it will be used by getListingsBySearchQuery(). It is still not implemented
-//     Decide to use either getAddress(), or getName(). getName() seems more concise.
     private String propertyAddress;
     private int propertyNumOfBed;
     private int propertyNumOfBath;
@@ -38,22 +35,13 @@ public class Property implements Parcelable {
 
     private PropertyDBHelper db;
 
-//    TODO remove this, it was used for dummy data.
-    private ArrayList<Property> allProperties;
 
     public static final String[] PROPERTY_TYPES = {"House", "Apartment", "Land", "Duplex"};
     private int ownerId;
 
-//    TODO you can probably remove this:
-//     it is only used in the search activity and for dummy data purposed (not yet implemented)
-//    public Property(Context context) {
-//        this.context = context;
-//    }
-
     public Property(Context context) { db = new PropertyDBHelper(context); }
 
     public Property(
-//            TODO do you need context?
             Context context, String propertyId, String propertyMainImg, String propertySecondImg,
                     String propertyThirdImg, String propertyFourthImg, String propertyFifthImg,
                     String propertySixthImg, String propertyType, String propertyPrice, String propertyAddress,
@@ -95,7 +83,6 @@ public class Property implements Parcelable {
         propertyNumOfBath = in.readInt();
         propertySquareFoot = in.readInt();
         propertyId = in.readString();
-        allProperties = in.createTypedArrayList(Property.CREATOR);
         ownerId = in.readInt();
     }
 
@@ -143,38 +130,10 @@ public class Property implements Parcelable {
      */
     public ArrayList<Property> getRecentProperties() {
         ArrayList<Property> properties = new ArrayList<>();
-//        TODO this code has been repeated multiple times (same for other classes). Extract it
-//         into a method and use that to stay DRY.
         try (Cursor result = db.runQuery("SELECT * FROM " + PropertyDBHelper.TABLE_NAME +
                 " ORDER BY date_added DESC")) {
             while (result.moveToNext()) {
-                Property property = new Property(
-        //            TODO do you need context?
-                        context,
-                        result.getString(0),
-                        result.getString(1),
-                        result.getString(2),
-                        result.getString(3),
-                        result.getString(4),
-                        result.getString(5),
-                        result.getString(6),
-//                       type
-                        result.getString(8),
-//                        price
-                        result.getString(9),
-//                        address
-                        result.getString(10),
-//                        bed
-                        result.getInt(11),
-//                        bath
-                        result.getInt(12),
-//                        sqft
-                        result.getInt(13),
-//                        agentid
-                        result.getInt(7),
-                        result.getInt(15)
-                );
-                properties.add(property);
+                properties.add(extractPropertyFromCursor(result));
             }
         }
         return properties;
@@ -187,37 +146,10 @@ public class Property implements Parcelable {
      */
     public ArrayList<Property> getAllPropertiesOfAgent(String agentId) {
         ArrayList<Property> properties = new ArrayList<>();
-//        TODO this code has been repeated multiple times (same for other classes). Extract it
-//         into a method and use that to stay DRY.
         try (Cursor result = db.runQuery("SELECT * FROM " + PropertyDBHelper.TABLE_NAME +
                 " WHERE agent_id = ?", new String[]{agentId})) {
             while (result.moveToNext()) {
-                Property property = new Property(
-                        context,
-                        result.getString(0),
-                        result.getString(1),
-                        result.getString(2),
-                        result.getString(3),
-                        result.getString(4),
-                        result.getString(5),
-                        result.getString(6),
-//                       type
-                        result.getString(8),
-//                        price
-                        result.getString(9),
-//                        address
-                        result.getString(10),
-//                        bed
-                        result.getInt(11),
-//                        bath
-                        result.getInt(12),
-//                        sqft
-                        result.getInt(13),
-//                        agentid
-                        result.getInt(7),
-                        result.getInt(15)
-                );
-                properties.add(property);
+                properties.add(extractPropertyFromCursor(result));
             }
         }
         return properties;
@@ -232,40 +164,41 @@ public class Property implements Parcelable {
      */
     public ArrayList<Property> getPropertiesBySearchQuery(String query) {
         ArrayList<Property> properties = new ArrayList<>();
-//        TODO this code has been repeated multiple times (same for other classes). Extract it
-//         into a method and use that to stay DRY.
         try (Cursor result = db.runQuery("SELECT * FROM " + PropertyDBHelper.TABLE_NAME +
                 " WHERE property_address LIKE ?", new String[]{"%"+query+"%"})) {
             while (result.moveToNext()) {
-                Property property = new Property(
-                        context,
-                        result.getString(0),
-                        result.getString(1),
-                        result.getString(2),
-                        result.getString(3),
-                        result.getString(4),
-                        result.getString(5),
-                        result.getString(6),
-//                       type
-                        result.getString(8),
-//                        price
-                        result.getString(9),
-//                        address
-                        result.getString(10),
-//                        bed
-                        result.getInt(11),
-//                        bath
-                        result.getInt(12),
-//                        sqft
-                        result.getInt(13),
-//                        agentid
-                        result.getInt(7),
-                        result.getInt(15)
-                );
-                properties.add(property);
+                properties.add(extractPropertyFromCursor(result));
             }
         }
         return properties;
+    }
+
+    private Property extractPropertyFromCursor(Cursor result) {
+        return new Property(
+                context,
+                result.getString(0),
+                result.getString(1),
+                result.getString(2),
+                result.getString(3),
+                result.getString(4),
+                result.getString(5),
+                result.getString(6),
+//                       type
+                result.getString(8),
+//                        price
+                result.getString(9),
+//                        address
+                result.getString(10),
+//                        bed
+                result.getInt(11),
+//                        bath
+                result.getInt(12),
+//                        sqft
+                result.getInt(13),
+//                        agentid
+                result.getInt(7),
+                result.getInt(15)
+        );
     }
 
     public Integer delete() {
@@ -457,7 +390,6 @@ public class Property implements Parcelable {
         dest.writeInt(propertyNumOfBath);
         dest.writeInt(propertySquareFoot);
         dest.writeString(propertyId);
-        dest.writeTypedList(allProperties);
         dest.writeInt(ownerId);
     }
 }
