@@ -8,13 +8,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.realestateapplication.Controllers.PropertyDetailActivity;
 import com.example.realestateapplication.Controllers.SearchPropertyActivity;
 import com.example.realestateapplication.Models.Region;
 import com.example.realestateapplication.R;
@@ -23,7 +21,7 @@ import java.util.ArrayList;
 
 public class RegionsRecyclerViewAdapter extends RecyclerView.Adapter<RegionsRecyclerViewAdapter.ViewHolder> {
 
-    private ArrayList<Region> regions;
+    private final ArrayList<Region> regions;
     private final Context context;
 
     public RegionsRecyclerViewAdapter(ArrayList<Region> regions, Context context) {

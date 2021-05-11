@@ -4,11 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,17 +22,13 @@ import com.example.localehelper.LocaleHelper;
 import com.example.realestateapplication.Adapters.PropertyCardRecyclerViewAdapter;
 import com.example.realestateapplication.Adapters.RegionsRecyclerViewAdapter;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
-import com.example.realestateapplication.Fragments.EditProfileDialogFragment;
+import com.example.realestateapplication.Fragments.ProfileDialogFragment;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.Models.Region;
-import com.example.realestateapplication.Fragments.ProfileDialogFragment;
-import com.example.realestateapplication.Models.Unsplash;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -50,22 +43,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        new Unsplash();
         region = new Region(this);
         property = new Property(this);
         populateRecyclerViewListings(LinearLayoutManager.HORIZONTAL);
         chosenLang = getSharedPreferences("User", Context.MODE_PRIVATE)
                 .getString(getString(R.string.selected_language), null);
-
-        int raph = this.getResources().getIdentifier("raphael_jones", "drawable", this.getPackageName());
-        Log.d("raph", raph + " ");
-
-        int alex_mason_drawable = this.getResources().getIdentifier("alex_mason", "drawable", this.getPackageName());
-
-        Log.d("alex_mason_drawable", alex_mason_drawable + " ");
-        int olivia_james_drawable = this.getResources().getIdentifier("olivia_james", "drawable", this.getPackageName());
-
-        Log.d("olivia_james_drawable", olivia_james_drawable + " ");
 
         // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);

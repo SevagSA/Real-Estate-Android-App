@@ -2,13 +2,11 @@
 <resources>
     <string name="app_name">Ռեդվուդ Ռիելթի</string>
 
-    <string name="searchBarPlaceholder">Որոնել…</string>
     <string name="regionsTitleHomeActivity">Մարզեր</string>
     <string name="regionsDescHomeActivity">Որոնեք ձեր նախընտրած տարածաշրջանում </string>
     <string name="explore">Ուսումնասիրեք</string>
     <string name="recentProperties">Վերջին հատկությունները</string>
     <string name="recentPropertiesDescHomeActivity">Նայեք մեր վերջին ցուցակներին</string>
-    <string name="view_listing">Դիտել ցուցակը</string>
     <string name="verticalLayout">Ուղղահայաց դասավորություն</string>
     <string name="horizontalLayout">Հորիզոնական դասավորություն</string>
     <string name="bed">Մահ.</string>
@@ -23,25 +21,13 @@
     <string name="squareFeet">Քառակուսի ոտքեր</string>
     <string name="numOfBed">Մահճակալի քանակը</string>
     <string name="numOfBath">Լոգանքի քանակը</string>
-    <string name="_5thImage">5-րդ պատկեր</string>
-    <string name="_6thImage">6-րդ պատկեր</string>
-    <string name="_4thImage">4-րդ պատկեր</string>
-    <string name="_3rdImage">3-րդ պատկեր</string>
-    <string name="_1stImage">1-րդ պատկեր</string>
-    <string name="_2ndImage">2-րդ պատկեր</string>
-    <string name="sellProperty">Գույքի վաճառք</string>
     <string name="enter_address">Մուտքագրեք հասցեն</string>
-    <string name="search_a_property_by_address">Որոնեք գույքը ըստ հասցեի</string>
     <string name="list_property">Նշեք գույքը</string>
-    <string name="share_fb">Կիսվեք Ֆեյսբուքում</string>
     <string name="communicate">Շփվել</string>
-    <string name="see_sent_messages">ուղարկված հաղորդագրությունները</string>
-    <string name="share_on_twitter">Կիսվեք twitter- ով</string>
 
 
     <string name="navigation_drawer_open">Բաց նավիգացիոն գզրոց</string>
     <string name="navigation_drawer_close">Փակել նավիգացիոն դարակը</string>
-    <string name="liked_listings">Հավանած ցանկեր</string>
     <string name="your_liked_listings">Ձեր հավանած ցանկերը</string>
     <string name="logout">Դուրս</string>
     <string name="about">Մասին</string>
@@ -102,6 +88,6 @@
     <string name="down_payment">Կանխավճար (%)</string>
     <string name="down_payment_calculator">Կանխավճարի հաշվիչ</string>
     <string name="house_price_required">Տան գինը պարտադիր է</string>
-    <string name="down_payment_required">Պահանջվում է կանխավճար</string>
     <string name="email_exists">Այդ էլփոստով հաշիվ արդեն գոյություն ունի:</string>
+    <string name="property_actions">Գույքի գործողություններ</string>
 </resources>

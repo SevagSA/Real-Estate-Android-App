@@ -2,9 +2,7 @@ package com.example.realestateapplication.Fragments;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,20 +13,16 @@ import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.realestateapplication.Controllers.AgentListActivity;
-import com.example.realestateapplication.Controllers.HomeActivity;
 import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.Models.Property;
 import com.example.realestateapplication.R;
 
 public class ContactPropertyAgentDialogFragment extends DialogFragment {
 
-    private Property property;
-    private Agent agent;
+    private final Property property;
+    private final Agent agent;
 
     private EditText emailSubject;
     private EditText emailBody;

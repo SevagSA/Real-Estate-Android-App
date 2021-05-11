@@ -1,6 +1,7 @@
 package com.example.realestateapplication.Controllers;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -8,7 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -82,6 +82,9 @@ public class ListPropertyActivity extends AppCompatActivity {
                             imageGridView.getChildCount() == 6
             ) {
                 Property property = new Property(this);
+                String userId = getSharedPreferences("User", Context.MODE_PRIVATE)
+                        .getString(getString(R.string.user_id_shared_pref), null);
+                property.setOwnerId(Integer.parseInt(userId));
                 property.setContext(getApplicationContext());
                 property.setPropertyPrice(((EditText) findViewById(R.id.listPropertyPrice)).getText().toString());
 //                TODO uncomment during presentations:

@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">Redwood Realty</string>
-    <string name="searchBarPlaceholder">Search…</string>
     <string name="regionsTitleHomeActivity">Regions</string>
     <string name="regionsDescHomeActivity">Search high quality listings in your favorite region</string>
     <string name="explore">Explore</string>
     <string name="recentProperties">Recent Properties</string>
     <string name="recentPropertiesDescHomeActivity">Take a look out our most recent listings</string>
-    <string name="view_listing">View listing</string>
     <string name="verticalLayout">Vertical layout</string>
     <string name="horizontalLayout">Horizontal layout</string>
     <string name="bed">Bed</string>
@@ -21,25 +19,13 @@
     <string name="squareFeet">Square Feet</string>
     <string name="numOfBed">Num of Bed</string>
     <string name="numOfBath">Num of bath</string>
-    <string name="_5thImage">5th image</string>
-    <string name="_6thImage">6th image</string>
-    <string name="_4thImage">4th image</string>
-    <string name="_3rdImage">3rd image</string>
-    <string name="_1stImage">1st image</string>
-    <string name="_2ndImage">2nd image</string>
-    <string name="sellProperty">Sell property</string>
     <string name="enter_address">Enter address</string>
-    <string name="search_a_property_by_address">Search a property by address</string>
     <string name="list_property">List property</string>
-    <string name="share_fb">Share on Facebook</string>
     <string name="communicate">Communicate</string>
-    <string name="see_sent_messages">See sent messages</string>
-    <string name="share_on_twitter">Share on twitter</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="liked_listings">Liked Listings</string>
     <string name="your_liked_listings">Your liked listings</string>
     <string name="armenian" translatable="false">հայերեն</string>
     <string name="logout">Logout</string>
@@ -107,6 +93,6 @@
     <string name="down_payment">Down Payment (%)</string>
     <string name="down_payment_calculator">Down Payment Calculator</string>
     <string name="house_price_required">House price required</string>
-    <string name="down_payment_required">Down payment required</string>
     <string name="email_exists">An account with that email already exists.</string>
+    <string name="property_actions">Property Actions</string>
 </resources>

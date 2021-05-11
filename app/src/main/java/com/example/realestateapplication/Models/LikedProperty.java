@@ -12,7 +12,7 @@ public class LikedProperty {
 
     private String userId;
     private String propertyId;
-    private LikedPropertyDBHelper db;
+    private final LikedPropertyDBHelper db;
     private final Context context;
 
     public LikedProperty(String userId, String propertyId, Context context) {

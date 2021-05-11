@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,13 +30,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.localehelper.LocaleHelper;
 import com.example.realestateapplication.Adapters.PropertyGalleryRecyclerViewAdapter;
-import com.example.realestateapplication.Fragments.ContactEmailSuccessFragment;
 import com.example.realestateapplication.Fragments.AboutDialogFragment;
+import com.example.realestateapplication.Fragments.ContactEmailSuccessFragment;
 import com.example.realestateapplication.Fragments.ContactPropertyAgentDialogFragment;
 import com.example.realestateapplication.Fragments.ProfileDialogFragment;
+import com.example.realestateapplication.Fragments.PropertyActionAlertDialog;
 import com.example.realestateapplication.Models.Agent;
 import com.example.realestateapplication.Models.Property;
-import com.example.realestateapplication.Fragments.PropertyActionAlertDialog;
 import com.example.realestateapplication.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -99,6 +100,7 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
 
         String userId = getSharedPreferences("User", Context.MODE_PRIVATE)
                 .getString(getResources().getString(R.string.user_id_shared_pref), null);
+        Log.d("in detail", Integer.toString(property.getOwnerId()).equals(userId) + " " + property.getOwnerId());
         if (Integer.toString(property.getOwnerId()).equals(userId)) {
             Button propertyActionBtn = findViewById(R.id.property_actions_btn);
             propertyActionBtn.setVisibility(View.VISIBLE);
