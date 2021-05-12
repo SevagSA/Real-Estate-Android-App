@@ -74,12 +74,11 @@ public class ListPropertyActivity extends AppCompatActivity {
         findViewById(R.id.listPropertyForSaleBtn).setOnClickListener(e -> {
             if (
                     !propertyPrice.getText().toString().isEmpty() &&
-//                    TODO uncomment during presentations:
-                            !propertyAddressSelectBtn.getText().toString().isEmpty() &&
-                            !propertyNumOfBed.getText().toString().isEmpty() &&
-                            !propertyNumOfBath.getText().toString().isEmpty() &&
-                            !propertySquareFoot.getText().toString().isEmpty() &&
-                            imageGridView.getChildCount() == 6
+                    !propertyAddressSelectBtn.getText().toString().isEmpty() &&
+                    !propertyNumOfBed.getText().toString().isEmpty() &&
+                    !propertyNumOfBath.getText().toString().isEmpty() &&
+                    !propertySquareFoot.getText().toString().isEmpty() &&
+                    imageGridView.getChildCount() == 6
             ) {
                 Property property = new Property(this);
                 String userId = getSharedPreferences("User", Context.MODE_PRIVATE)
@@ -87,10 +86,7 @@ public class ListPropertyActivity extends AppCompatActivity {
                 property.setOwnerId(Integer.parseInt(userId));
                 property.setContext(getApplicationContext());
                 property.setPropertyPrice(((EditText) findViewById(R.id.listPropertyPrice)).getText().toString());
-//                TODO uncomment during presentations:
                 property.setPropertyAddress(propertyAddressSelectBtn.getText().toString());
-//                TODO comment during presentations:
-//                property.setPropertyAddress("8 Av. Forden Westmount, Quebec H3G1K4");
                 property.setPropertyNumOfBed(Integer.parseInt
                         (((EditText) findViewById(R.id.listPropertyBed)).getText().toString()));
                 property.setPropertyNumOfBath(Integer.parseInt
@@ -154,10 +150,6 @@ public class ListPropertyActivity extends AppCompatActivity {
             imageGridView.setBackground(null);
             startActivityForResult(new Intent(Intent.ACTION_OPEN_DOCUMENT,
                     MediaStore.Images.Media.EXTERNAL_CONTENT_URI), 3);
-
-//            Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-//            intent.addCategory(Intent.CATEGORY_OPENABLE);
-//            startActivityForResult(intent, 3);
         });
 
     }
@@ -167,6 +159,7 @@ public class ListPropertyActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode == RESULT_OK) {
             Place place = Autocomplete.getPlaceFromIntent(data);
+//            Remove the commas from the address
             propertyAddressSelectBtn.setText(place.getName().replaceAll(",", ""));
         } else if (requestCode == 3 && resultCode == Activity.RESULT_OK) {
             Uri selectedImage = data.getData();
@@ -206,7 +199,6 @@ public class ListPropertyActivity extends AppCompatActivity {
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
-
         }
     }
 
@@ -218,7 +210,6 @@ public class ListPropertyActivity extends AppCompatActivity {
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
-
         }
     }
 }

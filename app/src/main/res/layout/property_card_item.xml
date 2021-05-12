@@ -8,10 +8,6 @@
     android:layout_marginLeft="10dp"
     android:layout_height="wrap_content">
 
-<!--    android:layout_marginLeft="10dp"-->
-<!--    android:layout_marginBottom="5dp"-->
-<!--    android:layout_marginRight="10dp"-->
-
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -63,9 +59,7 @@
                         style="@style/Widget.AppCompat.ActionButton"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:onClick="toastLove"
-                        android:src="@drawable/like_icon_red"
-                    />
+                        android:src="@drawable/like_icon_red" />
                 </LinearLayout>
 
                 <TextView

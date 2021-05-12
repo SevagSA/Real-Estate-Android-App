@@ -39,7 +39,7 @@
         android:id="@+id/downPaymentPercentage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Default is 5%"
+        android:hint="@string/default_is_5"
         android:inputType="numberDecimal"
         android:layout_marginBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"

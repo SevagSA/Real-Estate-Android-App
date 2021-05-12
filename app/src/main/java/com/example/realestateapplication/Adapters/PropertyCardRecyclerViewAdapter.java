@@ -98,7 +98,6 @@ public class PropertyCardRecyclerViewAdapter extends RecyclerView.Adapter<Proper
             recentPropertySquareFoot = itemView.findViewById(R.id.recentPropertySquareFoot);
             exploreRecentPropertyBtn = itemView.findViewById(R.id.exploreRecentPropertyBtn);
             likedIconImg = itemView.findViewById(R.id.likedIconImg);
-
         }
     }
 }

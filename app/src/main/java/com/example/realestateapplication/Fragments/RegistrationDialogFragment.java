@@ -45,6 +45,7 @@ public class RegistrationDialogFragment extends DialogFragment {
         register_btn = root.findViewById(R.id.register_btn);
 
         // Validating user input before passing it to the model.
+        // User input validation should be done in the Controller
         register_btn.setOnClickListener(e -> {
             String fullNameStr = fullName.getText().toString().trim();
             String emailStr = email.getText().toString().trim();

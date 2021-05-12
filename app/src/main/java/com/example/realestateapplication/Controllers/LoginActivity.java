@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
 
         // Validating user input before passing it to the model.
+        // User input validation should be done in the Controller
         loginBtn.setOnClickListener(view -> {
             String emailStr = email.getText().toString().trim();
             String passwordStr = password.getText().toString().trim();
@@ -90,7 +91,6 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), getString(R.string.account_does_not_exits), Toast.LENGTH_LONG).show();
                 }
-
             } else {
                 Toast.makeText(getApplicationContext(), getString(R.string.fix_the_errors), Toast.LENGTH_LONG).show();
             }

@@ -1,8 +1,10 @@
 package com.example.realestateapplication.Models;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 
+import com.example.realestateapplication.Controllers.LikedListingsActivity;
 import com.example.realestateapplication.Models.DBHelpers.LikedPropertyDBHelper;
 import com.example.realestateapplication.Models.DBHelpers.PropertyDBHelper;
 
@@ -33,13 +35,14 @@ public class LikedProperty {
                         " WHERE user_id = ? AND property_id = ?",
                 new String[]{getUserId(), getPropertyId()});
         boolean has_liked = cursor.moveToFirst();
+        long result;
         if (has_liked) {
-            long result = (long) db.deleteValue(cursor.getString(0));
-            return result != -1;
+            result = (long) db.deleteValue(cursor.getString(0));
         } else {
-            Long result = db.addData(getUserId(), getPropertyId());
-            return result != -1;
+            result = db.addData(getUserId(), getPropertyId());
         }
+        context.startActivity(new Intent(context, LikedListingsActivity.class));
+        return result != -1;
     }
 
     /**

@@ -100,8 +100,6 @@ public class DownPaymentCalculationFragment extends Fragment {
     }
 
     public void updateHousePrice(double monthlyAmount, double downPayment) {
-        Log.d("monthlyAmount", monthlyAmount + "");
-        Log.d("downPayment", downPayment + "");
         double total = monthlyAmount / downPayment;
         LocaleHelper localHelper = new LocaleHelper(getActivity());
         String currency = localHelper.getMoneyInCurrentLocale(total, "User", R.string.selected_language);

@@ -8,12 +8,14 @@
     android:background="@drawable/nyc"
     tools:context=".Controllers.LoginActivity">
 
+
     <include
         android:id="@+id/loginAppBar"
         layout="@layout/activity_app_bar"
         android:layout_width="match_parent"
-        android:layout_height="56dp" />
-
+        android:layout_height="56dp"
+        tools:layout_editor_absoluteX="-42dp"
+        tools:layout_editor_absoluteY="-23dp" />
 
     <TextView
         android:id="@+id/loginTextView"

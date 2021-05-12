@@ -53,9 +53,6 @@
 
     <Button
         android:id="@+id/englishLanguageBtn"
-
-
-
         android:text="@string/english"
         android:textColor="@color/white"
         app:backgroundTint="@color/btnColor"
@@ -71,8 +68,6 @@
         android:layout_marginRight="@dimen/globalMargin"
         android:textAllCaps="false"
         android:textSize="@dimen/btn_big"
-
-
         />
 
     <Button
@@ -84,7 +79,6 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="@dimen/globalMargin"
         android:layout_marginRight="@dimen/globalMargin"
-
         android:text="@string/armenian"
         android:textAllCaps="false"
         android:textColor="@color/white"

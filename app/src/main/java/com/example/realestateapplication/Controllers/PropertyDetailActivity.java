@@ -114,7 +114,7 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
 
 
         (findViewById(R.id.propertyAgentContactBtn)).setOnClickListener(e -> {
-            ContactPropertyAgentDialogFragment dialogFragment = new ContactPropertyAgentDialogFragment(property, agent);
+            ContactPropertyAgentDialogFragment dialogFragment = new ContactPropertyAgentDialogFragment(agent);
             dialogFragment.show(getSupportFragmentManager(), "ContactPropertyAgentDialogFragment");
         });
         populateRecyclerViewListings();
@@ -130,10 +130,7 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Toast.makeText(this,"before if: " + requestCode, Toast.LENGTH_SHORT).show();
-
         if (requestCode  == 0) {
-            Toast.makeText(this,"in if", Toast.LENGTH_SHORT).show();
             sendNotification();
             playSuccessSound();
             ContactEmailSuccessFragment dialogFragment = new ContactEmailSuccessFragment();
@@ -167,7 +164,6 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
         NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
         managerCompat.notify(1, builder.build());
     }
-//
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -175,9 +171,7 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
             case R.id.nav_list_property:
                 startActivity(new Intent(this, ListPropertyActivity.class));
                 break;
-
             case R.id.nav_share:
-
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 String shareBody = getString(R.string.about);
@@ -186,7 +180,6 @@ public class PropertyDetailActivity extends AppCompatActivity implements Navigat
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_via)));
                 break;
-
             case R.id.nav_list_of_agents:
                 startActivity(new Intent(this, AgentListActivity.class));
                 break;

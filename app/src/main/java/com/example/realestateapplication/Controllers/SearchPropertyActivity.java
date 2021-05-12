@@ -81,7 +81,6 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
         if (getIntent().hasExtra("region")) {
             populateRecyclerViewListings(getIntent().getStringExtra("region"));
         }
-
     }
 
     @Override
@@ -105,9 +104,7 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
             case R.id.nav_list_property:
                 startActivity(new Intent(this, ListPropertyActivity.class));
                 break;
-
             case R.id.nav_share:
-
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 String shareBody = getString(R.string.about);
@@ -116,7 +113,6 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_via)));
                 break;
-
             case R.id.nav_list_of_agents:
                 startActivity(new Intent(this, AgentListActivity.class));
                 break;
@@ -194,7 +190,6 @@ public class SearchPropertyActivity extends AppCompatActivity implements Navigat
      * Render listings that match the search results of the user
      */
     private void populateRecyclerViewListings(String query) {
-        Toast.makeText(this, query, Toast.LENGTH_LONG).show();
         searchBar.setText(query);
         Property property = new Property(this);
         ArrayList<Property> searchResultProperties = property.getPropertiesBySearchQuery(query);

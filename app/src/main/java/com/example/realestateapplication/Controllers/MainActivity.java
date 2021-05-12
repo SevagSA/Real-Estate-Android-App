@@ -15,25 +15,15 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.localehelper.LocaleHelper;
-import com.example.realestateapplication.Models.Unsplash;
 import com.example.realestateapplication.Models.User;
 import com.example.realestateapplication.R;
 
 import java.util.Locale;
 
-// each activity is a controller for their respective model(s) and view(s);
 public class MainActivity extends AppCompatActivity {
 
     Button armenianLanguageBtn;
     Button englishLanguageBtn;
-
-    /**
-     * An API that returns images of regions (the ones you have listed). So every time, there would
-     * be a new image of that place
-     * OR
-     * An Activity that displays various numbers relating to the current housing market in Canada.
-     * Liked avg mortgage prices, house prices, etc.
-     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

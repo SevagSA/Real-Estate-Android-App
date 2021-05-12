@@ -95,4 +95,8 @@
     <string name="house_price_required">House price required</string>
     <string name="email_exists">An account with that email already exists.</string>
     <string name="property_actions">Property Actions</string>
+    <string name="dollar_per_month">$ / Month</string>
+    <string name="default_is_5">Default is 5%</string>
+    <string name="sales">Sales</string>
+    <string name="phone_number">Phone Number</string>
 </resources>

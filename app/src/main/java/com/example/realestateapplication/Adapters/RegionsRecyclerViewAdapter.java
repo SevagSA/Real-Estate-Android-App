@@ -38,7 +38,6 @@ public class RegionsRecyclerViewAdapter extends RecyclerView.Adapter<RegionsRecy
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-    // this is were all of the views will be attached to the View
         Glide.with(context)
                 .asBitmap()
                 .load(regions.get(position).getImgURL())

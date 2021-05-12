@@ -35,7 +35,6 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
     private DrawerLayout drawer;
     private String chosenLang;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +95,6 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
                 startActivity(new Intent(this, ListPropertyActivity.class));
                 break;
             case R.id.nav_share:
-
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 String shareBody = getString(R.string.about);
@@ -105,7 +103,6 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_via)));
                 break;
-
             case R.id.nav_list_of_agents:
                 startActivity(new Intent(this, AgentListActivity.class));
                 break;
@@ -177,5 +174,4 @@ public class AgentActivity extends AppCompatActivity implements NavigationView.O
             super.onBackPressed();
         }
     }
-
 }

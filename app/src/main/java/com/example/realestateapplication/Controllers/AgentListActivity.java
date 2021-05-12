@@ -74,7 +74,6 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
                 startActivity(new Intent(this, ListPropertyActivity.class));
                 break;
             case R.id.nav_share:
-
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 String shareBody = getString(R.string.about);
@@ -83,7 +82,6 @@ public class AgentListActivity extends AppCompatActivity implements NavigationVi
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_via)));
                 break;
-
             case R.id.nav_list_of_agents:
                 startActivity(new Intent(this, AgentListActivity.class));
                 break;

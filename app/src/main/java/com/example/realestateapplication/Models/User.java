@@ -67,7 +67,6 @@ public class User {
     }
 
     public int update(String id, String email, String fullName, String password) {
-        Log.d("userId", id);
         return db.updateData(id, email, fullName, password);
     }
 

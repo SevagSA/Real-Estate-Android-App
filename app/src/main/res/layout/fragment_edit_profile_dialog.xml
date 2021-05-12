@@ -6,7 +6,6 @@
     android:padding="@dimen/globalMargin"
     tools:context=".Fragments.EditProfileDialogFragment">
 
-
     <EditText
         android:id="@+id/editFullNameInput"
         android:layout_width="match_parent"

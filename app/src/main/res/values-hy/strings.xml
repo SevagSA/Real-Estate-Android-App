@@ -90,4 +90,8 @@
     <string name="house_price_required">Տան գինը պարտադիր է</string>
     <string name="email_exists">Այդ էլփոստով հաշիվ արդեն գոյություն ունի:</string>
     <string name="property_actions">Գույքի գործողություններ</string>
+    <string name="dollar_per_month">$ / Ամիս</string>
+    <string name="default_is_5">Լռելյայնը 5% է</string>
+    <string name="sales">Վաճառք</string>
+    <string name="phone_number">Հեռախոսահամար</string>
 </resources>

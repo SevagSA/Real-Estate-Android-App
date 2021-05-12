@@ -51,7 +51,6 @@ public class EditProfileDialogFragment extends DialogFragment {
         email.setText(currentUser.getEmail());
         fullName.setText(currentUser.getFullName());
 
-
         EditText password = root.findViewById(R.id.editPasswordInput);
         EditText password2 = root.findViewById(R.id.editPassword2Input);
 
@@ -99,7 +98,6 @@ public class EditProfileDialogFragment extends DialogFragment {
                 }
             }
         });
-
         return root;
     }
 }

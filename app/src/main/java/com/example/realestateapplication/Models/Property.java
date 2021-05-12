@@ -202,7 +202,6 @@ public class Property implements Parcelable {
     }
 
     public Integer delete() {
-        Log.d("GetPro", getPropertyId());
         return db.deleteValue(getPropertyId());
     }
 
@@ -218,7 +217,8 @@ public class Property implements Parcelable {
     }
 
     public String getPropertyPrice() {
-        String dollarSymbol = propertyType.equalsIgnoreCase("Apartment") ? "$ / Month" : "$";
+        String dollarSymbol = propertyType.equalsIgnoreCase("Apartment") ?
+                context.getString(R.string.dollar_per_month) : "$";
         return propertyPrice + dollarSymbol;
     }
 

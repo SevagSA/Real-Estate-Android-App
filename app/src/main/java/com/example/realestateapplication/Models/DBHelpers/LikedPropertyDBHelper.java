@@ -18,7 +18,6 @@ public class LikedPropertyDBHelper extends SQLiteOpenHelper {
     public static final String COL_USER_ID = "user_id";
     public static final String COL_PROPERTY_ID = "property_id";
 
-
     public LikedPropertyDBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         db = this.getWritableDatabase();

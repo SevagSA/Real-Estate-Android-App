@@ -18,16 +18,9 @@ import com.example.realestateapplication.R;
 
 public class ProfileDialogFragment extends DialogFragment {
 
-    private User user;
-
     public ProfileDialogFragment() {
         // Required empty public constructor
     }
-
-    public ProfileDialogFragment(String userId, Context context) {
-        this.user = new User(context);
-    }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +38,6 @@ public class ProfileDialogFragment extends DialogFragment {
             EditProfileDialogFragment dialogFragment = new EditProfileDialogFragment(getActivity());
             dialogFragment.show(getActivity().getSupportFragmentManager(), "EditProfileDialogFragment");
         });
-
 
         String userId = getActivity().getSharedPreferences("User", Context.MODE_PRIVATE)
                 .getString(getString(R.string.user_id_shared_pref), null);
