@@ -6,18 +6,21 @@ Property agents are already registered into the application, hence you can only 
 <hr />
 This document will give an overview of the entire user flow.
 
-## 1. Choose  a Language
+## 1. Choose  a Language (req 22)
+(req 5 was also done here with the LocaleHelper Library)
+
+
 The first screen users will see is a screen that allows them to choose their prefered language. Redwood's app is translated in 2 languages: English and Armenian. Once users select a language, their choice will be saved and next time they log back in, the app will be translated in that language.
 
 
 **![](https://lh5.googleusercontent.com/qqcUE74z4M7Ik8EZfPJfG2PIGDcDszmwoEGIrVgYv6WQgPVbfKmedt3jyaU3c1N32xZtxHqz0-Xx9toR17ZzZyP1NOe2k2U3y_OdREey5DUBAGWC_Wwn2M-7okr4kRvp83l_7xBW)**
 
-Users can change their language from the option menu:
+Users can change their language from the option menu (req 3):
 
 **![](https://lh4.googleusercontent.com/_5ujLvTPVMvVEhhAPEBVsnoEJYiNdF8qyaH0FaIMog5DnFkOFcNumqEaoMlDrDZqi59YroUllHUiBAnInB1avsyRwULDXV_gw8L2B9QBY2_2fwzQyftBckO_ag26jzA_-4jaqki-)**
 
 
-## Login / Registration
+## Login / Registration (req 20)
 After users choose their language, they will be directed to the login and registration page. If users already have an account, they can input their credentials in the login input fields like so:
 
 
@@ -40,13 +43,13 @@ Once logged in, or registered, users will be directed to the application's home 
 **![](https://lh4.googleusercontent.com/Ty1iW50zZobEYjXlD5zfT-6QTpd0xc1j2PSSDW_7HuM72bk2QY66Wk9P1GxJAu2lYXCzCqVrCTS_bV1R4YIMVlNhTl_XfFcaV12f8h86nUadJpSmNt6JUIxPNk6sgaDxpSILCreI)**
 ### Recent properties
 **![](https://lh3.googleusercontent.com/cEeY4R1NYXAm3brm5L_G9RKevAlIX9e-o1ykVXWKIveyD7GnWWHiH-U9zMbc22v7F-COyQJ-kE4t6doStIp1zZnyQAcHxwTBJ6Xlj6zmIstvPeAXiy8GA1ygBBghKHcozdpBREdr)**
-### Drawer Menu
+### Drawer Menu (req 4)
 **![](https://lh4.googleusercontent.com/ar1676fPkoBfYs7kewK-jjltDTW8RlmUgg5YVMclKrL_nisbz3sPK1dRsXjnWWRQvWpJ7EE6oydYJCRtJiAAbsTHdeeIkwC402k2kuvW9cRKa7QGYuHe_59dDcXXXXTB2gYbBrmI)**
 
 ### Top navigation bar
 **![](https://lh5.googleusercontent.com/C4A3SLPtD4rTIrtOtUie-G_eBs8vNgK9TunvOSoTDL1AjqnIManfnrCUI-0rib8DmZgo8NOxugjbK21whAwkKjSMsl_1MCx3xymIGj3JHk4YDefai84hIbPTNmF7pfOjAnZ1faRd)**
 
-On the home page, users can click on the "Vertical Layout" button which will transform the direction in which the Region and Property "cards" are displayed. By default, the layout is horizontal:
+On the home page, users can click on the "Vertical Layout" button which will transform the direction in which the Region and Property "cards" are displayed. By default, the layout is horizontal (req 13):
 
 
 **![](https://lh6.googleusercontent.com/l-nk9WVuZyAGmBPiRFUQQBnse5auzLtzOmGdLmDy6ZfbyGHMMh3H4lVN0N9RHRjE-XWncJOD2xOPAJzz4civjc48-vyXqA98c8mnxNjI-Xfd_V_KBc3vEnC3jcYz3-kwYilfLfY5)**
@@ -77,6 +80,8 @@ By clicking on the "Explore" button that is presented on the Region "cards", use
 **![](https://lh6.googleusercontent.com/Rvm2izum_F3UKWS-9iaIg_OhJOK1Rvhjq673QGufXJbXOsbvcUxcI0HLiLI5-Mih89D7oxIxsBeqwZ-ccmkacpALqjtNHnH_Q_hVyjtI0BjWUUdxiXEu_8O6PCOEgQ8sHnafzEGe)**
 
 ## Property Detail page
+(req 12)
+
 Regardless of the location that the user is at in the application, if the user clicks on the "Explore" button on a property "card", they will be directed to that property's detail page.
 
 
@@ -86,7 +91,7 @@ On this page, all relevant information is presented to the user to make a decisi
 
 **![](https://lh4.googleusercontent.com/f6B3HisZyBFisyKxH-V8e0FjkNZLEcfODGVa5tYvuFVNgm_UYJYZPLw5Mk-LOWGSgFnBr7N1dprVFuxEyROq8Gmk12Q4b3ga-fp4x5_50wcM-3Naxpx9LbUifS7oE_yQNExLlGJ9)**
 
-By clicking on the "Contact" button, a dialog box will be displayed. This will prompt the user to send an email to the agent's email through Gmail.
+By clicking on the "Contact" button, a dialog box will be displayed. This will prompt the user to send an email to the agent's email through Gmail (req 11). When sending the email, the user will receive a notification notifying them that their action was successful (req 17) Also, a success sound effect will be played (21).
 
 **![](https://lh6.googleusercontent.com/41VTyEjWbNTg_zE15r2JuaTAwsNRvKuljrjagpuRiGJwempehTh5fjC1YVLm0NfDwCnSCPvHi8l2NlGkawqy56OEwrLzBfDNbImC1PiJ6-Ewc6if7ALuvVrdmwrNbB_65NCuTznD)**
 
@@ -158,7 +163,7 @@ By clicking on an agent, users will be directed to their detail page:
 
 **![](https://lh5.googleusercontent.com/eC-pnxpY7Gq4Azlgv_RbOkFbdsEffz8ujWE6VKOl8axb68VavPEDRx_D-f5QgOcOP9hrEGhXLyx45dTNLVjTdVjZUnIcXL8tb7Bnk6Zq0YlchCj_EqPWbdz-Gxm0cCI9wPwgxFUP)**
 
-## Down Payment Calculator
+## Down Payment Calculator (req 10 and req 16)
 From the drawer menu, users can select the "Down Payment Calculator" item. This screen calculates how much a user's montly mortgage rate will be based on their down payment.
 
 **![](https://lh6.googleusercontent.com/jQiszyZ-eTChYTYG9vd3Hic53A4Rmod4kLrooohTnZH6mfgTw2yxRWyitiuqOzFqMYdkgRVtaru2tA4Uy08r6SPmQG7FDAnb2fOKIzj_tGnn_aOpH891TUQ4VLL9GIWRzqsXGCya)**
